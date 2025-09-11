@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatedApp Dashboard</title>
+    <style>
+        .slider-container { margin-bottom: 1rem; }
+        .slider-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .slider { width: 100%; height: 6px; border-radius: 3px; background: #ddd; outline: none; opacity: 0.7; transition: opacity 0.2s; cursor: pointer; }
+        .slider:hover { opacity: 1; }
+        .slider::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #667eea; cursor: pointer; }
+        .slider.positive::-webkit-slider-thumb { background: #28a745; }
+        .slider.negative::-webkit-slider-thumb { background: #dc3545; }        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .info-icon {
+            margin-left: 6px;
+            cursor: help;
+            font-size: 0.9rem;
+            color: #6c757d;
+            opacity: 0.8;
+        }
+        .info-icon:hover {
+            color: #007bff;
+            opacity: 1;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        
+        .main-container { 
+            max-width: 1400px; 
+            margin: 2rem auto; 
+            padding: 0 2rem; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 2rem; 
+            height: calc(100vh - 140px); 
+        }
+        
+        .left-panel, .right-panel { 
+            background: white; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); 
+            padding: 2rem; 
+            overflow-y: auto; 
+        }
+        
+        .panel-header { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 2rem; 
+            padding-bottom: 1rem; 
+            border-bottom: 2px solid #e9ecef; 
+        }
+        
+        .panel-title { font-size: 1.5rem; font-weight: 600; color: #2c3e50; }
+        .panel-icon { font-size: 2rem; margin-right: 1rem; }
+    
+        
+        /* LastPass blocking CSS */
+        div[data-lastpass-icon-root] {
+            display: none !important;
+        }
+        
+        div[data-lastpass-root] {
+            display: none !important;
+        }
+        
+        span[data-lastpass-root] {
+            display: none !important;
+        }
+        
+        /* Block LastPass overlay */
+        .LPOverlay {
+            display: none !important;
+        }
+        
+        /* Block LastPass icon container */
+        [data-lastpass-icon-root="true"] {
+            display: none !important;
+        }
+        
+        /* Minimal LastPass blocking - no layout interference */
+        #unpaid-invoices-input {
+            /* Remove positioning overrides that break inline flow */
+        }
+        
+        #unpaid-invoices-points-display {
+            /* Remove display overrides that affect box size */
+        }
+        </style>
+
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    </head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🏥 RatedApp Dashboard</div>
+            <div>Sports Medicine Clinic</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="panel-header">
+                <span class="panel-icon">⚙️</span>
+                <h2 class="panel-title">Scoring Configuration</h2>
+            </div>
+            <form method="post" action="{% url 'unified_dashboard' %}" onsubmit="return handleFormSubmit(event)">
+    {% csrf_token %}
+    <div class="behavior-group">
+        <h4 style="margin-bottom: 1.5rem;">Positive Behaviours</h4>
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>📅 Appointments Booked <span class="info-icon" title="Slider indicates max points for patients with an upcoming appointment booked.">ⓘ</span></span>
+                <span id="future_appointments_value">{{ active_config.future_appointments_weight }}</span>
+            </div>
+            <input type="range" name="future_appointments_weight" class="slider positive" min="0" max="100" value="{{ active_config.future_appointments_weight }}" oninput="updateSliderValue('future_appointments', this.value)">
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>👤 Age Demographics <span class="info-icon" title="Slider indicates the max points available to a patient based on their age. The percentage inside the Age bracket will dictate the amount of points allocated from the slider.">ⓘ</span></span>
+                <span id="age_demographics_value">{{ active_config.age_demographics_weight }}</span>
+            </div>
+            <input type="range" name="age_demographics_weight" class="slider positive" min="0" max="100" value="{{ active_config.age_demographics_weight }}" oninput="updateSliderValue('age_demographics', this.value)">
+        </div>
+
+        <div id="age-brackets-header" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="var content=document.getElementById('age-brackets-content'); var arrow=this.children[1]; if(content.style.display==='none'){content.style.display='block'; arrow.textContent='▲';}else{content.style.display='none'; arrow.textContent='▼';}"><span style="font-size: 0.9rem; font-weight: normal;">Age Brackets <span class="info-icon" title="The percentage indicates the amount of slider value that is given if a patient falls in the specified, corresponding age ranges.">ⓘ</span></span><span style="float: right;">▼</span></div>
+        <div id="age-brackets-content" style="display: none; padding: 10px; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px;">
+            <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">{% for bracket in age_brackets %}<div style="display: flex; flex-direction: column; align-items: flex-start;"><div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;"><div style="padding: 4px 8px; border-right: 1px solid #dee2e6; font-weight: 500;">{% if bracket.max_age >= 999 %}{{ bracket.min_age }}+{% else %}{{ bracket.min_age }}-{{ bracket.max_age }}{% endif %}</div><div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">{{ bracket.percentage }}%</div></div><div style="display: flex; gap: 4px; margin-top: 2px;"><button onclick="deleteAgeBracket({{ bracket.id }})" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button></div></div>{% endfor %}<button onclick="addNewAgeBracket()" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;">+ ADD</button></div>
+        </div>    </div>
+
+
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>💰 Yearly Spend <span class="info-icon" title="The slider will indicate the max value a patient can receive based on their year-to-date spending. Bracket percentages will indicate how much value the slider allocates.">ⓘ</span></span>
+                <span id="yearly_spend_value">{{ active_config.yearly_spend_weight }}</span>
+            </div>
+            <input type="range" name="yearly_spend_weight" class="slider positive" min="0" max="100" value="{{ active_config.yearly_spend_weight }}" oninput="updateSliderValue('yearly_spend', this.value)">
+        </div>
+
+        <div id="spend-brackets-header" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="var content=document.getElementById('spend-brackets-content'); var arrow=this.children[1]; if(content.style.display==='none'){content.style.display='block'; arrow.textContent='▲';}else{content.style.display='none'; arrow.textContent='▼';}"><span style="font-size: 0.9rem; font-weight: normal;">Spend Brackets <span class="info-icon" title="The percentage indicates the amount of slider value that is given if a patient falls in the specified, corresponding year-to-date spend range.">ⓘ</span></span><span style="float: right;">▼</span></div>
+        <div id="spend-brackets-content" style="display: none; padding: 10px; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px;">
+            <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">{% for bracket in spend_brackets %}<div style="display: flex; flex-direction: column; align-items: flex-start;"><div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;"><div style="padding: 4px 12px; border-right: 1px solid #dee2e6; font-weight: 500; min-width: 85px; text-align: center;">{% if bracket.max_spend >= 999999.99 %}{{ bracket.min_spend|floatformat:0 }}+{% else %}{{ bracket.min_spend|floatformat:0 }}-{{ bracket.max_spend|floatformat:0 }}{% endif %}</div><div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">{{ bracket.percentage }}%</div></div><div style="display: flex; gap: 4px; margin-top: 2px;"><button onclick="deleteSpendBracket({{ bracket.id }})" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button></div></div>{% endfor %}<button onclick="addNewSpendBracket()" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;">+ ADD</button></div>
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>✅ Consecutive Attendance <span class="info-icon" title="This will take the number of consecutive appointments (not broken by a cancellation or DNA) a patient has had and multiply them by the number in the box, giving a score. The slider will indicate the maximum score a patient can receive.">ⓘ</span><span id="consecutive-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_consecutive_attendance }}</span><button type="button" id="edit-consecutive-btn" onclick="editConsecutivePoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="consecutive-input" min="1" max="100" value="{{ active_config.points_per_consecutive_attendance }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-consecutive-btn" onclick="saveConsecutivePoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_consecutive_attendance" id="consecutive-hidden" value="{{ active_config.points_per_consecutive_attendance }}"></span>
+                <span id="consecutive_attendance_value">{{ active_config.consecutive_attendance_weight }}</span>
+            </div>
+            <input type="range" name="consecutive_attendance_weight" class="slider positive" min="0" max="100" value="{{ active_config.consecutive_attendance_weight }}" oninput="updateSliderValue('consecutive_attendance', this.value)">
+        </div>
+
+    <div class="behavior-group" style="margin-top: 2rem;">
+        <h4 style="margin-bottom: 1.5rem;">Negative Behaviours</h4>
+        
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>❌ Cancellations <span class="info-icon" title="This will take the number of cancelled appointments and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="cancellations-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_cancellation }}</span><button type="button" id="edit-cancellations-btn" onclick="editCancellationsPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="cancellations-input" min="1" max="100" value="{{ active_config.points_per_cancellation }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-cancellations-btn" onclick="saveCancellationsPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_cancellation" id="cancellations-hidden" value="{{ active_config.points_per_cancellation }}"></span>
+                <span id="cancellations_weight_value">{{ active_config.cancellations_weight }}</span>
+            </div>
+            <input type="range" name="cancellations_weight" class="slider negative" min="0" max="100" value="{{ active_config.cancellations_weight }}" oninput="updateSliderValue('cancellations_weight', this.value)">
+        </div>
+        
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>🚫 DNA - Did Not Arrive <span class="info-icon" title="This will take the number of appointments marked Did Not Arrive and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="dna-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_dna }}</span><button type="button" id="edit-dna-btn" onclick="editDNAPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="dna-input" min="1" max="100" value="{{ active_config.points_per_dna }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-dna-btn" onclick="saveDNAPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_dna" id="dna-hidden" value="{{ active_config.points_per_dna }}"></span>
+                <span id="dna_weight_value">{{ active_config.dna_weight }}</span>
+            </div>
+            <input type="range" name="dna_weight" class="slider negative" min="0" max="100" value="{{ active_config.dna_weight }}" oninput="updateSliderValue('dna_weight', this.value)">
+        </div>
+        
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>💸 Unpaid Invoices <span class="info-icon" title="This will take the number of unpaid invoices and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="unpaid-invoices-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_unpaid_invoice }}</span><button type="button" id="edit-unpaid-invoices-btn" onclick="editUnpaidInvoicesPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="unpaid-invoices-input" min="1" max="100" data-lpignore="true" autocomplete="off" data-form-type="other" value="{{ active_config.points_per_unpaid_invoice }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-unpaid-invoices-btn" onclick="saveUnpaidInvoicesPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_unpaid_invoice" id="unpaid-invoices-hidden" data-lpignore="true" autocomplete="off" value="{{ active_config.points_per_unpaid_invoice }}"></span>
+                <span id="unpaid_invoices_weight_value">{{ active_config.unpaid_invoices_weight }}</span>
+            </div>
+            <input type="range" name="unpaid_invoices_weight" class="slider negative" data-lpignore="true" min="0" max="100" value="{{ active_config.unpaid_invoices_weight }}" oninput="updateSliderValue('unpaid_invoices_weight', this.value)">
+        </div>
+        
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>📋 Open DNA Invoice <span class="info-icon" title="The slider will indicate a penalty score only if the patient has any unpaid Did Not Arrive invoice/s.">ⓘ</span></span>
+                <span id="open_dna_invoice_weight_value">{{ active_config.open_dna_invoice_weight }}</span>
+            </div>
+            <input type="range" name="open_dna_invoice_weight" class="slider negative" min="0" max="100" value="{{ active_config.open_dna_invoice_weight }}" oninput="updateSliderValue('open_dna_invoice_weight', this.value)">
+        </div>
+    </div>
+<button type="submit" style="background: #28a745; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; margin-top: 1rem; cursor: pointer;">Update Weights</button>
+    <div id="save-message" style="display: none; color: #28a745; margin-top: 0.5rem; font-size: 1rem;">✅ Settings saved successfully!</div>
+
+<!-- MISSING SCORING PRESETS HTML -->
+<div id="scoring-presets-header" style="margin-top: 20px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="toggleScoringPresets()">
+    <span style="font-size: 0.9rem; font-weight: normal;">⚙️ Scoring Presets</span>
+    <span id="presets-arrow" style="float: right;">▼</span>
+</div>
+<div id="scoring-presets-content" style="display: none; padding: 10px; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px;">
+    <select id="preset-dropdown" style="width: 200px; padding: 5px; margin-bottom: 10px;">
+        <option value="">Select a preset...</option>
+    </select>
+    <div>
+        <button onclick="applyPreset()" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; margin-right: 5px; cursor: pointer;">Apply</button>
+        <button onclick="deletePreset()" style="background: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Delete</button>
+    </div>
+</div>
+</div>
+</div>
+</form>
+        </div>
+
+        <div class="right-panel">
+            <div class="panel-header">
+                <span class="panel-icon">👥</span>
+                <h2 class="panel-title">Patient Behavior Cards</h2>
+            </div>
+            <p>Patient cards will go here</p>
+        </div>
+    </div>
+<script>
+console.log('Minimal JS loaded');
+
+function updateSliderValue(sliderId, value) {
+    const element = document.getElementById(sliderId + '_value');
+    if (element) element.textContent = value;
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    location.reload();
+}
+
+function deleteAgeBracket(bracketId) {
+    if (confirm('Delete age bracket?')) {
+        fetch('/patients/dashboard/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: 'action=delete_age_bracket&bracket_id=' + bracketId
+        })
+        .then(response => response.json())
+        .then(data => data.success ? location.reload() : alert('Error'))
+        .catch(() => alert('Error'));
+    }
+}
+
+function addNewAgeBracket() {
+    alert('Age bracket add function loaded');
+}
+
+function saveNewAgeBracket() {
+    alert('Save function loaded');
+}
+
+function cancelNewAgeBracket() {
+    alert('Cancel function loaded');
+}
+
+function deleteSpendBracket(bracketId) {
+    if (confirm('Delete spend bracket?')) {
+        fetch('/patients/dashboard/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: 'action=delete_spend_bracket&bracket_id=' + bracketId
+        })
+        .then(response => response.json())
+        .then(data => data.success ? location.reload() : alert('Error'))
+        .catch(() => alert('Error'));
+    }
+}
+
+function addNewSpendBracket() {
+    alert('Spend bracket add function loaded');
+}
+
+function saveNewSpendBracket() {
+    alert('Save spend function loaded');
+}
+
+function cancelNewSpendBracket() {
+    alert('Cancel spend function loaded');
+}
+
+function editConsecutivePoints() {
+    alert('Edit consecutive function loaded');
+}
+
+function saveConsecutivePoints() {
+    alert('Save consecutive function loaded');
+}
+
+function editCancellationsPoints() {
+    alert('Edit cancellations function loaded');
+}
+
+function saveCancellationsPoints() {
+    alert('Save cancellations function loaded');
+}
+
+function editDNAPoints() {
+    alert('Edit DNA function loaded');
+}
+
+function saveDNAPoints() {
+    alert('Save DNA function loaded');
+}
+
+function editUnpaidInvoicesPoints() {
+    alert('Edit unpaid function loaded');
+}
+
+function saveUnpaidInvoicesPoints() {
+    alert('Save unpaid function loaded');
+}
+
+function toggleScoringPresets() {
+    alert('Toggle presets function loaded');
+}
+
+function applyPreset() {
+    alert('Apply preset function loaded');
+}
+
+function deletePreset() {
+    alert('Delete preset function loaded');
+}
+</script>
+</body>
+</html>

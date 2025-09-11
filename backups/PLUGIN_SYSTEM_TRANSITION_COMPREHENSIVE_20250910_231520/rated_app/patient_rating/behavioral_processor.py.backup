@@ -1,0 +1,204 @@
+from datetime import datetime, timedelta
+import pytz
+
+class BehavioralProcessor:
+    @staticmethod
+    def process_patient_behavior(patient_data, config, settings):
+        """
+        Process patient behavioral metrics from normalized data
+        
+        :param patient_data: Normalized patient data dictionary
+        :param config: Active scoring configuration
+        :param settings: RatedAppSettings with clinic timezone
+        :return: Dictionary of behavioral metrics
+        """
+        # Use clinic timezone from settings
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        
+        behavior_data = {}
+        
+        # Future Appointments
+        now_clinic = datetime.now(clinic_tz)
+        future_appointments = [
+            appt for appt in patient_data.get('appointments', []) 
+            if datetime.fromisoformat(appt.get('starts_at', '').replace('Z', '+00:00')).astimezone(clinic_tz) > now_clinic
+        ]
+        behavior_data['future_appointments'] = {
+            'count': len(future_appointments),
+            'points': config.future_appointments_weight if future_appointments else 0,
+            'description': f"{len(future_appointments)} future appointments"
+        }
+        
+        # Age Demographics
+        dob = patient_data.get('date_of_birth')
+        age = 0
+        if dob:
+            birth_date = datetime.strptime(dob, '%Y-%m-%d').replace(tzinfo=clinic_tz)
+            age = (datetime.now(clinic_tz) - birth_date).days // 365
+        
+        # Find matching age bracket
+        matching_bracket = next(
+            (bracket for bracket in config.age_brackets.all() 
+             if bracket.min_age <= age <= bracket.max_age), 
+            None
+        )
+        
+        behavior_data['age_demographics'] = {
+            'age': age,
+            'points': int((matching_bracket.percentage / 100) * config.age_demographics_weight) if matching_bracket else 0,
+            'description': f"Age {age} - {matching_bracket.name if matching_bracket else 'No matching bracket'}"
+        }
+        
+        # Yearly Spend
+        twelve_months_ago = now_clinic - timedelta(days=365)
+        yearly_invoices = [
+            inv for inv in patient_data.get('invoices', []) 
+            if datetime.fromisoformat(inv.get('created_at', '').replace('Z', '+00:00')).astimezone(clinic_tz) >= twelve_months_ago
+        ]
+        yearly_spend = sum(float(inv.get('total_amount', 0)) for inv in yearly_invoices)
+        
+        # Find matching spend bracket
+        spend_brackets = config.spend_brackets.all().order_by('order')
+        matching_spend_bracket = next(
+            (bracket for bracket in spend_brackets 
+             if bracket.min_spend <= yearly_spend <= bracket.max_spend), 
+            None
+        )
+        
+        behavior_data['yearly_spend'] = {
+            'amount': yearly_spend,
+            'points': int((matching_spend_bracket.percentage / 100) * config.yearly_spend_weight) if matching_spend_bracket else 0,
+            'description': f"${yearly_spend:.2f} in last 12 months"
+        }
+        
+        # Consecutive Attendance
+        sorted_appointments = sorted(
+            [appt for appt in patient_data.get('appointments', []) 
+             if not appt.get('cancelled_at') and not appt.get('did_not_arrive')], 
+            key=lambda x: x.get('starts_at', ''), 
+            reverse=True
+        )
+        
+        consecutive_streak = len(sorted_appointments)
+        
+        behavior_data['consecutive_attendance'] = {
+            'streak': consecutive_streak,
+            'points': min(
+                consecutive_streak * config.points_per_consecutive_attendance, 
+                config.consecutive_attendance_weight
+            ),
+            'description': f"{consecutive_streak} consecutive attended"
+        }
+        
+        # Likability (Manual)
+        saved_likability = patient_data.get('likability', 0)
+        behavior_data['likability'] = {
+            'score': saved_likability,
+            'points': saved_likability,
+            'description': "Set by practitioner" if saved_likability > 0 else "Manual practitioner input (not set)"
+        }
+        
+        # Open DNA Invoices
+        unpaid_invoices = [
+            inv for inv in patient_data.get('invoices', []) 
+            if not inv.get('is_paid')
+        ]
+        dna_related_unpaid = [
+            inv for inv in unpaid_invoices 
+            if any('dna' in str(inv.get('notes', '')).lower() for inv in unpaid_invoices)
+        ]
+        
+        behavior_data['open_dna_invoices'] = {
+            'has_open_dna': bool(dna_related_unpaid),
+            'count': len(dna_related_unpaid),
+            'points': -config.open_dna_invoice_weight if dna_related_unpaid else 0,
+            'description': f"{len(dna_related_unpaid)} open DNA invoices"
+        }
+        
+        # Unpaid Invoices
+        unpaid_count = len(unpaid_invoices)
+        behavior_data['unpaid_invoices'] = {
+            'count': unpaid_count,
+            'points': -min(
+                config.points_per_unpaid_invoice * unpaid_count, 
+                config.unpaid_invoices_weight
+            ),
+            'description': f"{unpaid_count} unpaid invoices"
+        }
+        
+        # Cancellations
+        cancelled_appointments = [
+            appt for appt in patient_data.get('appointments', []) 
+            if appt.get('cancelled_at')
+        ]
+        cancellation_count = len(cancelled_appointments)
+        
+        behavior_data['cancellations'] = {
+            'count': cancellation_count,
+            'points': -min(
+                config.points_per_cancellation * cancellation_count, 
+                config.cancellations_weight
+            ),
+            'description': f"{cancellation_count} total cancellations"
+        }
+        
+        # DNA Appointments
+        dna_appointments = [
+            appt for appt in patient_data.get('appointments', []) 
+            if appt.get('did_not_arrive')
+        ]
+        dna_count = len(dna_appointments)
+        
+        behavior_data['dna'] = {
+            'count': dna_count,
+            'points': -min(
+                config.points_per_dna * dna_count, 
+                config.dna_weight
+            ),
+            'description': f"{dna_count} DNA (Did Not Arrive)"
+        }
+        
+        # Referrer Score
+        referrals = patient_data.get('referrals', [])
+        referral_count = len(referrals)
+        
+        behavior_data['referrer_score'] = {
+            'count': referral_count,
+            'points': min(
+                referral_count * config.points_per_referral, 
+                config.referrer_score_weight
+            ),
+            'description': f"{referral_count} patients referred"
+        }
+        
+        # Unlikability (Manual)
+        saved_unlikability = patient_data.get('unlikability', 0)
+        behavior_data['unlikability'] = {
+            'score': saved_unlikability,
+            'points': -saved_unlikability,
+            'description': "Set by practitioner" if saved_unlikability > 0 else "Manual practitioner input (not set)"
+        }
+        
+        # Calculate Total Score
+        total_score = sum(category.get('points', 0) for category in behavior_data.values())
+        
+        # Calculate Letter Grade
+        if total_score >= 100:
+            letter_grade = 'A+'
+        elif total_score >= 80:
+            letter_grade = 'A'
+        elif total_score >= 60:
+            letter_grade = 'B'
+        elif total_score >= 40:
+            letter_grade = 'C'
+        elif total_score >= 20:
+            letter_grade = 'D'
+        else:
+            letter_grade = 'F'
+        
+        return {
+            'behavior_data': behavior_data,
+            'total_score': total_score,
+            'letter_grade': letter_grade,
+            'analysis_date': datetime.now(clinic_tz).isoformat()
+        }

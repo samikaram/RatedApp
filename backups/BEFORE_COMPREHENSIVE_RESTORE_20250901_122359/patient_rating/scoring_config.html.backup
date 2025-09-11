@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoring Configuration - RatedApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .back-btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .config-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .sliders-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        .presets-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+        .behavior-group {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .behavior-group.negative {
+            border-left-color: #e74c3c;
+        }
+        .behavior-group h4 {
+            margin: 0 0 15px 0;
+            color: #2c3e50;
+        }
+        .slider-container {
+            margin-bottom: 15px;
+        }
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #3498db;
+            cursor: pointer;
+            border: none;
+        }
+        .slider.negative::-webkit-slider-thumb {
+            background: #e74c3c;
+        }
+        .slider.negative::-moz-range-thumb {
+            background: #e74c3c;
+        }
+        .update-btn {
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .preset-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 2px solid #e9ecef;
+        }
+        .preset-item.active {
+            border-color: #27ae60;
+            background: #d5f4e6;
+        }
+        .preset-actions {
+            margin-top: 10px;
+        }
+        .preset-btn {
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .save-preset {
+            background: #f39c12;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .preset-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .preset-form input, .preset-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-btn">← Back to Home</a>
+        
+        <h1>⚖️ Scoring Configuration</h1>
+        <p>Control how much weight each behavior has in the final patient score (0-100 scale)</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div style="background: #d5f4e6; color: #27ae60; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="config-grid">
+            <div class="sliders-section">
+                <h3>🎯 Behavior Weights (0-100)</h3>
+                
+                <form method="post" id="weightForm">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="update_weights">
+                    
+                    <div class="behavior-group">
+                        <h4>✅ Positive Behaviors</h4>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>📅 Future Appointments</span>
+                                <span id="future_appointments_value">{{ active_config.future_appointments_weight }}</span>
+                            </div>
+                            <input type="range" name="future_appointments_weight" 
+                                   class="slider" min="0" max="100" 
+                                   value="{{ active_config.future_appointments_weight }}"
+                                   oninput="updateSliderValue('future_appointments', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>👤 Age Demographics</span>
+                                <span id="age_demographics_value">{{ active_config.age_demographics_weight }}</span>
+                            </div>
+                            <input type="range" name="age_demographics_weight" 
+                                   class="slider" min="0" max="100" 
+                                   value="{{ active_config.age_demographics_weight }}"
+                                   oninput="updateSliderValue('age_demographics', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>💰 Yearly Spend</span>
+                                <span id="yearly_spend_value">{{ active_config.yearly_spend_weight }}</span>
+                            </div>
+                            <input type="range" name="yearly_spend_weight" 
+                                   class="slider" min="0" max="100" 
+                                   value="{{ active_config.yearly_spend_weight }}"
+                                   oninput="updateSliderValue('yearly_spend', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>✅ Consecutive Attendance</span>
+                                <span id="consecutive_attendance_value">{{ active_config.consecutive_attendance_weight }}</span>
+                            </div>
+                            <input type="range" name="consecutive_attendance_weight" 
+                                   class="slider" min="0" max="100" 
+                                   value="{{ active_config.consecutive_attendance_weight }}"
+                                   oninput="updateSliderValue('consecutive_attendance', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>😊 Likability (Manual)</span>
+                                <span id="likability_value">{{ active_config.likability_weight }}</span>
+                            </div>
+                            <input type="range" name="likability_weight" 
+                                   class="slider" min="0" max="100" 
+                                   value="{{ active_config.likability_weight }}"
+                                   oninput="updateSliderValue('likability', this.value)">
+                        </div>
+                    </div>
+
+                    <div class="behavior-group negative">
+                        <h4>❌ Negative Behaviors</h4>
+                        
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>❌ Cancellations (per occurrence)</span>
+                                <span id="cancellations_value">{{ active_config.cancellations_weight }}</span>
+                            </div>
+                            <input type="range" name="cancellations_weight" 
+                                   class="slider negative" min="0" max="100" 
+                                   value="{{ active_config.cancellations_weight }}"
+                                   oninput="updateSliderValue('cancellations', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>🚫 DNA - Did Not Arrive (per occurrence)</span>
+                                <span id="dna_value">{{ active_config.dna_weight }}</span>
+                            </div>
+                            <input type="range" name="dna_weight" 
+                                   class="slider negative" min="0" max="100" 
+                                   value="{{ active_config.dna_weight }}"
+                                   oninput="updateSliderValue('dna', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>💳 Unpaid Invoices (per invoice)</span>
+                                <span id="unpaid_invoices_value">{{ active_config.unpaid_invoices_weight }}</span>
+                            </div>
+                            <input type="range" name="unpaid_invoices_weight" 
+                                   class="slider negative" min="0" max="100" 
+                                   value="{{ active_config.unpaid_invoices_weight }}"
+                                   oninput="updateSliderValue('unpaid_invoices', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>💸 Open DNA Invoice (Boolean)</span>
+                                <span id="open_dna_invoice_value">{{ active_config.open_dna_invoice_weight }}</span>
+                            </div>
+                            <input type="range" name="open_dna_invoice_weight" 
+                                   class="slider negative" min="0" max="100" 
+                                   value="{{ active_config.open_dna_invoice_weight }}"
+                                   oninput="updateSliderValue('open_dna_invoice', this.value)">
+                        </div>
+
+                        <div class="slider-container">
+                            <div class="slider-label">
+                                <span>😠 Unlikability (Manual)</span>
+                                <span id="unlikability_value">{{ active_config.unlikability_weight }}</span>
+                            </div>
+                            <input type="range" name="unlikability_weight" 
+                                   class="slider negative" min="0" max="100" 
+                                   value="{{ active_config.unlikability_weight }}"
+                                   oninput="updateSliderValue('unlikability', this.value)">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="update-btn">💾 Update Scoring Weights</button>
+                </form>
+            </div>
+
+            <div class="presets-section">
+                <h3>📋 Scoring Presets</h3>
+                
+                <div class="preset-item active">
+                    <strong>{{ active_config.name }}</strong>
+                    <p>{{ active_config.description }}</p>
+                    <small>Active Configuration</small>
+                </div>
+
+                {% for config in all_configs %}
+                    {% if not config.is_active %}
+                        <div class="preset-item">
+                            <strong>{{ config.name }}</strong>
+                            <p>{{ config.description }}</p>
+                            <div class="preset-actions">
+                                <form method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="load_preset">
+                                    <input type="hidden" name="config_id" value="{{ config.id }}">
+                                    <button type="submit" class="preset-btn">Load</button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="preset-form">
+                    <h4>💾 Save Current as Preset</h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="save_preset">
+                        <input type="text" name="preset_name" placeholder="Preset Name" required>
+                        <textarea name="preset_description" placeholder="Description (optional)" rows="3"></textarea>
+                        <button type="submit" class="save-preset">Save Preset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSliderValue(behaviorName, value) {
+            document.getElementById(behaviorName + '_value').textContent = value;
+        }
+    </script>
+</body>
+</html>
+
+<!-- Age Bracket Management Section -->
+<div class="age-bracket-management" style="margin-top: 40px; padding: 20px; border: 2px solid #ddd; border-radius: 8px;">
+    <h3 style="color: #333; margin-bottom: 20px;">🎯 Age Bracket Configuration</h3>
+    
+    <!-- Current Age Brackets Display -->
+    <div class="current-brackets" style="margin-bottom: 30px;">
+        <h4>Current Age Brackets:</h4>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+                <tr style="background-color: #f5f5f5;">
+                    <th style="border: 1px solid #ddd; padding: 10px;">Age Range</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;">Percentage</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;">Max Points*</th>
+                    <th style="border: 1px solid #ddd; padding: 10px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bracket in age_brackets %}
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px;">{{ bracket.min_age }}-{{ bracket.max_age }}</td>
+                    <td style="border: 1px solid #ddd; padding: 10px;">{{ bracket.percentage }}%</td>
+                    <td style="border: 1px solid #ddd; padding: 10px;">{{ bracket.percentage|floatformat:0 }}% of {{ active_config.age_demographics_weight }}</td>
+                    <td style="border: 1px solid #ddd; padding: 10px;">
+                        <button onclick="editBracket({{ bracket.id }}, {{ bracket.min_age }}, {{ bracket.max_age }}, {{ bracket.percentage }})" 
+                                style="background: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right: 5px;">Edit</button>
+                        <button onclick="deleteBracket({{ bracket.id }}, '{{ bracket.min_age }}-{{ bracket.max_age }}')" 
+                                style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Delete</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="border: 1px solid #ddd; padding: 10px; text-align: center; color: #666;">
+                        No age brackets configured
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="font-size: 12px; color: #666;">*Max points calculated based on current Age Demographics slider value</p>
+    </div>
+    
+    <!-- Add New Bracket Form -->
+    <div class="add-bracket-form" style="background: #f9f9f9; padding: 20px; border-radius: 8px;">
+        <h4>Add New Age Bracket:</h4>
+        <form method="post" style="display: flex; gap: 15px; align-items: end;">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="add_age_bracket">
+            
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Min Age:</label>
+                <input type="number" name="min_age" min="0" max="120" required 
+                       style="width: 80px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Max Age:</label>
+                <input type="number" name="max_age" min="0" max="999" required 
+                       style="width: 80px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div>
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Percentage:</label>
+                <input type="number" name="percentage" min="0" max="100" required 
+                       style="width: 80px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                <small style="display: block; color: #666;">% of slider max</small>
+            </div>
+            
+            <button type="submit" style="background: #2196F3; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">
+                Add Bracket
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Edit Bracket Modal (Hidden by default) -->
+<div id="editBracketModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000;">
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 8px; width: 400px;">
+        <h4>Edit Age Bracket</h4>
+        <form method="post" id="editBracketForm">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="edit_age_bracket">
+            <input type="hidden" name="bracket_id" id="editBracketId">
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Min Age:</label>
+                <input type="number" name="min_age" id="editMinAge" min="0" max="120" required 
+                       style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Max Age:</label>
+                <input type="number" name="max_age" id="editMaxAge" min="0" max="999" required 
+                       style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: bold;">Percentage:</label>
+                <input type="number" name="percentage" id="editPercentage" min="0" max="100" required 
+                       style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+                <small style="color: #666;">% of slider maximum</small>
+            </div>
+            
+            <div style="text-align: right;">
+                <button type="button" onclick="closeEditModal()" 
+                        style="background: #666; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px;">
+                    Cancel
+                </button>
+                <button type="submit" 
+                        style="background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 4px;">
+                    Update Bracket
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function editBracket(id, minAge, maxAge, percentage) {
+    document.getElementById('editBracketId').value = id;
+    document.getElementById('editMinAge').value = minAge;
+    document.getElementById('editMaxAge').value = maxAge;
+    document.getElementById('editPercentage').value = percentage;
+    document.getElementById('editBracketModal').style.display = 'block';
+}
+
+function closeEditModal() {
+    document.getElementById('editBracketModal').style.display = 'none';
+}
+
+function deleteBracket(id, description) {
+    if (confirm('Are you sure you want to delete age bracket ' + description + '?')) {
+        var form = document.createElement('form');
+        form.method = 'post';
+        form.innerHTML = 
+            '<input type="hidden" name="csrfmiddlewaretoken" value="' + document.querySelector('[name=csrfmiddlewaretoken]').value + '">' +
+            '<input type="hidden" name="action" value="delete_age_bracket">' +
+            '<input type="hidden" name="bracket_id" value="' + id + '">';
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+
+// Close modal when clicking outside
+document.getElementById('editBracketModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        closeEditModal();
+    }
+});
+</script>

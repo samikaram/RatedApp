@@ -1,0 +1,12 @@
+{
+  "extraction_date": "2025-07-04T23:37:34.429330+10:00",
+  "patient_name": "Bronwyn Kedicioglu",
+  "total_referral_sources": 2500,
+  "bronwyn_referrals": [],
+  "referrer_score": 0,
+  "method_used": "Client-side and server-side filtering",
+  "api_endpoint": "/referral_sources",
+  "expected_score": 1,
+  "matches_expected": false,
+  "authentication_status": "Fixed and working"
+}

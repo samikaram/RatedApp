@@ -1,0 +1,23 @@
+            elif action == 'apply_preset':
+                preset_id = request.POST.get('preset_id')
+                if preset_id:
+                    try:
+                        # Clear all active flags
+                        ScoringConfiguration.objects.update(is_active=False)
+                        # Set selected preset as active
+                        preset = ScoringConfiguration.objects.get(id=preset_id)
+                        preset.is_active = True
+                        preset.save()
+                        
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({
+                                'success': True, 
+                                'message': f'Preset {preset.name} applied successfully'
+                            })
+                    except ScoringConfiguration.DoesNotExist:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({'success': False, 'error': 'Preset not found'})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({'success': False, 'error': str(e)})
+

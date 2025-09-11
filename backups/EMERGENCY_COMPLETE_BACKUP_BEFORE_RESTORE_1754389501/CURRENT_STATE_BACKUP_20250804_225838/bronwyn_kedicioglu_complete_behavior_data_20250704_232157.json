@@ -1,0 +1,640 @@
+{
+  "extraction_date": "2025-07-04T23:21:57.985474+10:00",
+  "patient_id": "1707655488738428562",
+  "patient_name": "Bronwyn Kedicioglu",
+  "patient_data": {
+    "accepted_email_marketing": false,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": true,
+    "address_1": "12 Gerald street,  Greystanes",
+    "address_2": null,
+    "address_3": null,
+    "appointment_notes": null,
+    "archived_at": null,
+    "city": "Greystanes",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2025-06-14T02:46:37Z",
+    "custom_fields": null,
+    "date_of_birth": "1980-11-09",
+    "deleted_at": null,
+    "dva_card_number": null,
+    "email": "Mrsk_english@yahoo.com.au",
+    "emergency_contact": "Victor Kedicioglu 0478102148 husband",
+    "first_name": "Bronwyn",
+    "gender": null,
+    "gender_identity": "Woman",
+    "id": "1707655488738428562",
+    "invoice_default_to": null,
+    "invoice_email": null,
+    "invoice_extra_information": null,
+    "label": "Bronwyn Kedicioglu",
+    "last_name": "Kedicioglu",
+    "medicare": "2551454627",
+    "medicare_reference_number": "2",
+    "merged_at": null,
+    "notes": null,
+    "occupation": "Teacher",
+    "old_reference_id": null,
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "61424960950",
+        "number": "0424960950",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2145",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": "Friend / Family member - Victor Kedicioglu 0478102148",
+    "reminder_type": "SMS & Email",
+    "sex": "Female",
+    "state": "Nsw",
+    "time_zone": "Australia/Sydney",
+    "title": null,
+    "updated_at": "2025-06-15T23:42:19Z",
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1709011860558186065"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1707655488738428562"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1707655488738428562"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+    }
+  },
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 2,
+      "future_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011816249558583/conflicts"
+            }
+          },
+          "created_at": "2025-06-15T23:41:24Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2025-07-06T22:30:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1709011816249558583",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Bronwyn Kedicioglu",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2025-07-06T22:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1709011816249558583/connect",
+          "treatment_note_status": null,
+          "updated_at": "2025-06-15T23:41:24Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011816249558583/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011816249558583"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011860558186065/conflicts"
+            }
+          },
+          "created_at": "2025-06-15T23:41:29Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2025-07-08T22:30:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1709011860558186065",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Bronwyn Kedicioglu",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2025-07-08T22:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1709011860558186065/connect",
+          "treatment_note_status": null,
+          "updated_at": "2025-06-15T23:41:29Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011860558186065/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709011860558186065"
+          }
+        }
+      ]
+    },
+    "age_demographics": {
+      "age": 44,
+      "date_of_birth": "1980-11-09",
+      "in_target_demographic": true
+    },
+    "yearly_spend": {
+      "yearly_spend": 752.73,
+      "paid_invoices_count": 6,
+      "paid_invoices": [
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-06-15T23:43:00Z",
+          "created_at": "2025-06-15T23:43:06Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1709012674655815094",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-16",
+          "net_amount": "210.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573557,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/ALAuhwmif22-ohmMG4nXXNqScNCh8egyR6",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "7.27",
+          "total_amount": "202.73",
+          "updated_at": "2025-06-15T23:43:34Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1707655489401128695"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1707655489745061167"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1709012674655815094/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1709012674655815094"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1709012674655815094"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-06-18T05:19:00Z",
+          "created_at": "2025-06-18T05:19:54Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1710631740877309469",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-18",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573627,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/ZiZQx57Im22-uSn6IUG1tzK1mok6Kp2Tw",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-06-18T05:20:01Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1709010718323377254"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1709010718625367127"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1710631740877309469/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1710631740877309469"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1710631740877309469"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-06-23T06:33:00Z",
+          "created_at": "2025-06-23T06:33:06Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1714292458675767233",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-23",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573719,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/bjFhU4CtD22-KCYow6mvNCWenXjSaS7e24",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-06-23T06:33:13Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1709011119827322137"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1709011120053814486"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1714292458675767233/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1714292458675767233"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1714292458675767233"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-06-28T00:37:00Z",
+          "created_at": "2025-06-28T00:37:56Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1717737578259547957",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-28",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573842,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/hmajalTfT22-UVKOkA9jzxhuYlIWXIxjE4",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-06-28T00:38:29Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1709011526397986241"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1709011526783862097"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1717737578259547957/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1717737578259547957"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1717737578259547957"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-06-30T06:35:00Z",
+          "created_at": "2025-06-30T06:35:13Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1719366953937667319",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-30",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573889,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/dlV8FpzI032-XlcP104Wwmc2BGeyn0xOb7",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-06-30T06:35:19Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1709011723572217358"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1709011723924538766"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1719366953937667319/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1719366953937667319"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1719366953937667319"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-07-01T22:33:00Z",
+          "created_at": "2025-07-01T22:33:38Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1720574120095122993",
+          "invoice_to": "Bronwyn Kedicioglu\r\n12 Gerald street,  Greystanes\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-07-02",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573914,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/zZkbzfmf632-e6DTyDO90NagCoVHCKfJH6",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-07-01T22:34:33Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1709011772410693152"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1709011772653962653"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/1598164488480097377"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1720574120095122993/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1720574120095122993"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1720574120095122993"
+          }
+        }
+      ],
+      "total_invoices_checked": 6
+    },
+    "referrer_score": {
+      "referrer_score": 0,
+      "patient_referral_source": "Friend / Family member - Victor Kedicioglu 0478102148",
+      "note": "Optimized - full scan skipped for performance"
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 8,
+      "total_appointments": 8
+    },
+    "likability": {
+      "likability_score": 0,
+      "manual_input_required": true
+    },
+    "open_dna_invoices": {
+      "has_open_dna_invoice": false,
+      "total_unpaid_invoices": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0,
+      "unpaid_invoices": []
+    },
+    "unlikability": {
+      "unlikability_score": 0,
+      "manual_input_required": true
+    },
+    "cancellations": {
+      "cancellation_count": 0,
+      "cancelled_appointments": []
+    },
+    "dna": {
+      "dna_count": 0,
+      "dna_appointments": []
+    }
+  },
+  "extraction_method": "PROVEN METHOD - Same as successful Vivianne Russell",
+  "fixes_applied": [
+    "UTC timestamp formatting for AEST timezone",
+    "Client-side invoice filtering for yearly spend",
+    "Corrected consecutive attendance calculation",
+    "Proper attendance logic: only cancelled and DNA break streak",
+    "Cancellation detection using proven cancelled_at:? method",
+    "Unpaid invoice detection using closed_at:!? method",
+    "All 11 behavior categories with proven logic"
+  ]
+}

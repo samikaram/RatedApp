@@ -1,0 +1,474 @@
+{
+  "patient_id": "1104455",
+  "patient_name": "Vivianne Russell",
+  "extraction_date": "2025-07-07T09:20:28.341902+10:00",
+  "behavior_categories": {
+    "appointments_booked": {
+      "count": 0,
+      "appointments": []
+    },
+    "age_demographics": {
+      "age": 48,
+      "score": 10,
+      "target_demographic": true
+    },
+    "yearly_spend": {
+      "amount": 1310.14,
+      "invoice_count": 17,
+      "year": 2025
+    },
+    "consecutive_attendance": {
+      "streak": 1,
+      "total_attended": 1,
+      "total_appointments": 18,
+      "attendance_rate": 5.555555555555555
+    },
+    "likability": {
+      "score": 0,
+      "type": "manual_input",
+      "note": "Requires practitioner input"
+    },
+    "open_dna_invoices": {
+      "count": 0,
+      "invoices": []
+    },
+    "unpaid_invoices": {
+      "count": 0,
+      "total_amount": 0,
+      "invoices": []
+    },
+    "cancellations": {
+      "count": 6,
+      "appointments": [
+        {
+          "appointment_end": "2013-07-31T00:20:00Z",
+          "appointment_start": "2013-07-31T00:00:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "will call back to rescedule",
+          "cancellation_reason": 50,
+          "cancellation_time": "2013-07-30T04:42:15Z",
+          "cancelled_at": "2013-07-30T04:42:15Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4112787/conflicts"
+            }
+          },
+          "created_at": "2013-07-24T00:44:49Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2013-07-31T00:20:00Z",
+          "id": "4112787",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-07-31T00:00:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4112787/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4112787/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/4112787"
+          }
+        },
+        {
+          "appointment_end": "2013-08-27T23:40:00Z",
+          "appointment_start": "2013-08-27T23:20:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "kids have something at school cant make it- will call when sami gets back to make an appointment -lm ",
+          "cancellation_reason": 50,
+          "cancellation_time": "2013-08-27T02:56:46Z",
+          "cancelled_at": "2013-08-27T02:56:46Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4265880/conflicts"
+            }
+          },
+          "created_at": "2013-08-02T07:46:51Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2013-08-27T23:40:00Z",
+          "id": "4265880",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-08-27T23:20:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4265880/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/4265880/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/4265880"
+          }
+        },
+        {
+          "appointment_end": "2014-04-01T23:00:00Z",
+          "appointment_start": "2014-04-01T22:40:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "sick child home from school.  Jw",
+          "cancellation_reason": 50,
+          "cancellation_time": "2014-04-01T22:14:18Z",
+          "cancelled_at": "2014-04-01T22:14:18Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/8892755/conflicts"
+            }
+          },
+          "created_at": "2014-03-25T23:24:21Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2014-04-01T23:00:00Z",
+          "id": "8892755",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-04-01T22:40:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/8892755/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/8892755/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/8892755"
+          }
+        },
+        {
+          "appointment_end": "2014-12-02T23:00:00Z",
+          "appointment_start": "2014-12-02T22:40:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "cant make it",
+          "cancellation_reason": 10,
+          "cancellation_time": "2014-12-01T23:42:53Z",
+          "cancelled_at": "2014-12-01T23:42:53Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/16543812/conflicts"
+            }
+          },
+          "created_at": "2014-11-24T00:04:48Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2014-12-02T23:00:00Z",
+          "id": "16543812",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2014-12-02T22:40:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/16543812/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/16543812/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/16543812"
+          }
+        },
+        {
+          "appointment_end": "2015-05-18T00:00:00Z",
+          "appointment_start": "2015-05-17T23:40:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "has sick child home from school.  Jw",
+          "cancellation_reason": 10,
+          "cancellation_time": "2015-05-17T23:23:43Z",
+          "cancelled_at": "2015-05-17T23:23:43Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/23733973/conflicts"
+            }
+          },
+          "created_at": "2015-05-11T01:22:19Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-05-18T00:00:00Z",
+          "id": "23733973",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-05-17T23:40:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/23733973/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/23733973/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/23733973"
+          }
+        },
+        {
+          "appointment_end": "2018-11-20T22:20:00Z",
+          "appointment_start": "2018-11-20T22:00:00Z",
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "very sick.  Will call to reschedule.  Jw",
+          "cancellation_reason": 30,
+          "cancellation_time": "2018-11-20T21:36:45Z",
+          "cancelled_at": "2018-11-20T21:36:45Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/132344421/conflicts"
+            }
+          },
+          "created_at": "2018-11-13T22:39:50Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2018-11-20T22:20:00Z",
+          "id": "132344421",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2018-11-20T22:00:00Z",
+          "treatment_note_status": null,
+          "updated_at": "2018-11-20T21:36:45Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/132344421/attendees"
+            }
+          },
+          "invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/132344421/invoices"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/appointments/132344421"
+          }
+        }
+      ]
+    },
+    "dna_count": {
+      "count": 0,
+      "appointments": []
+    },
+    "unlikability": {
+      "score": 0,
+      "type": "manual_input",
+      "note": "Requires practitioner input"
+    }
+  },
+  "patient_details": {
+    "first_name": "Vivianne",
+    "last_name": "Russell",
+    "email": "vivianne@randrfamily.com.au",
+    "phone": null,
+    "date_of_birth": "1977-05-31",
+    "age": 48,
+    "created_at": "2012-12-14T04:36:17Z"
+  },
+  "scoring": {
+    "individual_scores": {
+      "appointments_booked": 0,
+      "age_demographics": 10,
+      "yearly_spend": 20,
+      "consecutive_attendance": 2,
+      "likability": 0,
+      "open_dna_invoices": 0,
+      "unpaid_invoices": 0,
+      "cancellations": -12,
+      "dna_count": 0,
+      "unlikability": 0
+    },
+    "total_score": 20,
+    "letter_grade": "D"
+  }
+}

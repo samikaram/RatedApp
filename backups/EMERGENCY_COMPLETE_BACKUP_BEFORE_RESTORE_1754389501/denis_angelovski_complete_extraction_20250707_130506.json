@@ -1,0 +1,1607 @@
+{
+  "extraction_date": "2025-07-07T13:05:06.343375+10:00",
+  "patient_info": {
+    "id": "1103063",
+    "name": "Denis Angelovski",
+    "first_name": "Denis",
+    "last_name": "Angelovski",
+    "date_of_birth": "1977-11-15",
+    "email": "aesnsw@gmail.com",
+    "age": 47
+  },
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 0,
+      "future_appointments": []
+    },
+    "age_demographics": {
+      "age": 47,
+      "date_of_birth": "1977-11-15",
+      "in_target_demographic": true
+    },
+    "yearly_spend": {
+      "yearly_spend": 0,
+      "yearly_invoices_count": 0,
+      "calculation_period": "2024-07-07 to 2025-07-07"
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 0,
+      "total_appointments": 100,
+      "calculation_method": "Most recent first, stop at first cancellation or DNA"
+    },
+    "likability": {
+      "likability_score": 0,
+      "manual_input_required": true
+    },
+    "open_dna_invoices": {
+      "has_open_dna_invoice": false,
+      "total_unpaid_invoices": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0
+    },
+    "unlikability": {
+      "unlikability_score": 0,
+      "manual_input_required": true
+    },
+    "cancellations": {
+      "cancellation_count": 17,
+      "cancelled_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "work",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-01-08T06:39:36Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1676351/conflicts"
+            }
+          },
+          "created_at": "2013-01-03T08:11:01Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2013-01-08T06:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "1676351",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-01-08T06:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1676351/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/5012"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1676351/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1676351"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "caught up at work, calling back to reschedule",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-05-24T03:36:35Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/3032353/conflicts"
+            }
+          },
+          "created_at": "2013-05-08T06:33:39Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2013-05-24T05:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "3032353",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2013-05-24T05:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/3032353/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/5012"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/3032353/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/3032353"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-08-27T05:20:00Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4510426/conflicts"
+            }
+          },
+          "created_at": "2013-08-19T06:52:35Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2013-08-28T06:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "4510426",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2013-08-28T06:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/4510426/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4510426/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/4510426"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "cant make it",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-12-17T03:29:29Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/6662772/conflicts"
+            }
+          },
+          "created_at": "2013-12-16T23:00:43Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2013-12-17T08:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "6662772",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-12-17T07:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/6662772/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/5012"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/6662772/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/6662772"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "gave app to wife. Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2014-04-23T06:25:57Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/9445064/conflicts"
+            }
+          },
+          "created_at": "2014-04-16T01:04:01Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2014-04-23T05:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "9445064",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-04-23T05:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/9445064/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/9445064/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/9445064"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "CAN'T MAKE IT, HE WILL CALL LATER TO RESCHEDULE.",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2014-09-03T23:55:11Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/13256287/conflicts"
+            }
+          },
+          "created_at": "2014-08-25T05:48:13Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2014-09-05T23:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "13256287",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2014-09-05T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/13256287/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/13256287/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/13256287"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "wife rang can't make it today.  she's taking his app.  Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2014-11-03T02:01:31Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/15527424/conflicts"
+            }
+          },
+          "created_at": "2014-10-27T07:34:19Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2014-11-03T06:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "15527424",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-11-03T06:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/15527424/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/15527424/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/15527424"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "FEELING SICK WILL CALL TO MAKE ANOTHER APPOINTMENT- LM ",
+          "cancellation_reason": 30,
+          "cancellation_reason_description": "Sick",
+          "cancelled_at": "2015-01-12T04:32:01Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/17931384/conflicts"
+            }
+          },
+          "created_at": "2015-01-06T01:57:32Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-01-12T05:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "17931384",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-01-12T05:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/17931384/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/17931384/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/17931384"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "got held back at work - will call tomorrow to make another appointment and is in diary to call -lm",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2015-02-09T06:12:15Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/18974901/conflicts"
+            }
+          },
+          "created_at": "2015-01-27T23:52:16Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-02-09T07:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "18974901",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-02-09T06:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/18974901/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/18974901/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/18974901"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": 60,
+          "cancellation_reason_description": "Work",
+          "cancelled_at": "2015-06-05T05:24:53Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/24674641/conflicts"
+            }
+          },
+          "created_at": "2015-05-29T05:44:32Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-06-05T07:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "24674641",
+          "invoice_status": null,
+          "notes": "PAYING FOR NATALIE, SHE DIDN'T HAVE HER HEALTH FUND CARD WITH HER ON WED 27 MAY\n\nAND HIS APPOINTMENT ON FRIDAY AND TODAY APPOINTMENT ",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-06-05T07:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/24674641/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/24674641/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/24674641"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "unable to attend",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2015-06-23T08:35:17Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25690252/conflicts"
+            }
+          },
+          "created_at": "2015-06-19T05:27:25Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2015-06-26T07:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "25690252",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2015-06-26T06:30:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/25690252/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/13418"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/34615"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25690252/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/25690252"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "unable to attend due to work",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2015-06-25T05:24:30Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25980547/conflicts"
+            }
+          },
+          "created_at": "2015-06-25T05:08:43Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2015-06-25T09:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "25980547",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2015-06-25T08:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/25980547/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/29168"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25980547/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/25980547"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "WILL RESCHEDULE NEXT WEEK. Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2015-09-24T23:50:59Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/29767232/conflicts"
+            }
+          },
+          "created_at": "2015-09-04T22:55:37Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-09-25T22:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "29767232",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-09-25T22:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/29767232/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/29767232/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/29767232"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "will call again and make another appointment - lm",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2016-03-10T05:50:36Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/40198739/conflicts"
+            }
+          },
+          "created_at": "2016-03-07T05:27:58Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2016-03-11T21:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "40198739",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2016-03-11T21:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/40198739/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-10T05:50:36Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/40198739/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/40198739"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "had an appt on Friday, doesnt  need it",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2016-09-12T04:25:28Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/52038152/conflicts"
+            }
+          },
+          "created_at": "2016-09-05T06:11:45Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2016-09-12T04:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "52038152",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2016-09-12T04:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/52038152/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-09-12T04:25:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/52038152/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/52038152"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "Forgot his son had a school carnival. will call Monday to reschedule.  Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2016-09-15T22:54:30Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/52611717/conflicts"
+            }
+          },
+          "created_at": "2016-09-12T22:42:10Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2016-09-16T05:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "52611717",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2016-09-16T05:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/52611717/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-09-15T22:54:30Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/52611717/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/52611717"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "l/m over weekend to reschedule.  rang & left msg.  Jw",
+          "cancellation_reason": 60,
+          "cancellation_reason_description": "Work",
+          "cancelled_at": "2017-05-07T22:37:45Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/70770382/conflicts"
+            }
+          },
+          "created_at": "2017-05-01T01:19:24Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2017-05-08T00:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "70770382",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2017-05-08T00:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/70770382/connect",
+          "treatment_note_status": null,
+          "updated_at": "2017-05-07T22:37:45Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/70770382/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/70770382"
+          }
+        }
+      ]
+    },
+    "dna": {
+      "dna_count": 8,
+      "dna_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4327034/conflicts"
+            }
+          },
+          "created_at": "2013-08-07T00:52:19Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2013-08-15T01:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "4327034",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2013-08-15T00:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/4327034/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/13419"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/5201"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4327034/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/4327034"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/7156007/conflicts"
+            }
+          },
+          "created_at": "2014-01-15T07:22:10Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2014-02-24T00:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "7156007",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-02-23T23:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/7156007/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/7156007/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/7156007"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/11363145/conflicts"
+            }
+          },
+          "created_at": "2014-06-25T08:13:09Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2014-07-02T08:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "11363145",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-07-02T07:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/11363145/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6096"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/16289"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/11363145/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/11363145"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25377170/conflicts"
+            }
+          },
+          "created_at": "2015-06-12T23:04:41Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2015-06-17T07:30:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "25377170",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-06-17T07:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/25377170/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/13418"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/34615"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/25377170/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/25377170"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/38314365/conflicts"
+            }
+          },
+          "created_at": "2016-02-05T21:51:19Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2016-02-12T21:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "38314365",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2016-02-12T21:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/38314365/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:17Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/38314365/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/38314365"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/121090311/conflicts"
+            }
+          },
+          "created_at": "2018-08-16T22:54:47Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2018-08-21T01:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "121090311",
+          "invoice_status": null,
+          "notes": "Only made app yesterday. left msg for him to reschedule. Jw",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2018-08-21T00:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/121090311/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2018-08-21T22:52:50Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/121090311/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/121090311"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1016800298288547518/conflicts"
+            }
+          },
+          "created_at": "2022-11-03T22:00:41Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2022-11-08T22:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1016800298288547518",
+          "invoice_status": null,
+          "notes": "Stuck in traffic. Accident on M5. Lf",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2022-11-08T21:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1016800298288547518/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2022-11-24T04:47:20Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1016800298288547518/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1016800298288547518"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1020414900528219182/conflicts"
+            }
+          },
+          "created_at": "2022-11-08T21:42:15Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2022-11-14T00:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1020414900528219182",
+          "invoice_status": null,
+          "notes": "Sick, been to dr.  will call in a few days if he's recovered. Jw",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Denis Angelovski",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2022-11-14T00:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1020414900528219182/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2022-11-24T04:58:05Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103063"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1020414900528219182/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1020414900528219182"
+          }
+        }
+      ]
+    }
+  },
+  "scores": {
+    "appointments_booked": 0,
+    "age_demographics": 10,
+    "yearly_spend": 0,
+    "consecutive_attendance": 0,
+    "likability": 0,
+    "open_dna_invoices": 0,
+    "unpaid_invoices": 0,
+    "cancellations": -34,
+    "dna": -40,
+    "unlikability": 0
+  },
+  "total_score": -64,
+  "letter_grade": "F",
+  "scoring_method": "10-category behavior scoring system",
+  "extraction_method": "Optimized search + proven behavior extraction"
+}

@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RatedApp Dashboard</title>
+    <style>
+        .slider-container { margin-bottom: 1rem; }
+        .slider-label { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .slider { width: 100%; height: 6px; border-radius: 3px; background: #ddd; outline: none; opacity: 0.7; transition: opacity 0.2s; cursor: pointer; }
+        .slider:hover { opacity: 1; }
+        .slider::-webkit-slider-thumb { appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #667eea; cursor: pointer; }
+        .slider.positive::-webkit-slider-thumb { background: #28a745; }
+        .slider.negative::-webkit-slider-thumb { background: #dc3545; }        * { margin: 0; padding: 0; box-sizing: border-box; }
+        .info-icon {
+            margin-left: 6px;
+            cursor: help;
+            font-size: 0.9rem;
+            color: #6c757d;
+            opacity: 0.8;
+        }
+        .info-icon:hover {
+            color: #007bff;
+            opacity: 1;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 2rem; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            height: calc(100vh - 140px);
+        }
+
+        .left-panel, .right-panel {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .panel-title { font-size: 1.5rem; font-weight: 600; color: #2c3e50; }
+        .panel-icon { font-size: 2rem; margin-right: 1rem; }
+
+
+        /* LastPass blocking CSS */
+        div[data-lastpass-icon-root] {
+            display: none !important;
+        }
+
+        div[data-lastpass-root] {
+            display: none !important;
+        }
+
+        span[data-lastpass-root] {
+            display: none !important;
+        }
+
+        /* Block LastPass overlay */
+        .LPOverlay {
+            display: none !important;
+        }
+
+        /* Block LastPass icon container */
+        [data-lastpass-icon-root="true"] {
+            display: none !important;
+        }
+
+        /* Minimal LastPass blocking - no layout interference */
+        #unpaid-invoices-input {
+            /* Remove positioning overrides that break inline flow */
+        }
+
+        #unpaid-invoices-points-display {
+            /* Remove display overrides that affect box size */
+        }
+        </style>
+
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+    </head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🏥 RatedApp Dashboard</div>
+            <div>Sports Medicine Clinic</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="left-panel">
+            <div class="panel-header">
+                <span class="panel-icon">⚙️</span>
+                <h2 class="panel-title">Scoring Configuration</h2>
+            </div>
+            <form method="post" action="{% url 'patient_rating:unified_dashboard' %}" onsubmit="return handleFormSubmit(event)">
+    {% csrf_token %}
+    <div class="behavior-group">
+        <h4 style="margin-bottom: 1.5rem;">Positive Behaviours</h4>
+        <div class="slider-container">
+            <div class="slider-label">
+                <span>📅 Appointments Booked <span class="info-icon" title="Slider indicates max points for patients with an upcoming appointment booked.">ⓘ</span></span>
+                <span id="future_appointments_value">{{ active_config.future_appointments_weight }}</span>
+            </div>
+            <input type="range" name="future_appointments_weight" class="slider positive" min="0" max="100" value="{{ active_config.future_appointments_weight }}" oninput="updateSliderValue('future_appointments', this.value)">
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>👤 Age Demographics <span class="info-icon" title="Slider indicates the max points available to a patient based on their age. The percentage inside the Age bracket will dictate the amount of points allocated from the slider.">ⓘ</span></span>
+                <span id="age_demographics_value">{{ active_config.age_demographics_weight }}</span>
+            </div>
+            <input type="range" name="age_demographics_weight" class="slider positive" min="0" max="100" value="{{ active_config.age_demographics_weight }}" oninput="updateSliderValue('age_demographics', this.value)">
+        </div>
+
+        <div id="age-brackets-header" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="var content=document.getElementById('age-brackets-content'); var arrow=this.children[1]; if(content.style.display==='none'){content.style.display='block'; arrow.textContent='▲';}else{content.style.display='none'; arrow.textContent='▼';}"><span style="font-size: 0.9rem; font-weight: normal;">Age Brackets <span class="info-icon" title="The percentage indicates the amount of slider value that is given if a patient falls in the specified, corresponding age ranges.">ⓘ</span></span><span style="float: right;">▼</span></div>
+        <div id="age-brackets-content" style="display: none; padding: 10px; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px;">
+            <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">{% for bracket in age_brackets %}<div style="display: flex; flex-direction: column; align-items: flex-start;"><div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;"><div style="padding: 4px 8px; border-right: 1px solid #dee2e6; font-weight: 500;">{% if bracket.max_age >= 999 %}{{ bracket.min_age }}+{% else %}{{ bracket.min_age }}-{{ bracket.max_age }}{% endif %}</div><div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">{{ bracket.percentage }}%</div></div><div style="display: flex; gap: 4px; margin-top: 2px;"><button onclick="deleteAgeBracket({{ bracket.id }})" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button></div></div>{% endfor %}<button onclick="addNewAgeBracket()" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;">+ ADD</button></div>
+        </div>    </div>
+
+
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>💰 Yearly Spend <span class="info-icon" title="The slider will indicate the max value a patient can receive based on their year-to-date spending. Bracket percentages will indicate how much value the slider allocates.">ⓘ</span></span>
+                <span id="yearly_spend_value">{{ active_config.yearly_spend_weight }}</span>
+            </div>
+            <input type="range" name="yearly_spend_weight" class="slider positive" min="0" max="100" value="{{ active_config.yearly_spend_weight }}" oninput="updateSliderValue('yearly_spend', this.value)">
+        </div>
+
+        <div id="spend-brackets-header" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 4px; cursor: pointer;" onclick="var content=document.getElementById('spend-brackets-content'); var arrow=this.children[1]; if(content.style.display==='none'){content.style.display='block'; arrow.textContent='▲';}else{content.style.display='none'; arrow.textContent='▼';}"><span style="font-size: 0.9rem; font-weight: normal;">Spend Brackets <span class="info-icon" title="The percentage indicates the amount of slider value that is given if a patient falls in the specified, corresponding year-to-date spend range.">ⓘ</span></span><span style="float: right;">▼</span></div>
+        <div id="spend-brackets-content" style="display: none; padding: 10px; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 4px 4px;">
+            <div style="display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;">{% for bracket in spend_brackets %}<div style="display: flex; flex-direction: column; align-items: flex-start;"><div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;"><div style="padding: 4px 12px; border-right: 1px solid #dee2e6; font-weight: 500; min-width: 85px; text-align: center;">{% if bracket.max_spend >= 999999.99 %}{{ bracket.min_spend|floatformat:0 }}+{% else %}{{ bracket.min_spend|floatformat:0 }}-{{ bracket.max_spend|floatformat:0 }}{% endif %}</div><div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">{{ bracket.percentage }}%</div></div><div style="display: flex; gap: 4px; margin-top: 2px;"><button onclick="deleteSpendBracket({{ bracket.id }})" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button></div></div>{% endfor %}<button onclick="addNewSpendBracket()" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;">+ ADD</button></div>
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>✅ Consecutive Attendance <span class="info-icon" title="This will take the number of consecutive appointments (not broken by a cancellation or DNA) a patient has had and multiply them by the number in the box, giving a score. The slider will indicate the maximum score a patient can receive.">ⓘ</span><span id="consecutive-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_consecutive_attendance }}</span><button type="button" id="edit-consecutive-btn" onclick="editConsecutivePoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="consecutive-input" min="0" max="100" value="{{ active_config.points_per_consecutive_attendance }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-consecutive-btn" onclick="saveConsecutivePoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_consecutive_attendance" id="consecutive-hidden" value="{{ active_config.points_per_consecutive_attendance }}"></span>
+                <span id="consecutive_attendance_value">{{ active_config.consecutive_attendance_weight }}</span>
+            </div>
+            <input type="range" name="consecutive_attendance_weight" class="slider positive" min="0" max="100" value="{{ active_config.consecutive_attendance_weight }}" oninput="updateSliderValue('consecutive_attendance', this.value)">
+        </div>
+
+    <div class="behavior-group" style="margin-top: 2rem;">
+        <h4 style="margin-bottom: 1.5rem;">Negative Behaviours</h4>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>❌ Cancellations <span class="info-icon" title="This will take the number of cancelled appointments and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="cancellations-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_cancellation }}</span><button type="button" id="edit-cancellations-btn" onclick="editCancellationsPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="cancellations-input" min="0" max="100" value="{{ active_config.points_per_cancellation }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-cancellations-btn" onclick="saveCancellationsPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_cancellation" id="cancellations-hidden" value="{{ active_config.points_per_cancellation }}"></span>
+                <span id="cancellations_weight_value">{{ active_config.cancellations_weight }}</span>
+            </div>
+            <input type="range" name="cancellations_weight" class="slider negative" min="0" max="100" value="{{ active_config.cancellations_weight }}" oninput="updateSliderValue('cancellations_weight', this.value)">
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>🚫 DNA - Did Not Arrive <span class="info-icon" title="This will take the number of appointments marked Did Not Arrive and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="dna-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_dna }}</span><button type="button" id="edit-dna-btn" onclick="editDNAPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="dna-input" min="0" max="100" value="{{ active_config.points_per_dna }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-dna-btn" onclick="saveDNAPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_dna" id="dna-hidden" value="{{ active_config.points_per_dna }}"></span>
+                <span id="dna_weight_value">{{ active_config.dna_weight }}</span>
+            </div>
+            <input type="range" name="dna_weight" class="slider negative" min="0" max="100" value="{{ active_config.dna_weight }}" oninput="updateSliderValue('dna_weight', this.value)">
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>💸 Unpaid Invoices <span class="info-icon" title="This will take the number of unpaid invoices and multiply them by the number in the box, giving a penalty score. The slider will indicate the maximum penalty score a patient can receive.">ⓘ</span><span id="unpaid-invoices-points-display" style="margin-left: 12px; padding: 6px 12px; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem; font-weight: 600; color: #333; min-width: 60px; text-align: center;">{{ active_config.points_per_unpaid_invoice }}</span><button type="button" id="edit-unpaid-invoices-btn" onclick="editUnpaidInvoicesPoints()" style="margin-left: 4px; background: #007bff; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Edit</button><input type="number" id="unpaid-invoices-input" min="0" max="100" data-lpignore="true" autocomplete="off" data-form-type="other" value="{{ active_config.points_per_unpaid_invoice }}" style="margin-left: 8px; width: 50px; padding: 2px 4px; border: 1px solid #ced4da; border-radius: 2px; font-size: 0.8rem; display: none;"><button type="button" id="save-unpaid-invoices-btn" onclick="saveUnpaidInvoicesPoints()" style="margin-left: 4px; background: #28a745; color: white; border: none; padding: 5px 7px; border-radius: 2px; font-size: 0.7rem; cursor: pointer; display: none;">Save</button><input type="hidden" name="points_per_unpaid_invoice" id="unpaid-invoices-hidden" data-lpignore="true" autocomplete="off" value="{{ active_config.points_per_unpaid_invoice }}"></span>
+                <span id="unpaid_invoices_weight_value">{{ active_config.unpaid_invoices_weight }}</span>
+            </div>
+            <input type="range" name="unpaid_invoices_weight" class="slider negative" data-lpignore="true" min="0" max="100" value="{{ active_config.unpaid_invoices_weight }}" oninput="updateSliderValue('unpaid_invoices_weight', this.value)">
+        </div>
+
+        <div class="slider-container" data-lpignore="true" style="margin-top: 1.5rem;">
+            <div class="slider-label">
+                <span>📋 Open DNA Invoice <span class="info-icon" title="The slider will indicate a penalty score only if the patient has any unpaid Did Not Arrive invoice/s.">ⓘ</span></span>
+                <span id="open_dna_invoice_weight_value">{{ active_config.open_dna_invoice_weight }}</span>
+            </div>
+            <input type="range" name="open_dna_invoice_weight" class="slider negative" min="0" max="100" value="{{ active_config.open_dna_invoice_weight }}" oninput="updateSliderValue('open_dna_invoice_weight', this.value)">
+        </div>
+    </div>
+<!-- Button Row Container -->
+    <div style="display: flex; align-items: center; gap: 20px; justify-content: flex-start; margin-top: 20px;">
+            <button type="submit" style="width: 160px; padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Update Weights</button>
+            <div id="save-message" style="display: none; color: #28a745; font-size: 0.9rem;">✅ Success</div>
+        </div>
+
+        <div class="scoring-presets-accordion" style="margin-top: 30px; width: 100%; border: 1px solid #dee2e6; border-radius: 4px; background: #f8f9fa;">
+            <div class="accordion-header" onclick="toggleScoringPresets()" style="height: 45px; padding: 0 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; background: #f8f9fa; border-radius: 4px 4px 0 0;">
+                <span class="accordion-title" style="font-size: 0.9rem;">⚙️ <strong>Scoring Presets</strong> - Currently: <strong>{{ active_config.name|default:'Default' }}</strong></span>
+                <span class="accordion-arrow" id="presets-arrow">▼</span>
+            </div>
+            <div class="accordion-content" id="scoring-presets-content" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: #f8f9fa; border-radius: 0 0 4px 4px;">
+                <div class="presets-container" style="padding: 15px;">
+                    <div class="preset-line-1" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <label style="font-size: 0.9rem;">Choose Saved Preset:</label>
+                            <select id="preset-dropdown" style="width: 173px; height: 32px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 0.9rem;">
+                            <option value="">Select preset...</option>
+                            <option value="clinical">🏥 Clinical Standard</option>
+                            <option value="sports">🏃 Sports Medicine</option>
+                            <option value="general">💼 General Practice</option>
+                        </select>
+                        </div>
+                        <div style="display: flex; gap: 8px; margin-left: 8px;">
+                            <button id="display-preset-btn" onclick="displayPreset()" style="background: #007bff; color: white; border: none; padding: 5px 11px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Display</button>
+                            <button id="apply-preset-btn" onclick="applyPreset()" style="background: #007bff; color: white; border: none; padding: 5px 11px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Apply</button>
+                            <button id="delete-preset-btn" onclick="deletePreset()" style="background: #dc3545; color: white; border: none; padding: 5px 11px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Delete</button>
+                        </div>
+                    </div>
+
+                    <div class="preset-line-2" style="display: flex; align-items: center; gap: 10px;">
+                        <button id="create-preset-btn" onclick="toggleCreateForm()" style="background: #28a745; color: white; border: none; padding: 5px 11px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Create New Preset</button>
+
+                        <div id="create-form" style="display: none; margin-left: 10px;">
+                            <label style="font-size: 0.9rem; margin-right: 5px;">Name:</label>
+                            <input type="text" id="preset-name" style="width: 120px; height: 28px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 0.9rem; margin-right: 10px;">
+
+                            <label style="font-size: 0.9rem; margin-right: 5px;">Desc:</label>
+                            <input type="text" id="preset-description" style="width: 120px; height: 28px; padding: 4px 8px; border: 1px solid #ced4da; border-radius: 4px; font-size: 0.9rem; margin-right: 10px;">
+
+                            <button onclick="saveNewPreset()" style="background: #28a745; color: white; border: none; padding: 5px 8px; border-radius: 4px; font-size: 0.9rem; cursor: pointer; margin-right: 5px;">Save</button>
+                            <button onclick="cancelCreateForm()" style="background: #6c757d; color: white; border: none; padding: 5px 8px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+        </div>
+
+        <div class="right-panel">
+            <div class="panel-header">
+                <span class="panel-icon">👥</span>
+                <h2 class="panel-title">Patient Behavior Cards</h2>
+            </div>
+            <p>Patient cards will go here</p>
+        </div>
+    </div>
+<script>
+// Store button reference globally for reliable access
+let currentAddButton = null;
+
+// Show success message if page was loaded after form submission
+
+function updateSliderValue(sliderId, value) {
+    document.getElementById(sliderId + "_value").textContent = value;
+}
+
+function handleFormSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+
+    // DEBUG: Show what Apply button sends to Django
+    console.log("🔍 APPLY BUTTON DEBUG - FormData contents:");
+    console.log(Array.from(formData.entries()));
+    console.log("🔍 Does Apply button send action parameter?", formData.get('action'));
+
+    fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const saveMessage = document.getElementById("save-message");
+            if (saveMessage) {
+                saveMessage.style.display = "block";
+                setTimeout(() => saveMessage.style.display = "none", 1000);
+            }
+        }
+    })
+    .catch(error => {
+        console.error("AJAX Error:", error);
+        form.submit();
+    });
+    return false;
+}
+
+function deleteAgeBracket(bracketId) {
+    if (confirm("Are you sure you want to delete this age bracket?")) {
+        fetch("/patients/dashboard/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: `action=delete_age_bracket&bracket_id=${bracketId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector(`button[onclick="deleteAgeBracket(${bracketId})"]`).parentElement.parentElement.remove();
+            } else {
+                alert("Error deleting age bracket: " + (data.error || "Unknown error"));
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error deleting age bracket");
+        });
+    }
+}// Prevent double-clicks
+function addNewAgeBracket() {
+    console.log("DEBUG: addNewAgeBracket function called!");
+
+    const addButton = document.querySelector("button[onclick=\"addNewAgeBracket()\"]");
+    if (!addButton) {        console.error("Add button not found!");
+        return;
+    }
+
+    // Store button reference globally for reliable access
+    currentAddButton = addButton;
+    // Store original onclick for restoration
+    window.originalAgeButtonOnclick = addButton.onclick;
+
+    // Create input form
+    const newBracketForm = document.createElement("div");
+    newBracketForm.id = "new-bracket-form";
+    newBracketForm.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 8px; border: 1px solid #007bff; border-radius: 3px; background: #f8f9fa; font-size: 0.8rem;">
+            <div style="display: flex; gap: 4px; align-items: center;">
+                <input type="number" id="new_min_age" placeholder="Min" style="width: 60px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" min="0" max="120">
+                <span>-</span>
+                <input type="number" id="new_max_age" placeholder="Max" style="width: 60px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" min="0" max="999">
+                <input type="number" id="new_percentage" placeholder="%" style="width: 40px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" min="0" max="100">
+            </div>
+            <div style="display: flex; gap: 4px; margin-top: 2px;">
+                <button onclick="cancelNewAgeBracket()" style="background: #6c757d; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Cancel</button>
+            </div>
+        </div>
+    `;
+
+    // Replace add button with input form
+    addButton.parentElement.insertBefore(newBracketForm, addButton);
+    addButton.textContent = "SAVE";
+
+    // Change button onclick to save function
+    addButton.onclick = function() { saveNewAgeBracket(); };
+
+    // Focus on first input
+    document.getElementById("new_min_age").focus();
+}
+function saveNewAgeBracket() {
+    console.log("DEBUG: saveNewAgeBracket function called!"); // ADD THIS FIRST
+
+    // Prevent double-clicks
+    if (window.savingInProgress) {
+        console.log("DEBUG: Saving already in progress, returning"); // ADD THIS
+        return;
+    }
+    window.savingInProgress = true;
+
+    const minAge = document.getElementById('new_min_age').value;
+    const maxAge = document.getElementById('new_max_age').value;
+    const percentage = document.getElementById('new_percentage').value;
+
+    console.log("DEBUG: Form values:", {minAge, maxAge, percentage}); // EXISTING
+    console.log("DEBUG: Input elements found:", {
+        minAgeElement: document.getElementById('new_min_age'),
+        maxAgeElement: document.getElementById('new_max_age'),
+        percentageElement: document.getElementById('new_percentage')
+    }); // ADD THIS
+
+    // Validation
+    if (!minAge || !maxAge || !percentage) {
+        alert('Please fill in all fields');
+        window.savingInProgress = false;
+        return;
+    }
+
+    // Send AJAX request to backend
+    const formData = new FormData();
+    formData.append("action", "add_age_bracket");
+    formData.append("min_age", minAge);
+    formData.append("max_age", maxAge);
+    formData.append("percentage", percentage);
+    formData.append("csrfmiddlewaretoken", document.querySelector("[name=csrfmiddlewaretoken]").value);
+
+    console.log("DEBUG: FormData being sent:", Array.from(formData.entries())); // ADD THIS
+
+    fetch('/patients/dashboard/', {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+    .then(response => {
+        console.log("DEBUG: Response status:", response.status); // ADD THIS
+        return response.json();
+    })
+    .then(data => {
+        console.log("DEBUG: Response data:", data);
+        if (data.success) {
+            const saveMessage = document.getElementById("save-message");
+            if (saveMessage) {
+                saveMessage.style.display = "block";
+                setTimeout(() => saveMessage.style.display = "none", 1000);
+            }
+
+            // Add new bracket to DOM immediately in correct numerical position
+            const newBracketHtml = `
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;">
+                        <div style="padding: 4px 8px; border-right: 1px solid #dee2e6; font-weight: 500;">${minAge}-${maxAge}</div>
+                        <div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">${percentage}%</div>
+                    </div>
+                    <div style="display: flex; gap: 4px; margin-top: 2px;">
+                        <button onclick="deleteAgeBracket('temp-${Date.now()}')" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button>
+                    </div>
+                </div>
+            `;
+
+            // Use the known container directly
+            const bracketsContainer = document.getElementById('age-brackets-content');
+            console.log("DEBUG: Using direct container:", bracketsContainer);
+
+            if (bracketsContainer) {
+                console.log("DEBUG: Container children count:", bracketsContainer.children.length);
+
+                // Debug existing bracket structure
+                for (let i = 0; i < bracketsContainer.children.length; i++) {
+                    const child = bracketsContainer.children[i];
+                    console.log(`DEBUG: Child ${i}:`, child.tagName, child.className, child.innerHTML);
+                }
+
+                // Find existing brackets with proper age format for ordering
+                const existingBrackets = [];
+
+                // Since all brackets are in one container, we need to parse them differently
+                const containerHTML = bracketsContainer.innerHTML;
+
+                // Use regex to find all age bracket patterns in the HTML
+                const bracketMatches = containerHTML.match(/font-weight: 500;">(\d+-\d+)<\/div>/g);
+
+                if (bracketMatches) {
+                    bracketMatches.forEach(match => {
+                        const ageMatch = match.match(/(\d+)-(\d+)/);
+                        if (ageMatch) {
+                            const minAge = parseInt(ageMatch[1]);
+                            console.log("DEBUG: Found existing bracket via regex:", ageMatch[0], "minAge:", minAge);
+                            existingBrackets.push({
+                                minAge: minAge,
+                                ageText: ageMatch[0]
+                            });
+                        }
+                    });
+                }
+
+                // Sort existing brackets by minAge for proper comparison
+                existingBrackets.sort((a, b) => a.minAge - b.minAge);
+
+                console.log("DEBUG: Found", existingBrackets.length, "existing brackets with proper format");
+
+                // Find correct position to insert (numerical order)
+                const newMinAge = parseInt(minAge);
+
+                for (let i = 0; i < existingBrackets.length; i++) {
+                    console.log("DEBUG: Comparing new age", newMinAge, "with existing", existingBrackets[i].minAge);
+
+                    if (newMinAge < existingBrackets[i].minAge) {
+                        console.log("DEBUG: Will insert before bracket:", existingBrackets[i].ageText);
+                        break;
+                    }
+                }
+
+                // Since the bracket is saved to database, just refresh to show correct order
+                console.log("DEBUG: Bracket saved successfully, refreshing page to show correct order");
+
+                // Show success message briefly then refresh
+                const saveMessage = document.getElementById("save-message");
+                if (saveMessage) {
+                    saveMessage.style.display = "block";
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 500);
+                } else {
+                    // If no save message, refresh immediately
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 200);
+                }
+
+                console.log("DEBUG: New bracket added to DOM in correct position");
+            } else {
+                console.log("DEBUG: Could not find age-brackets-content container");
+            }
+
+            // Silent success - remove form and reset button without page reload
+            const form = document.getElementById('new-bracket-form');
+            if (form) {
+                form.remove();
+                console.log("DEBUG: Form removed");
+            }
+
+            // Reset ADD button
+            if (currentAddButton) {
+                console.log("DEBUG: Resetting button");
+                currentAddButton.textContent = '+ ADD';
+                currentAddButton.style.background = '#28a745';
+                currentAddButton.onclick = function() { addNewAgeBracket(); };
+                console.log("DEBUG: Button reset complete");
+            }
+
+            // Reset saving flag
+            window.savingInProgress = false;
+
+        } else {
+            alert("Error adding age bracket: " + (data.error || "Unknown error"));
+            window.savingInProgress = false;
+        }
+    })
+    .catch(error => {
+        console.error("AJAX Add Error:", error);
+        console.error("Full error details:", error);
+        alert("Error adding age bracket: " + error.message);
+        window.savingInProgress = false; // Reset saving flag
+    });
+}
+
+function cancelNewAgeBracket() {
+    // Remove input form
+    const form = document.getElementById("new-bracket-form");
+    if (form) {
+        form.remove();
+    }
+
+    // Reset ADD button
+    if (currentAddButton) {
+        currentAddButton.textContent = "+ ADD";
+        currentAddButton.style.background = "#28a745";
+        currentAddButton.onclick = function() { addNewAgeBracket(); };
+    }
+
+    window.savingInProgress = false;
+}
+// Spend Bracket Functions
+function deleteSpendBracket(bracketId) {
+    if (confirm("Are you sure you want to delete this spend bracket?")) {
+        fetch("/patients/dashboard/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: `action=delete_spend_bracket&bracket_id=${bracketId}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector(`button[onclick="deleteSpendBracket(${bracketId})"]`).parentElement.parentElement.remove();
+            } else {
+                alert("Error deleting spend bracket: " + (data.error || "Unknown error"));
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Error deleting spend bracket");
+        });
+    }
+}
+
+// Preset Selection Helper Function
+function getSelectedPresetId() {
+    // Empty function first - test it exists
+    const dropdown = document.getElementById('preset-dropdown');
+    if (!dropdown) return null;
+    // Validation: return null for empty or default selections
+    const value = dropdown.value;
+    if (!value || value === ''|| value.trim() === '') {
+        return null;
+    }
+    return value;
+}
+
+function confirmPresetDeletion(presetName, isLastPreset) {
+    // Protection: Cannot delete last remaining preset
+    if (isLastPreset) {
+        alert('Cannot delete the last remaining preset.');
+        return false;
+    }
+
+    // Confirmation with preset name
+    const message = 'Are you sure you want to delete the preset "' + presetName + '"?\n\nThis action cannot be undone.';
+    return confirm(message);
+}
+
+function deletePreset() {
+    try {
+        console.log('Delete preset function called');
+        // Step 3B: Get selected preset ID
+        const presetId = getSelectedPresetId();
+        if (!presetId) {
+            console.error('No preset selected for deletion');
+            return;
+        }
+        console.log('Selected preset ID for deletion:', presetId);
+
+        // Step 3C: Get user confirmation for deletion
+        const dropdown = document.getElementById('preset-dropdown');
+        const presetName = dropdown.options[dropdown.selectedIndex].text;
+        const isLastPreset = dropdown.options.length <= 1;
+
+        const confirmed = confirmPresetDeletion(presetName, isLastPreset);
+        if (!confirmed) {
+            console.log('Preset deletion cancelled by user');
+            return;
+        }
+        console.log('User confirmed deletion, proceeding...');
+
+        // Step 3D: Send AJAX DELETE request to backend
+        fetch("/patients/dashboard/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: "action=delete_preset&preset_id=" + presetId
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('AJAX response received:', data);
+            if (data.success) {
+                console.log('Preset deleted successfully:', data);
+                
+                // 🆕 PHASE 1: Enhanced response detection
+                const wasActivePresetDeleted = data.was_active_preset_deleted || false;
+                const deletedPresetName = data.deleted_preset_name || 'Unknown';
+                const fallbackPreset = data.fallback_preset || null;
+
+                console.log('🔍 Enhanced delete response:', {
+                    wasActivePresetDeleted,
+                    deletedPresetName,
+                    fallbackPreset
+                });
+
+                // 🆕 PHASE 1: Enhanced success message
+                if (wasActivePresetDeleted && fallbackPreset) {
+                    alert(`Preset "${deletedPresetName}" deleted successfully.\n\nNote: This was your applied preset. The system has automatically selected "${fallbackPreset.name}" as the new active preset.`);
+                } else {
+                    alert(`Preset "${deletedPresetName}" deleted successfully`);
+                }
+
+                // Remove deleted preset from dropdown (existing logic enhanced)
+                const dropdown = document.getElementById('preset-dropdown');
+                const deletedPresetId = presetId;
+
+                // Find and remove the option
+                for (let i = 0; i < dropdown.options.length; i++) {
+                    if (dropdown.options[i].value === deletedPresetId) {
+                        dropdown.remove(i);
+                        console.log('Removed preset option:', deletedPresetId);
+                        break;
+                    }
+                }
+
+                // 🆕 PHASE 1: Enhanced dropdown selection
+                if (fallbackPreset) {
+                    // Select the fallback preset in dropdown
+                    for (let i = 0; i < dropdown.options.length; i++) {
+                        if (dropdown.options[i].value == fallbackPreset.id) {
+                            dropdown.selectedIndex = i;
+                            console.log('🎯 Selected fallback preset in dropdown:', fallbackPreset.name);
+                            updatePresetHeader(fallbackPreset.name);
+                            console.log('🎛️ Updated accordion header to show:', fallbackPreset.name);
+                            break;
+                        }
+                    }
+                } else if (dropdown.options.length > 0) {
+                    dropdown.selectedIndex = 0;  // Select first remaining preset
+                    console.log('Selected first remaining preset');
+                } else {
+                    console.log('No presets remaining in dropdown');
+                    // Could add logic to create default preset or disable UI
+                }
+
+                // 🆕 PHASE 1: Prepare for Phase 2 (localStorage cleanup)
+                if (wasActivePresetDeleted) {
+                    // 🧹 PHASE 2: localStorage cleanup implementation
+                    if (localStorage.getItem('appliedPreset')) {
+                        const storedPreset = localStorage.getItem('appliedPreset');
+                        console.log('🗑️ Removing stale localStorage preset:', storedPreset);
+                        localStorage.removeItem('appliedPreset');
+                        console.log('✅ localStorage cleanup complete');
+                    } else {
+                        console.log('ℹ️ No localStorage preset to clean up');
+                    }
+                }
+
+                // 🆕 PHASE 1: Prepare for Phase 3 (auto-apply fallback)
+                if (wasActivePresetDeleted && fallbackPreset) {
+                    // 🎛️ PHASE 3: Auto-apply fallback preset implementation
+                    console.log('🚀 Auto-applying fallback preset:', fallbackPreset.name);
+                    
+                    // Set the fallback preset as selected in dropdown
+                    const presetDropdown = document.getElementById('preset-dropdown');
+                    if (presetDropdown) {
+                        presetDropdown.value = fallbackPreset.id;
+                        console.log('✅ Fallback preset selected in dropdown:', fallbackPreset.id);
+                    }
+                    
+                    // Trigger apply preset function
+                    applyPreset();
+                    console.log('✅ Fallback preset auto-applied successfully');
+                }
+            } else {
+                console.error('Backend error:', data.error || data.message);
+                alert('Error: ' + (data.error || data.message || 'Failed to delete preset'));
+            }
+        })
+        .catch(error => {
+            console.error('AJAX error:', error);
+            alert('Error deleting preset. Please try again.');
+        });
+    } catch (error) {
+        console.error('Error in deletePreset:', error);
+    }
+}
+
+function addNewSpendBracket() {
+    console.log("DEBUG: addNewSpendBracket function called!");
+
+    const addButton = document.querySelector('button[onclick="addNewSpendBracket()"]');
+    if (!addButton) {
+        console.error("Add button not found!");
+        return;
+    }
+
+    // Store button reference globally for reliable access
+    currentAddButton = addButton;
+    // Store original onclick for restoration
+    window.originalSpendButtonOnclick = addButton.onclick;
+
+    // Create input form
+    const newBracketForm = document.createElement('div');
+    newBracketForm.id = 'new-bracket-form';
+    newBracketForm.innerHTML = `
+        <div style="display: flex; flex-direction: column; gap: 4px; padding: 8px; border: 1px solid #007bff; border-radius: 3px; background: #f8f9fa; font-size: 0.8rem;">
+            <div style="display: flex; gap: 4px; align-items: center;">
+                <input type="number" id="new-spend-min" placeholder="Min $" style="width: 60px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" step="0.01" min="0">
+                <span>-</span>
+                <input type="number" id="new-spend-max" placeholder="Max $" style="width: 60px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" step="0.01" min="0">
+                <input type="number" id="new-spend-percentage" placeholder="%" style="width: 40px; padding: 2px; border: 1px solid #ccc; border-radius: 2px;" min="0" max="100">
+            </div>
+            <div style="display: flex; gap: 4px; margin-top: 2px;">
+
+                <button onclick="cancelNewSpendBracket()" style="background: #6c757d; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Cancel</button>
+            </div>
+        </div>
+    `;
+
+    // Replace add button with input form
+    addButton.parentElement.insertBefore(newBracketForm, addButton);
+    // Transform ADD button to SAVE button (like age brackets)
+    addButton.textContent = 'SAVE';
+
+    // Change button onclick to save function
+    addButton.onclick = function() { saveNewSpendBracket(); };
+
+    // Focus on first input
+    document.getElementById('new-spend-min').focus();
+}
+
+function saveNewSpendBracket() {
+    console.log("DEBUG: saveNewSpendBracket function called!");
+
+    const minSpend = document.getElementById("new-spend-min").value;
+    const maxSpend = document.getElementById("new-spend-max").value;
+    const percentage = document.getElementById("new-spend-percentage").value;
+
+    if (!minSpend || !percentage) {
+        alert("Please fill in minimum spend and percentage");
+        return;
+    }
+
+    const finalMaxSpend = maxSpend || "999999.99";
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: `action=add_spend_bracket&min_spend=${minSpend}&max_spend=${finalMaxSpend}&percentage=${percentage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const saveMessage = document.getElementById("save-message");
+            if (saveMessage) {
+                saveMessage.style.display = "block";
+                setTimeout(() => saveMessage.style.display = "none", 1000);
+            }
+
+            // Since the bracket is saved to database, just refresh to show correct order
+            console.log("DEBUG: Bracket saved successfully, refreshing page to show correct order");
+
+            // Show success message briefly then refresh
+            if (saveMessage) {
+                setTimeout(() => {
+                    window.location.reload();
+                }, 500);
+            } else {
+                // If no save message, refresh immediately
+                setTimeout(() => {
+                    window.location.reload();
+                }, 200);
+            }
+            const newBracketHtml = `
+                <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                    <div style="display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;">
+                        <div style="padding: 4px 12px; border-right: 1px solid #dee2e6; font-weight: 500; min-width: 85px; text-align: center;">${minSpend}-${finalMaxSpend}</div>
+                        <div style="padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;">${percentage}%</div>
+                    </div>
+                    <div style="display: flex; gap: 4px; margin-top: 2px;">
+                        <button onclick="deleteSpendBracket('temp-${Date.now()}')" style="background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;">Delete</button>
+                    </div>
+                </div>
+            `;
+
+            const addButton = document.querySelector('button[onclick="addNewSpendBracket()"]');
+            if (addButton) {
+                addButton.parentElement.insertAdjacentHTML("beforebegin", newBracketHtml);
+            }
+
+            const inputForm = document.querySelector('div[style*="border: 1px solid #007bff"]');
+            if (inputForm) {
+                inputForm.remove();
+            }
+
+            if (addButton) {
+                addButton.textContent = "+ ADD";
+                addButton.style.background = "#28a745";
+                addButton.onclick = function() { addNewSpendBracket(); };
+            }
+        } else {
+            alert("Error adding spend bracket: " + (data.error || "Unknown error"));
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error adding spend bracket");
+    });
+}
+function cancelNewSpendBracket() {
+    // Remove input form
+    const inputForm = document.querySelector('div[style*="border: 1px solid #007bff"]');
+    if (inputForm) {
+        inputForm.remove();
+    }
+    // Reset ADD button
+    if (currentAddButton) {
+        currentAddButton.textContent = "+ ADD";
+        currentAddButton.style.background = "#28a745";
+        }
+        currentAddButton.onclick = function() { addNewSpendBracket(); };
+}
+// Open spend brackets accordion if URL parameter exists
+if (window.location.href.includes("spend_open=true")) {
+    const content = document.getElementById("spend-brackets-content");
+    const arrow = document.querySelector("#spend-brackets-header span:last-child");
+    if (content && arrow) {
+        content.style.display = "block";
+        arrow.textContent = "▲";
+    }
+}
+
+function editConsecutivePoints() {
+    document.getElementById("consecutive-points-display").style.display = "none";
+    document.getElementById("edit-consecutive-btn").style.display = "none";
+    document.getElementById("consecutive-input").style.display = "inline";
+    document.getElementById("save-consecutive-btn").style.display = "inline-block";
+    document.getElementById("consecutive-input").focus();
+}
+
+function saveConsecutivePoints() {
+    const newValue = document.getElementById("consecutive-input").value;
+    if (newValue < 0 || newValue > 100) return;
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: `action=update_consecutive_points&points_per_consecutive_attendance=${newValue}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("consecutive-points-display").textContent = newValue;
+            document.getElementById("consecutive-hidden").value = newValue;
+            document.getElementById("consecutive-points-display").style.display = "inline";
+            document.getElementById("edit-consecutive-btn").style.display = "inline-block";
+            document.getElementById("consecutive-input").style.display = "none";
+            document.getElementById("save-consecutive-btn").style.display = "none";
+        }
+    });
+}
+
+function editCancellationsPoints() {
+    document.getElementById("cancellations-points-display").style.display = "none";
+    document.getElementById("edit-cancellations-btn").style.display = "none";
+    document.getElementById("cancellations-input").style.display = "inline";
+    document.getElementById("save-cancellations-btn").style.display = "inline-block";
+    document.getElementById("cancellations-input").focus();
+}
+
+function saveCancellationsPoints() {
+    const newValue = document.getElementById("cancellations-input").value;
+    if (newValue < 0 || newValue > 100) return;
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: `action=update_cancellations_points&points_per_cancellation=${newValue}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("cancellations-points-display").textContent = newValue;
+            document.getElementById("cancellations-hidden").value = newValue;
+            document.getElementById("cancellations-points-display").style.display = "inline";
+            document.getElementById("edit-cancellations-btn").style.display = "inline-block";
+            document.getElementById("cancellations-input").style.display = "none";
+            document.getElementById("save-cancellations-btn").style.display = "none";
+        }
+    });
+}
+
+function editDNAPoints() {
+    document.getElementById("dna-points-display").style.display = "none";
+    document.getElementById("edit-dna-btn").style.display = "none";
+    document.getElementById("dna-input").style.display = "inline";
+    document.getElementById("save-dna-btn").style.display = "inline-block";
+    document.getElementById("dna-input").focus();
+}
+
+function saveDNAPoints() {
+    const newValue = document.getElementById("dna-input").value;
+    if (newValue < 0 || newValue > 100) return;
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: `action=update_dna_points&points_per_dna=${newValue}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("dna-points-display").textContent = newValue;
+            document.getElementById("dna-hidden").value = newValue;
+            document.getElementById("dna-points-display").style.display = "inline";
+            document.getElementById("edit-dna-btn").style.display = "inline-block";
+            document.getElementById("dna-input").style.display = "none";
+            document.getElementById("save-dna-btn").style.display = "none";
+        }
+    });
+}
+
+function editUnpaidInvoicesPoints() {
+    document.getElementById("unpaid-invoices-points-display").style.display = "none";
+    document.getElementById("edit-unpaid-invoices-btn").style.display = "none";
+    document.getElementById("unpaid-invoices-input").style.display = "inline";
+    document.getElementById("save-unpaid-invoices-btn").style.display = "inline-block";
+    document.getElementById("unpaid-invoices-input").focus();
+}
+
+function saveUnpaidInvoicesPoints() {
+    const newValue = document.getElementById("unpaid-invoices-input").value;
+    if (newValue < 0 || newValue > 100) return;
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        body: `action=update_unpaid_invoices_points&points_per_unpaid_invoice=${newValue}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById("unpaid-invoices-points-display").textContent = newValue;
+            document.getElementById("unpaid-invoices-hidden").value = newValue;
+            document.getElementById("unpaid-invoices-points-display").style.display = "inline";
+            document.getElementById("edit-unpaid-invoices-btn").style.display = "inline-block";
+            document.getElementById("unpaid-invoices-input").style.display = "none";
+            document.getElementById("save-unpaid-invoices-btn").style.display = "none";
+        }
+    });
+}
+
+        // Scoring Presets Accordion Toggle Function
+                // Preset Management Functions
+        function toggleCreateForm() {
+            const form = document.getElementById('create-form');
+            const btn = document.getElementById('create-preset-btn');
+
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'inline-block';
+                btn.disabled = true;
+                btn.style.opacity = '0.6';
+            }
+        }
+
+        function cancelCreateForm() {
+            const form = document.getElementById('create-form');
+            const btn = document.getElementById('create-preset-btn');
+
+            form.style.display = 'none';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+            document.getElementById('preset-name').value = '';
+            document.getElementById('preset-description').value = '';
+        }
+
+
+function saveNewPreset() {
+    const name = document.getElementById('preset-name').value.trim();
+    const description = document.getElementById('preset-description').value.trim();
+
+    if (!name) {
+        alert('Please enter a preset name.');
+        return;
+    }
+
+    // Show confirmation popup
+    if (!confirm(`Confirm creation of the '${name}' preset?`)) {
+        return;
+    }
+
+    console.log('Creating preset:', name, description);
+
+    // 🔧 FIX: Create FormData manually and target main form correctly
+    const mainForm = document.querySelector('form[action*="unified_dashboard"]');
+    const formData = new FormData();
+    
+    // Add CSRF token
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    formData.append('csrfmiddlewaretoken', csrfToken);
+    
+    // 🎯 KEY FIX: Add action parameter to distinguish from slider updates
+    formData.append('action', 'create_preset');
+    
+    // Add preset data
+    formData.append('preset_name', name);
+    formData.append('preset_description', description);
+    
+    // Add current slider values from main form
+    if (mainForm) {
+        const formElements = new FormData(mainForm);
+        for (let [key, value] of formElements.entries()) {
+            if (key !== 'csrfmiddlewaretoken' && key !== 'action') {
+                formData.append(key, value);
+            }
+        }
+    }
+
+    // Debug: Show what we're sending
+    console.log('🔍 CREATE PRESET DEBUG - FormData contents:');
+    console.log(Array.from(formData.entries()));
+    console.log('🔍 Action parameter:', formData.get('action'));
+
+    // Submit to main form action URL
+    fetch('/patients/dashboard/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log('✅ Preset created successfully:', data);
+            
+            // Update dropdown with new preset
+            const dropdown = document.getElementById('preset-dropdown');
+            if (dropdown) {
+                if (data.preset_id && data.preset_name) {
+                    // Backend provided full data - add to dropdown
+                    const option = document.createElement('option');
+                    option.value = data.preset_id;
+                    option.textContent = data.preset_name;
+                    option.selected = true;
+                    dropdown.appendChild(option);
+                    console.log('✅ Added preset to dropdown:', data.preset_name);
+                } else {
+                    // Backend missing data - reload dropdown from server
+                    console.log('⚠️  Backend missing preset_id/name - reloading dropdown');
+                    loadPresets(); // Refresh entire dropdown
+                }
+            } else {
+                console.error('❌ Dropdown element not found');
+            }
+            
+            // Update accordion header to show new preset is active
+            const accordionTitle = document.querySelector('.accordion-title');
+            if (accordionTitle) {
+                accordionTitle.innerHTML = `⚙️ <strong>Scoring Presets</strong> - Currently: <strong>${name}</strong>`;
+                console.log('✅ Updated accordion header to show:', name);
+            }
+            
+            // Hide create form
+            cancelCreateForm();
+            
+        } else {
+            console.error('❌ Preset creation failed:', data);
+            alert('Error creating preset: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        console.error('❌ Network error:', error);
+        alert('Network error creating preset');
+    });
+}
+
+
+
+    // Scoring Presets Toggle Function
+    function toggleScoringPresets() {
+        console.log('Scoring Presets clicked');
+        const content = document.getElementById('scoring-presets-content');
+        const arrow = document.getElementById('presets-arrow');
+
+        if (content) {
+            if (content.style.maxHeight === '0px' || content.style.maxHeight === '') {
+                content.style.maxHeight = '500px';
+                if (arrow) arrow.textContent = '▲';
+            } else {
+                content.style.maxHeight = '0px';
+                if (arrow) arrow.textContent = '▼';
+            }
+        } else {
+            console.error('scoring-presets-content not found');
+        }
+    }
+
+    // Placeholder functions for preset management
+
+    function toggleCreateForm() {
+        console.log('Toggle create form clicked');
+        const form = document.getElementById('create-form');
+        if (form) {
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+
+    function cancelCreateForm() {
+        console.log('Cancel create form clicked');
+        const form = document.getElementById('create-form');
+        if (form) {
+            form.style.display = 'none';
+        }
+    }
+
+        // STEP 3: Minimal Preset Loading Function - Safe Implementation
+        function loadPresets() {
+            console.log('🔄 Loading presets into dropdown...');
+
+            fetch('/patients/presets/get/')
+                .then(response => {
+                    console.log('📡 Response received:', response.status);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('📊 Preset data:', data);
+
+                    const presetSelect = document.getElementById('preset-dropdown');
+                    if (presetSelect && data.presets) {
+                        console.log('✅ Found dropdown element and preset data');
+
+                        // Clear existing options except first
+                        const firstOption = presetSelect.firstElementChild;
+                        presetSelect.innerHTML = '';
+                        if (firstOption) {
+                            presetSelect.appendChild(firstOption);
+                        }
+
+                        // Add preset options
+                        data.presets.forEach(preset => {
+                            const option = document.createElement('option');
+                            option.value = preset.id;
+                            option.textContent = preset.name;
+                            presetSelect.appendChild(option);
+                            console.log('➕ Added preset:', preset.name);
+                        });
+
+                        console.log('🎉 Successfully loaded ' + data.presets.length + ' presets');
+                    } else {
+                        console.warn('⚠️ Dropdown element or preset data not found');
+                        console.log('Available elements:', document.querySelectorAll('[id*="preset"]'));
+                    }
+                })
+                .catch(error => {
+                    console.error('🚨 Error loading presets:', error);
+                });
+        }
+
+        // Auto-load presets when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Page loaded, auto-loading presets...');
+            loadPresets();
+
+    // Restore applied preset header after page refresh
+    // DISABLED AUTOLOAD: const savedPresetName = localStorage.getItem('appliedPresetName');
+    // DISABLED AUTOLOAD: if (savedPresetName) {
+    // DISABLED AUTOLOAD: console.log('🔄 Restoring applied preset header:', savedPresetName);
+    // DISABLED AUTOLOAD: updatePresetHeader(savedPresetName);
+    // DISABLED AUTOLOAD: }
+        });
+
+        // ===== DISPLAY BUTTON FUNCTIONALITY - SAFE ADDITION =====
+        // Added: July 23, 2025 - No existing code modified
+
+        function displayPreset() {
+            console.log('Display button clicked - Safe implementation');
+
+            const dropdown = document.getElementById('preset-dropdown');
+            if (dropdown === null) {
+                console.error('Preset dropdown not found');
+                alert('Error: Preset dropdown not found');
+                return;
+            }
+
+            const selectedValue = dropdown.value;
+            if (selectedValue === '' || selectedValue === null) {
+                console.log('No preset selected');
+                alert('Please select a preset first');
+                return;
+            }
+
+            console.log('Fetching preset data for ID:', selectedValue);
+
+            fetch('/patients/presets/get/' + selectedValue + '/')
+                .then(function(response) {
+                    console.log('Response status:', response.status);
+                    if (response.ok === false) {
+                        throw new Error('HTTP ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    console.log('Preset data received:', data);
+                    if (data.success === true && data.preset) {
+                        loadPresetIntoSliders(data.preset);
+                    } else {
+                        console.error('Invalid preset data:', data);
+                        alert('Error: Invalid preset data received');
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error fetching preset:', error);
+                    alert('Error fetching preset data: ' + error.message);
+                });
+        }
+
+        function loadPresetIntoSliders(presetData) {
+            console.log('Loading preset into sliders - Safe implementation');
+            console.log('Preset data to load:', presetData);
+
+            // EXACT SLIDER MAPPINGS from comprehensive frontend analysis
+            const sliderMappings = [
+                {
+                    field: 'future_appointments_weight',
+                    valueId: 'future_appointments_value',
+                    sliderName: 'future_appointments_weight'
+                },
+                {
+                    field: 'age_demographics_weight',
+                    valueId: 'age_demographics_value',
+                    sliderName: 'age_demographics_weight'
+                },
+                {
+                    field: 'yearly_spend_weight',
+                    valueId: 'yearly_spend_value',
+                    sliderName: 'yearly_spend_weight'
+                },
+                {
+                    field: 'consecutive_attendance_weight',
+                    valueId: 'consecutive_attendance_value',
+                    sliderName: 'consecutive_attendance_weight'
+                },
+                {
+                    field: 'cancellations_weight',
+                    valueId: 'cancellations_weight_value',
+                    sliderName: 'cancellations_weight'
+                },
+                {
+                    field: 'dna_weight',
+                    valueId: 'dna_weight_value',
+                    sliderName: 'dna_weight'
+                },
+                {
+                    field: 'unpaid_invoices_weight',
+                    valueId: 'unpaid_invoices_weight_value',
+                    sliderName: 'unpaid_invoices_weight'
+                },
+                {
+                    field: 'open_dna_invoice_weight',
+                    valueId: 'open_dna_invoice_weight_value',
+                    sliderName: 'open_dna_invoice_weight'
+                }
+            ];
+
+            let updatedCount = 0;
+
+            // Update weight sliders safely
+            for (let i = 0; i < sliderMappings.length; i++) {
+                const mapping = sliderMappings[i];
+                try {
+                    const slider = document.querySelector('input[name="' + mapping.sliderName + '"]');
+                    const valueDisplay = document.getElementById(mapping.valueId);
+
+                    if (slider && presetData.slider_values && presetData.slider_values[mapping.field] !== undefined) {
+                        const newValue = presetData.slider_values[mapping.field];
+                        // DISPLAY-ONLY UPDATE: Temporarily disable oninput to prevent saves
+                        const originalOninput = slider.oninput;
+                        slider.oninput = null;
+                        slider.value = newValue;
+                        slider.oninput = originalOninput;
+
+                        if (valueDisplay) {
+                            valueDisplay.textContent = newValue;
+                        }
+
+                        console.log('Updated ' + mapping.field + ': ' + newValue);
+                        updatedCount++;
+                    } else {
+                        console.warn('Could not update ' + mapping.field + ': slider=' + (slider !== null) + ', value=' + (presetData.slider_values ? presetData.slider_values[mapping.field] : 'undefined'));
+                    }
+                } catch (error) {
+                    console.error('Error updating ' + mapping.field + ':', error);
+                }
+            }
+
+            // EXACT POINTS FIELDS from frontend analysis
+            const pointsMappings = [
+                {
+                    field: 'points_per_consecutive_attendance',
+                    displayId: 'consecutive-points-display',
+                    inputId: 'consecutive-input',
+                    hiddenId: 'consecutive-hidden'
+                },
+                {
+                    field: 'points_per_cancellation',
+                    displayId: 'cancellations-points-display',
+                    inputId: 'cancellations-input',
+                    hiddenId: 'cancellations-hidden'
+                },
+                {
+                    field: 'points_per_dna',
+                    displayId: 'dna-points-display',
+                    inputId: 'dna-input',
+                    hiddenId: 'dna-hidden'
+                },
+                {
+                    field: 'points_per_unpaid_invoice',
+                    displayId: 'unpaid-invoices-points-display',
+                    inputId: 'unpaid-invoices-input',
+                    hiddenId: 'unpaid-invoices-hidden'
+                }
+            ];
+
+            for (let i = 0; i < pointsMappings.length; i++) {
+                const mapping = pointsMappings[i];
+                try {
+                    const display = document.getElementById(mapping.displayId);
+                    const input = document.getElementById(mapping.inputId);
+                    const hidden = document.getElementById(mapping.hiddenId);
+
+                    if (display && presetData.slider_values && presetData.slider_values[mapping.field] !== undefined) {
+                        const newValue = presetData.slider_values[mapping.field];
+                        display.textContent = newValue;
+
+                        if (input) input.value = newValue;
+                        if (hidden) hidden.value = newValue;
+
+                        console.log('Updated points ' + mapping.field + ': ' + newValue);
+                        updatedCount++;
+                    }
+                } catch (error) {
+                    console.error('Error updating points ' + mapping.field + ':', error);
+                }
+            }
+
+            console.log('Preset loading complete: ' + updatedCount + ' fields updated');
+
+
+            // BRACKET UPDATE LOGIC - Age and Spend Brackets Display
+            console.log('Updating bracket displays from preset data');
+
+            // Update Age Brackets
+            if (presetData.age_brackets && Array.isArray(presetData.age_brackets)) {
+                console.log('Age brackets data found:', presetData.age_brackets.length, 'brackets');
+
+                const ageBracketsContainer = document.getElementById('age-brackets-content');
+                if (ageBracketsContainer) {
+                    console.log('Age brackets container found, updating display');
+
+                    // Clear existing content
+                    ageBracketsContainer.innerHTML = '';
+
+                    // Create new content div with flex layout
+                    const contentDiv = document.createElement('div');
+                    contentDiv.style.cssText = 'display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;';
+
+                    // Add preset brackets
+                    presetData.age_brackets.forEach((bracket, index) => {
+                        const bracketDiv = document.createElement('div');
+                        bracketDiv.style.cssText = 'display: flex; flex-direction: column; align-items: flex-start;';
+
+                        const bracketContent = document.createElement('div');
+                        bracketContent.style.cssText = 'display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;';
+
+                        const rangeDiv = document.createElement('div');
+                        rangeDiv.style.cssText = 'padding: 4px 8px; border-right: 1px solid #dee2e6; font-weight: 500;';
+                        rangeDiv.textContent = bracket.max_age >= 999 ? bracket.min_age + '+' : bracket.min_age + '-' + bracket.max_age;
+
+                        const percentDiv = document.createElement('div');
+                        percentDiv.style.cssText = 'padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;';
+                        percentDiv.textContent = bracket.percentage + '%';
+
+                        bracketContent.appendChild(rangeDiv);
+                        bracketContent.appendChild(percentDiv);
+
+                        const buttonDiv = document.createElement('div');
+                        buttonDiv.style.cssText = 'display: flex; gap: 4px; margin-top: 2px;';
+
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.style.cssText = 'background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;';
+                        deleteBtn.textContent = 'Delete';
+                        deleteBtn.onclick = function() { console.log('Preset display - delete disabled'); };
+
+                        buttonDiv.appendChild(deleteBtn);
+                        bracketDiv.appendChild(bracketContent);
+                        bracketDiv.appendChild(buttonDiv);
+                        contentDiv.appendChild(bracketDiv);
+                    });
+
+                    // Add ADD button
+                    const addBtn = document.createElement('button');
+                    addBtn.style.cssText = 'background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;';
+                    addBtn.textContent = '+ ADD';
+                    addBtn.onclick = function() { console.log('Preset display - add disabled'); };
+                    contentDiv.appendChild(addBtn);
+
+                    ageBracketsContainer.appendChild(contentDiv);
+                    console.log('Age brackets updated:', presetData.age_brackets.length, 'brackets displayed');
+                } else {
+                    console.warn('Age brackets container not found');
+                }
+            } else {
+                console.log('No age brackets data in preset');
+            }
+
+            // Update Spend Brackets
+            if (presetData.spend_brackets && Array.isArray(presetData.spend_brackets)) {
+                console.log('Spend brackets data found:', presetData.spend_brackets.length, 'brackets');
+
+                const spendBracketsContainer = document.getElementById('spend-brackets-content');
+                if (spendBracketsContainer) {
+                    console.log('Spend brackets container found, updating display');
+
+                    // Clear existing content
+                    spendBracketsContainer.innerHTML = '';
+
+                    // Create new content div with flex layout
+                    const contentDiv = document.createElement('div');
+                    contentDiv.style.cssText = 'display: flex; gap: 8px; align-items: flex-start; flex-wrap: wrap;';
+
+                    // Add preset brackets
+                    presetData.spend_brackets.forEach((bracket, index) => {
+                        const bracketDiv = document.createElement('div');
+                        bracketDiv.style.cssText = 'display: flex; flex-direction: column; align-items: flex-start;';
+
+                        const bracketContent = document.createElement('div');
+                        bracketContent.style.cssText = 'display: flex; border: 1px solid #dee2e6; border-radius: 3px; background: white; font-size: 0.8rem;';
+
+                        const rangeDiv = document.createElement('div');
+                        rangeDiv.style.cssText = 'padding: 4px 12px; border-right: 1px solid #dee2e6; font-weight: 500; min-width: 85px; text-align: center;';
+                        rangeDiv.textContent = bracket.max_spend >= 999999.99 ? Math.floor(bracket.min_spend) + '+' : Math.floor(bracket.min_spend) + '-' + Math.floor(bracket.max_spend);
+
+                        const percentDiv = document.createElement('div');
+                        percentDiv.style.cssText = 'padding: 4px 8px; background: #f8f9fa; font-weight: 600; color: #007bff;';
+                        percentDiv.textContent = bracket.percentage + '%';
+
+                        bracketContent.appendChild(rangeDiv);
+                        bracketContent.appendChild(percentDiv);
+
+                        const buttonDiv = document.createElement('div');
+                        buttonDiv.style.cssText = 'display: flex; gap: 4px; margin-top: 2px;';
+
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.style.cssText = 'background: #dc3545; color: white; border: none; padding: 2px 6px; border-radius: 2px; font-size: 0.7rem; cursor: pointer;';
+                        deleteBtn.textContent = 'Delete';
+                        deleteBtn.onclick = function() { console.log('Preset display - delete disabled'); };
+
+                        buttonDiv.appendChild(deleteBtn);
+                        bracketDiv.appendChild(bracketContent);
+                        bracketDiv.appendChild(buttonDiv);
+                        contentDiv.appendChild(bracketDiv);
+                    });
+
+                    // Add ADD button
+                    const addBtn = document.createElement('button');
+                    addBtn.style.cssText = 'background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.8rem; cursor: pointer; height: 67%; align-self: flex-start;';
+                    addBtn.textContent = '+ ADD';
+                    addBtn.onclick = function() { console.log('Preset display - add disabled'); };
+                    contentDiv.appendChild(addBtn);
+
+                    spendBracketsContainer.appendChild(contentDiv);
+                    console.log('Spend brackets updated:', presetData.spend_brackets.length, 'brackets displayed');
+                } else {
+                    console.warn('Spend brackets container not found');
+                }
+            } else {
+                console.log('No spend brackets data in preset (Factory Settings has 0 spend brackets)');
+            }
+
+            if (updatedCount > 0) {
+                console.log('Display successful - All available fields updated');
+            } else {
+                console.warn('No fields were updated - Check preset data format');
+            }
+        }
+
+        // ===== END DISPLAY BUTTON FUNCTIONALITY =====
+
+// Apply Button - Hybrid Implementation (Form Submission + AJAX Bracket Operations)
+function applyPreset() {
+    console.log("Apply preset clicked - starting hybrid implementation");
+
+    const dropdown = document.getElementById("preset-dropdown");
+    const selectedValue = dropdown.value;
+
+    if (!selectedValue) {
+        alert("Please select a preset to apply.");
+        return;
+    }
+
+    // Get preset name for user feedback
+    const presetName = dropdown.options[dropdown.selectedIndex].text;
+    // Clean preset name (remove any ID prefix if present)
+    const cleanPresetName = presetName.includes('. ') ? presetName.split('. ')[1] : presetName;
+    console.log("Applying preset:", presetName);
+
+    // Step 1: Load preset data into sliders first (like Display button)
+    console.log("Loading preset data before applying...");
+
+    fetch('/patients/presets/get/' + selectedValue + '/')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch preset data');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success && data.preset) {
+            loadPresetIntoSliders(data.preset);
+
+            // Wait a moment for sliders to update, then submit form
+            setTimeout(() => {
+                console.log('Submitting form with preset values...');
+                submitFormWithPresetData(selectedValue, cleanPresetName, "Apply");
+
+                // Update accordion header to show the applied preset name
+                updatePresetHeader(cleanPresetName);
+                console.log('Updated accordion header to show:', cleanPresetName);
+            }, 500);
+        } else {
+            throw new Error('Invalid preset data received');
+        }
+    })
+    .catch(error => {
+        console.error('Error loading preset data:', error);
+        alert('Error loading preset data: ' + error.message);
+        // Define variables for error handling
+        const applyButton = document.getElementById("apply-preset-btn");
+        const originalText = "Apply";
+
+
+        // Restore button state
+        applyButton.innerHTML = originalText;
+        applyButton.disabled = false;
+        return;
+    });
+
+    // Helper function to submit form after preset data is loaded
+
+
+}
+    function submitFormWithPresetData(selectedValue, cleanPresetName, originalText) {
+        console.log('Submitting form with loaded preset data...');
+
+        // Step 2: Submit the main form to save all 8 slider values
+    const form = document.querySelector("form");
+    if (!form) {
+        console.error("Scoring form not found");
+        alert("Error: Could not find scoring form");
+        return;
+    }
+
+    // Show loading state
+    const applyButton = document.getElementById("apply-preset-btn");
+    originalText = applyButton.innerHTML;
+    applyButton.innerHTML = "Applying...";
+    applyButton.disabled = true;
+
+    // Submit form using existing handleFormSubmit logic
+    const formData = new FormData(form);
+
+    // Add action parameter for backend handling
+    formData.append('action', 'apply_preset');
+    formData.append('preset_id', selectedValue);
+
+    // DEBUG: Show what Apply button sends to Django
+    console.log("🔍 APPLY BUTTON DEBUG - FormData contents:");
+    console.log(Array.from(formData.entries()));
+    console.log("🔍 Does Apply button send action parameter?", formData.get('action'));
+
+    fetch("/patients/dashboard/", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Form submission failed");
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log("Form submitted successfully");
+
+        // Step 2: Clear and bulk insert age brackets
+        return clearAndInsertBrackets("age", selectedValue);
+    })
+    .then(() => {
+        console.log("Age brackets updated successfully");
+
+        // Step 3: Clear and bulk insert spend brackets
+        return clearAndInsertBrackets("spend", selectedValue);
+    })
+    .then(() => {
+        console.log("Spend brackets updated successfully");
+
+        // Step 4: Update UI to reflect changes
+        updatePresetHeader(cleanPresetName);
+
+        // Save applied preset to localStorage for persistence
+        localStorage.setItem('appliedPresetName', cleanPresetName);
+        console.log('Saved applied preset to localStorage:', cleanPresetName);
+
+        // Show success message
+        alert("Preset applied successfully: " + cleanPresetName);
+
+        // Restore button state
+        applyButton.innerHTML = originalText;
+        applyButton.disabled = false;
+
+        console.log("Apply preset completed successfully");
+    })
+    .catch(error => {
+        console.error("Apply preset error:", error);
+        alert("Error applying preset: " + error.message);
+
+        // Restore button state on error
+        applyButton.innerHTML = originalText;
+        applyButton.disabled = false;
+    });
+}
+
+// Helper function to clear and insert brackets
+function clearAndInsertBrackets(bracketType, presetValue) {
+    return new Promise((resolve, reject) => {
+        // Step 1: Clear existing brackets
+        fetch("/patients/dashboard/", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-Requested-With": "XMLHttpRequest"
+            },
+            body: "action=clear_" + bracketType + "_brackets"
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                throw new Error(data.error || "Clear operation failed");
+            }
+            console.log("Cleared " + bracketType + " brackets:", data.deleted_count);
+
+            // Step 2: Get bracket data for selected preset
+            const bracketData = getBracketDataForPreset(bracketType, presetValue);
+
+            // Step 3: Bulk insert new brackets
+            return fetch("/patients/dashboard/", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                body: "action=insert_" + bracketType + "_brackets&brackets_data=" + encodeURIComponent(JSON.stringify(bracketData))
+            });
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                throw new Error(data.error || "Bulk insert failed");
+            }
+            console.log("Inserted " + bracketType + " brackets:", data.inserted_count);
+            resolve(data);
+        })
+        .catch(error => {
+            console.error("Error updating " + bracketType + " brackets:", error);
+            reject(error);
+        });
+    });
+}
+
+// Helper function to get bracket data for preset (placeholder implementation)
+function getBracketDataForPreset(bracketType, presetValue) {
+    // This function should load bracket data from the database for the selected preset
+    // For now, we'll use a synchronous approach with preset-specific data
+
+    console.log('Loading bracket data for preset:', presetValue, 'type:', bracketType);
+
+    // TODO: Replace with actual AJAX call to load brackets from database
+    // For now, return different data based on preset ID
+
+    if (presetValue == 1) { // Factory Settings
+        if (bracketType === "age") {
+            return [
+                { min_age: 18, max_age: 25, percentage: 5, order: 1 },
+                { min_age: 26, max_age: 35, percentage: 10, order: 2 },
+                { min_age: 36, max_age: 45, percentage: 15, order: 3 },
+                { min_age: 46, max_age: 55, percentage: 20, order: 4 },
+                { min_age: 56, max_age: 65, percentage: 15, order: 5 },
+                { min_age: 66, max_age: 100, percentage: 25, order: 6 }
+            ];
+        } else if (bracketType === "spend") {
+            return []; // Factory Settings has no spend brackets
+        }
+    } else {
+        // For other presets, return empty brackets for now
+        // TODO: Load actual bracket data from database
+        console.log('No bracket data defined for preset', presetValue);
+        return [];
+    }
+
+    return [];
+}
+
+// Helper function to update preset header
+function updatePresetHeader(presetName) {
+    const header = document.querySelector(".accordion-title");
+    if (header) {
+        header.innerHTML = "⚙️ <strong>Scoring Presets</strong> - Currently applied: " + "<strong>" + presetName + "</strong>";
+    }
+}
+
+
+        // Restore applied preset name on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const appliedPresetName = localStorage.getItem('appliedPresetName');
+            if (appliedPresetName) {
+                updatePresetHeader(appliedPresetName);
+                console.log('Restored header to show applied preset:', appliedPresetName);
+            }
+        });
+    </script>
+</body>
+</html>

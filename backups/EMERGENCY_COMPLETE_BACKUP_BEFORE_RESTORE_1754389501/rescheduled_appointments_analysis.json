@@ -1,0 +1,59 @@
+{
+  "analysis_date": "2025-07-02T16:41:49.042264+10:00",
+  "target_range": "16/06/2025 - 21/06/2025",
+  "search_range": "22/06/2025 - 31/08/2025",
+  "summary": {
+    "original_extraction": 157,
+    "rescheduled_forward": 3,
+    "calculated_total": 160,
+    "expected_total": 172,
+    "perfect_match": false
+  },
+  "rescheduled_appointments": [
+    {
+      "appointment_id": "1697435385132483877",
+      "patient_id": "1630867620951491774",
+      "patient_name": "Sue Henderson",
+      "created_at_aest": "2025-05-31 10:21:06+10:00",
+      "updated_at_aest": "2025-06-20 09:32:38+10:00",
+      "starts_at_aest": "2025-07-05 08:40:00+10:00",
+      "days_moved_forward": 14,
+      "update_gap_hours": 479.1922222222222,
+      "attendance_status": {
+        "patient_arrived": false,
+        "did_not_arrive": false,
+        "cancelled_at": null
+      }
+    },
+    {
+      "appointment_id": "1709840463902541403",
+      "patient_id": "71082983",
+      "patient_name": "Cindy Tambourantzis",
+      "created_at_aest": "2025-06-17 13:07:46+10:00",
+      "updated_at_aest": "2025-06-20 13:44:35+10:00",
+      "starts_at_aest": "2025-07-10 11:00:00+10:00",
+      "days_moved_forward": 19,
+      "update_gap_hours": 72.61361111111111,
+      "attendance_status": {
+        "patient_arrived": false,
+        "did_not_arrive": false,
+        "cancelled_at": null
+      }
+    },
+    {
+      "appointment_id": "1710648447159239775",
+      "patient_id": "1104171",
+      "patient_name": "Roger Dib",
+      "created_at_aest": "2025-06-18 15:53:06+10:00",
+      "updated_at_aest": "2025-06-19 08:45:01+10:00",
+      "starts_at_aest": "2025-07-04 14:40:00+10:00",
+      "days_moved_forward": 13,
+      "update_gap_hours": 16.865277777777777,
+      "attendance_status": {
+        "patient_arrived": false,
+        "did_not_arrive": false,
+        "cancelled_at": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,2722 @@
+{
+  "extraction_date": "2025-07-04T11:29:01.331525+10:00",
+  "method": "NAME SEARCH + INDIVIDUAL EXTRACTION WITH PROPER CANCELLATIONS",
+  "patient_id": "1446028075685905983",
+  "patient_name": "Kevin El-Azzi",
+  "patient_info": {
+    "accepted_email_marketing": false,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": false,
+    "address_1": "103/80 Penshurst St",
+    "address_2": "",
+    "address_3": "",
+    "appointment_notes": "",
+    "archived_at": null,
+    "city": "Penshurst",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2024-06-18T03:19:39Z",
+    "custom_fields": null,
+    "date_of_birth": "2002-11-29",
+    "deleted_at": null,
+    "dva_card_number": "",
+    "email": "Kevin.elazzi@gmail.com",
+    "emergency_contact": "",
+    "first_name": "Kevin",
+    "gender": null,
+    "gender_identity": "",
+    "id": "1446028075685905983",
+    "invoice_default_to": "",
+    "invoice_email": null,
+    "invoice_extra_information": "",
+    "label": "Kevin El-Azzi",
+    "last_name": "El-Azzi",
+    "medicare": "Medibank",
+    "medicare_reference_number": "",
+    "merged_at": null,
+    "notes": "",
+    "occupation": "Student",
+    "old_reference_id": "",
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "61401043095",
+        "number": "0401043095",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2222",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": "Andrew Abboul",
+    "reminder_type": "SMS & Email",
+    "sex": "Male",
+    "state": "NSW",
+    "time_zone": "Australia/Sydney",
+    "title": "",
+    "updated_at": "2025-07-01T23:32:20Z",
+    "concession_type": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/concession_types/379"
+      }
+    },
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1720603660829853235"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1446028075685905983"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1446028075685905983"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+    }
+  },
+  "appointments": [
+    {
+      "archived_at": null,
+      "booking_ip_address": "1.40.253.162",
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1446028076247942881/conflicts"
+        }
+      },
+      "created_at": "2024-06-18T03:19:39Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-06-23T21:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1446028076247942881",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": true,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-06-23T21:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1446028076247942881/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-06-23T22:39:53Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14184"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1446028076247942881/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1446028076247942881"
+      },
+      "starts_at_aest": "2024-06-24 07:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1450217855340512899/conflicts"
+        }
+      },
+      "created_at": "2024-06-23T22:04:00Z",
+      "deleted_at": null,
+      "did_not_arrive": true,
+      "email_reminder_sent": false,
+      "ends_at": "2024-07-14T22:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1450217855340512899",
+      "invoice_status": null,
+      "notes": "Tried to call yesterday Sunday, no answering machine. needed to reschedule. Jw",
+      "online_booking_policy_accepted": null,
+      "patient_arrived": false,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": false,
+      "starts_at": "2024-07-14T21:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1450217855340512899/connect",
+      "treatment_note_status": null,
+      "updated_at": "2024-10-03T05:35:20Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1450217855340512899/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1450217855340512899"
+      },
+      "starts_at_aest": "2024-07-15 07:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1465406533260019509/conflicts"
+        }
+      },
+      "created_at": "2024-07-14T21:01:11Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-07-31T06:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1465406533260019509",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-07-31T06:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1465406533260019509/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-08-01T22:15:59Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1465406533260019509/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1465406533260019509"
+      },
+      "starts_at_aest": "2024-07-31 16:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477303797259699277/conflicts"
+        }
+      },
+      "created_at": "2024-07-31T06:58:56Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-01T23:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1477303797259699277",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-01T22:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1477303797259699277/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-03T05:46:01Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477303797259699277/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477303797259699277"
+      },
+      "starts_at_aest": "2024-08-02 08:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304037115167949/conflicts"
+        }
+      },
+      "created_at": "2024-07-31T06:59:24Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-04T22:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1477304037115167949",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-04T21:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1477304037115167949/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-03T05:52:50Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304037115167949/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304037115167949"
+      },
+      "starts_at_aest": "2024-08-05 07:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304313486247245/conflicts"
+        }
+      },
+      "created_at": "2024-07-31T06:59:57Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-07T07:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1477304313486247245",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-07T06:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1477304313486247245/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-03T07:21:22Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304313486247245/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304313486247245"
+      },
+      "starts_at_aest": "2024-08-07 16:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304427990746490/conflicts"
+        }
+      },
+      "created_at": "2024-07-31T07:00:11Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-11T21:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1477304427990746490",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-11T21:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1477304427990746490/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-03T07:33:42Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304427990746490/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304427990746490"
+      },
+      "starts_at_aest": "2024-08-12 07:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304532009485733/conflicts"
+        }
+      },
+      "created_at": "2024-07-31T07:00:23Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-14T07:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1477304532009485733",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-14T06:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1477304532009485733/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-03T07:36:59Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304532009485733/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1477304532009485733"
+      },
+      "starts_at_aest": "2024-08-14 16:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453468477097783/conflicts"
+        }
+      },
+      "created_at": "2024-08-14T07:04:31Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-21T08:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1487453468477097783",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-21T08:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1487453468477097783/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-04T04:50:27Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453468477097783/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453468477097783"
+      },
+      "starts_at_aest": "2024-08-21 18:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453748279117739/conflicts"
+        }
+      },
+      "created_at": "2024-08-14T07:05:04Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-18T23:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1487453748279117739",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-18T23:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1487453748279117739/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-04T04:36:26Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453748279117739/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1487453748279117739"
+      },
+      "starts_at_aest": "2024-08-19 09:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569126344853495/conflicts"
+        }
+      },
+      "created_at": "2024-08-21T08:28:25Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-08-28T08:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1492569126344853495",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-08-28T08:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1492569126344853495/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-04T06:04:51Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569126344853495/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569126344853495"
+      },
+      "starts_at_aest": "2024-08-28 18:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569313209484362/conflicts"
+        }
+      },
+      "created_at": "2024-08-21T08:28:47Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-09-08T21:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1492569313209484362",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-09-08T21:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1492569313209484362/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-07T23:58:28Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569313209484362/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1492569313209484362"
+      },
+      "starts_at_aest": "2024-09-09 07:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1506026327046620798/conflicts"
+        }
+      },
+      "created_at": "2024-09-08T22:05:28Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-09-22T21:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1506026327046620798",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-09-22T21:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1506026327046620798/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2024-10-08T02:02:13Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1506026327046620798/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1506026327046620798"
+      },
+      "starts_at_aest": "2024-09-23 07:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1516180262730335931/conflicts"
+        }
+      },
+      "created_at": "2024-09-22T22:19:31Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-10-13T21:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1516180262730335931",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-10-13T20:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1516180262730335931/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2025-03-04T00:54:50Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1516180262730335931/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1516180262730335931"
+      },
+      "starts_at_aest": "2024-10-14 07:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1531376343470572939/conflicts"
+        }
+      },
+      "created_at": "2024-10-13T21:31:25Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-11-10T22:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1531376343470572939",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-11-10T21:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1531376343470572939/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2025-03-11T00:31:30Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1531376343470572939/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1531376343470572939"
+      },
+      "starts_at_aest": "2024-11-11 08:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1551698100005897560/conflicts"
+        }
+      },
+      "created_at": "2024-11-10T22:27:08Z",
+      "deleted_at": null,
+      "did_not_arrive": true,
+      "email_reminder_sent": true,
+      "ends_at": "2024-12-15T22:00:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1551698100005897560",
+      "invoice_status": null,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": false,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-12-15T21:40:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1551698100005897560/connect",
+      "treatment_note_status": null,
+      "updated_at": "2024-12-15T21:53:46Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1551698100005897560/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1551698100005897560"
+      },
+      "starts_at_aest": "2024-12-16 08:40:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1577056978138564506/conflicts"
+        }
+      },
+      "created_at": "2024-12-15T22:10:41Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2024-12-22T21:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1577056978138564506",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2024-12-22T21:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1577056978138564506/connect",
+      "treatment_note_status": null,
+      "updated_at": "2024-12-22T21:39:45Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1577056978138564506/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1577056978138564506"
+      },
+      "starts_at_aest": "2024-12-23 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1582113104580314772/conflicts"
+        }
+      },
+      "created_at": "2024-12-22T21:36:19Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2025-02-02T21:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1582113104580314772",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2025-02-02T21:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1582113104580314772/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2025-04-16T23:31:17Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1582113104580314772/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1582113104580314772"
+      },
+      "starts_at_aest": "2025-02-03 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1612552118835611569/conflicts"
+        }
+      },
+      "created_at": "2025-02-02T21:33:12Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2025-03-23T21:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1612552118835611569",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2025-03-23T21:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1612552118835611569/connect",
+      "treatment_note_status": 90,
+      "updated_at": "2025-04-24T01:45:23Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1612552118835611569/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1612552118835611569"
+      },
+      "starts_at_aest": "2025-03-24 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1648073496707729082/conflicts"
+        }
+      },
+      "created_at": "2025-03-23T21:47:50Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2025-05-04T22:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1648073496707729082",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2025-05-04T22:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1648073496707729082/connect",
+      "treatment_note_status": null,
+      "updated_at": "2025-05-04T22:42:33Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1648073496707729082/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1648073496707729082"
+      },
+      "starts_at_aest": "2025-05-05 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1678540784372024435/conflicts"
+        }
+      },
+      "created_at": "2025-05-04T22:40:54Z",
+      "deleted_at": null,
+      "did_not_arrive": true,
+      "email_reminder_sent": true,
+      "ends_at": "2025-06-15T22:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1678540784372024435",
+      "invoice_status": null,
+      "notes": "Not feeling well. Lf",
+      "online_booking_policy_accepted": null,
+      "patient_arrived": false,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2025-06-15T22:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1678540784372024435/connect",
+      "treatment_note_status": null,
+      "updated_at": "2025-06-15T22:17:39Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/14185"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1678540784372024435/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1678540784372024435"
+      },
+      "starts_at_aest": "2025-06-16 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": "210.215.99.114",
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709039945022178804/conflicts"
+        }
+      },
+      "created_at": "2025-06-16T00:37:17Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": true,
+      "ends_at": "2025-07-01T22:40:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1709039945022178804",
+      "invoice_status": 20,
+      "notes": null,
+      "online_booking_policy_accepted": true,
+      "patient_arrived": true,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": true,
+      "starts_at": "2025-07-01T22:20:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1709039945022178804/connect",
+      "treatment_note_status": null,
+      "updated_at": "2025-07-01T23:34:13Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709039945022178804/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1709039945022178804"
+      },
+      "starts_at_aest": "2025-07-02 08:20:00 AEST",
+      "cancelled_at_aest": "N/A"
+    },
+    {
+      "archived_at": null,
+      "booking_ip_address": null,
+      "cancellation_note": null,
+      "cancellation_reason": null,
+      "cancellation_reason_description": "",
+      "cancelled_at": null,
+      "conflicts": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1720603660829853235/conflicts"
+        }
+      },
+      "created_at": "2025-07-01T23:32:20Z",
+      "deleted_at": null,
+      "did_not_arrive": false,
+      "email_reminder_sent": false,
+      "ends_at": "2025-08-12T22:20:00Z",
+      "has_patient_appointment_notes": false,
+      "id": "1720603660829853235",
+      "invoice_status": null,
+      "notes": null,
+      "online_booking_policy_accepted": null,
+      "patient_arrived": false,
+      "patient_name": "Kevin El-Azzi",
+      "repeat_rule": {},
+      "repeats": null,
+      "sms_reminder_sent": false,
+      "starts_at": "2025-08-12T22:00:00Z",
+      "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1720603660829853235/connect",
+      "treatment_note_status": null,
+      "updated_at": "2025-07-01T23:32:20Z",
+      "appointment_type": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "attendees": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/individual_appointments/1720603660829853235/attendees"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/individual_appointments/1720603660829853235"
+      },
+      "starts_at_aest": "2025-08-13 08:00:00 AEST",
+      "cancelled_at_aest": "N/A"
+    }
+  ],
+  "invoices": [
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-06-23T22:04:00Z",
+      "created_at": "2024-06-23T22:04:17Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1450217999372912126",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-06-24",
+      "net_amount": "105.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566008,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/UVQLm8R08J1-CdKSnQsjOhVBohlJvQZkM",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "105.0",
+      "updated_at": "2024-06-23T22:06:02Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1446028076247942881"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1446028076600264452"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1450217999372912126/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1450217999372912126"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1450217999372912126"
+      },
+      "created_at_aest": "2024-06-24 08:04:17 AEST",
+      "closed_at_aest": "2024-06-24 08:04:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-07-31T07:00:00Z",
+      "created_at": "2024-07-31T07:00:33Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1477304614125569583",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-07-31",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566777,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/fyPLZao48L1-goUYHrULTHY6aAV60gdMf6",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-07-31T07:01:58Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1465406533260019509"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1465406533494900045"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1477304614125569583/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1477304614125569583"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1477304614125569583"
+      },
+      "created_at_aest": "2024-07-31 17:00:33 AEST",
+      "closed_at_aest": "2024-07-31 17:00:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-01T23:21:00Z",
+      "created_at": "2024-08-01T23:21:34Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1478523152953771821",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-02",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566818,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/hYH7GepEdL1-HipG9aI0zbpAhGpl05mDq1",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-01T23:22:17Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1477303797259699277"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1477303797695906953"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1478523152953771821/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1478523152953771821"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1478523152953771821"
+      },
+      "created_at_aest": "2024-08-02 09:21:34 AEST",
+      "closed_at_aest": "2024-08-02 09:21:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-04T22:15:00Z",
+      "created_at": "2024-08-04T22:15:12Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1480664075821123533",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-05",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566850,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/10JLPnlsnL1-5uryxHBfaT8CvgGObhBEi6",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-04T22:16:23Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1477304037115167949"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1477304037358437621"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1480664075821123533/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1480664075821123533"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1480664075821123533"
+      },
+      "created_at_aest": "2024-08-05 08:15:12 AEST",
+      "closed_at_aest": "2024-08-05 08:15:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-07T07:13:00Z",
+      "created_at": "2024-08-07T07:13:05Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1482384348249326682",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-07",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566910,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/A5yFcKPkvL1-rSsqL3QJcKGIvQ0C0avD83",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-07T07:14:04Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1477304313486247245"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1477304313729516936"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1482384348249326682/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1482384348249326682"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1482384348249326682"
+      },
+      "created_at_aest": "2024-08-07 17:13:05 AEST",
+      "closed_at_aest": "2024-08-07 17:13:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-11T21:52:00Z",
+      "created_at": "2024-08-11T21:52:46Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1485726214864766764",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-12",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2566984,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/yPoYdbNDKL1-CGITmDkkYFddIJ2mz112s2",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-11T21:53:27Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1477304427990746490"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1477304428284347820"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1485726214864766764/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1485726214864766764"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1485726214864766764"
+      },
+      "created_at_aest": "2024-08-12 07:52:46 AEST",
+      "closed_at_aest": "2024-08-12 07:52:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-14T07:05:00Z",
+      "created_at": "2024-08-14T07:05:18Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1487453863127549337",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-14",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567037,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/NOrcEonySL1-fwMEwPIz7kSlN7F9RdCtf2",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-14T07:06:55Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1477304532009485733"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1477304532370195919"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1487453863127549337/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1487453863127549337"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1487453863127549337"
+      },
+      "created_at_aest": "2024-08-14 17:05:18 AEST",
+      "closed_at_aest": "2024-08-14 17:05:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-18T23:35:00Z",
+      "created_at": "2024-08-18T23:35:37Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1490851414186919015",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-19",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567116,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/B7erJb978M1-BCynUWsVocGtvb6qg3fPJ1",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-18T23:35:59Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1487453748279117739"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1487453748673382063"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1490851414186919015/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1490851414186919015"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1490851414186919015"
+      },
+      "created_at_aest": "2024-08-19 09:35:37 AEST",
+      "closed_at_aest": "2024-08-19 09:35:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-21T08:25:00Z",
+      "created_at": "2024-08-21T08:25:59Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1492567903873008712",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-21",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567183,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/mRDk4XyYfM1-BaqsPakb4kIG5Rsvyy3FF5",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-21T08:27:31Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1487453468477097783"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1487453468762310226"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1492567903873008712/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1492567903873008712"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1492567903873008712"
+      },
+      "created_at_aest": "2024-08-21 18:25:59 AEST",
+      "closed_at_aest": "2024-08-21 18:25:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-08-28T08:15:00Z",
+      "created_at": "2024-08-28T08:15:56Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1497636280299685495",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-08-28",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567309,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/XeSgQyMbDM1-xUv9o1fyJR9pRUEp7h8CJ6",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-08-28T08:17:27Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1492569126344853495"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1492569126655231172"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1497636280299685495/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1497636280299685495"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1497636280299685495"
+      },
+      "created_at_aest": "2024-08-28 18:15:56 AEST",
+      "closed_at_aest": "2024-08-28 18:15:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-09-08T22:05:00Z",
+      "created_at": "2024-09-08T22:05:52Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1506026531980313829",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-09-09",
+      "net_amount": "90.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567531,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/nbtCaEhCfN1-xiuE9lBvLJsVZ1xSk5oG15",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "90.0",
+      "updated_at": "2024-09-08T22:06:17Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1492569313209484362"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1492569313561806088"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1506026531980313829/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1506026531980313829"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1506026531980313829"
+      },
+      "created_at_aest": "2024-09-09 08:05:52 AEST",
+      "closed_at_aest": "2024-09-09 08:05:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-09-22T22:19:00Z",
+      "created_at": "2024-09-22T22:19:48Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1516180400966206466",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-09-23",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2567812,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/ymL2KcA70O1-esU0QkYuh452nVnOlQMKV3",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2024-09-22T22:20:21Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1506026327046620798"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1506026327382164536"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1516180400966206466/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1516180400966206466"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1516180400966206466"
+      },
+      "created_at_aest": "2024-09-23 08:19:48 AEST",
+      "closed_at_aest": "2024-09-23 08:19:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-10-13T21:32:00Z",
+      "created_at": "2024-10-13T21:32:06Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1531376687646770629",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-10-14",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2568183,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/5qf5YlJI7P1-Ncv4j09GBtccTVrv3Bd851",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2024-10-13T21:32:21Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1516180262730335931"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1516180263107823253"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1531376687646770629/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1531376687646770629"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1531376687646770629"
+      },
+      "created_at_aest": "2024-10-14 08:32:06 AEST",
+      "closed_at_aest": "2024-10-14 08:32:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-11-10T22:27:00Z",
+      "created_at": "2024-11-10T22:27:29Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1551698277970216668",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-11-11",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2568791,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/Y4IzzlgNCQ1-fmCEe5z64NZiRTpbQDT4l",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2024-11-10T22:27:53Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1531376343470572939"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1531376343722230968"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1551698277970216668/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1551698277970216668"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1551698277970216668"
+      },
+      "created_at_aest": "2024-11-11 09:27:29 AEST",
+      "closed_at_aest": "2024-11-11 09:27:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2024-12-22T21:39:00Z",
+      "created_at": "2024-12-22T21:39:33Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1582114737926178795",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2024-12-23",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2569704,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/JTjujbl6SS1-wuNmA74ibSG4yP6L4euQI1",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2024-12-22T21:39:49Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1577056978138564506"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1577056978406999212"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1582114737926178795/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1582114737926178795"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1582114737926178795"
+      },
+      "created_at_aest": "2024-12-23 08:39:33 AEST",
+      "closed_at_aest": "2024-12-23 08:39:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2025-02-02T21:33:00Z",
+      "created_at": "2025-02-02T21:33:27Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1612552242307532550",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2025-02-03",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2570326,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/uIedZvov7V1-WJL7XTmWwGIowZk2UswlR",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2025-02-02T21:34:45Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1582113104580314772"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1582113104915859283"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1612552242307532550/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1612552242307532550"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1612552242307532550"
+      },
+      "created_at_aest": "2025-02-03 08:33:27 AEST",
+      "closed_at_aest": "2025-02-03 08:33:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2025-03-23T21:48:00Z",
+      "created_at": "2025-03-23T21:48:36Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1648073882071991625",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2025-03-24",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2571612,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/92zt2U8cKX1-W4UYuSAUFgN1nmec0aIpR6",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2025-03-23T21:49:15Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1612552118835611569"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1612552119397648358"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1648073882071991625/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1648073882071991625"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1648073882071991625"
+      },
+      "created_at_aest": "2025-03-24 08:48:36 AEST",
+      "closed_at_aest": "2025-03-24 08:48:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2025-05-04T22:42:00Z",
+      "created_at": "2025-05-04T22:42:01Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1678541346979186099",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2025-05-05",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2572532,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/reD1YHHJZZ1-I6KxkgQ6T1qqB9xNWuSWk2",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2025-05-04T22:42:36Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1648073496707729082"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1648073497018107779"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1678541346979186099/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1678541346979186099"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1678541346979186099"
+      },
+      "created_at_aest": "2025-05-05 08:42:01 AEST",
+      "closed_at_aest": "2025-05-05 08:42:00 AEST"
+    },
+    {
+      "archived_at": null,
+      "calculation_method": 1,
+      "calculation_method_description": "Legacy",
+      "closed_at": "2025-07-01T23:33:00Z",
+      "created_at": "2025-07-01T23:33:23Z",
+      "deleted_at": null,
+      "discounted_amount": "0.0",
+      "id": "1720604190016799841",
+      "invoice_to": "Kevin El-Azzi\r\n103/80 Penshurst St\r\nPenshurst  NSW  2222\r\nAustralia",
+      "issue_date": "2025-07-02",
+      "net_amount": "100.0",
+      "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+      "number": 2573918,
+      "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/VIgseETn632-yzk4i8qmkiRNqELXZMfkf3",
+      "patient_extra_information": "",
+      "status": 20,
+      "status_description": "Paid",
+      "tax_amount": "0.0",
+      "total_amount": "100.0",
+      "updated_at": "2025-07-01T23:34:15Z",
+      "appointment": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/appointments/1709039945022178804"
+        }
+      },
+      "attendee": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/attendees/1709039945374500347"
+        }
+      },
+      "business": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+        }
+      },
+      "patient": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients/1446028075685905983"
+        }
+      },
+      "practitioner": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+        }
+      },
+      "invoice_items": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices/1720604190016799841/invoice_items"
+        }
+      },
+      "reversed_invoices": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1720604190016799841"
+        }
+      },
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/invoices/1720604190016799841"
+      },
+      "created_at_aest": "2025-07-02 09:33:23 AEST",
+      "closed_at_aest": "2025-07-02 09:33:00 AEST"
+    }
+  ],
+  "metrics": {
+    "total_appointments": 23,
+    "attended": 20,
+    "cancelled": 0,
+    "dna": 3,
+    "attendance_rate": 86.95652173913044,
+    "total_invoiced": 1805.0,
+    "total_paid": 1805.0,
+    "unpaid_amount": 0.0,
+    "payment_rate": 100.0
+  }
+}

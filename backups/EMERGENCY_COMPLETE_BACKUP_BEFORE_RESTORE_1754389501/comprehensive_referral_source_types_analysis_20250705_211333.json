@@ -1,0 +1,229 @@
+{
+  "extraction_date": "2025-07-05T21:13:33.636727+10:00",
+  "all_referral_source_types": [
+    {
+      "archived_at": null,
+      "created_at": "2014-10-09T06:04:55Z",
+      "id": "37606",
+      "name": "Patient",
+      "referrer_type": "Patient",
+      "referrers": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/patients"
+        }
+      },
+      "subcategories": null,
+      "updated_at": "2014-10-09T06:04:55Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/37606"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2014-10-09T06:04:55Z",
+      "id": "37607",
+      "name": "Contact",
+      "referrer_type": "Contact",
+      "referrers": {
+        "links": {
+          "self": "https://api.au1.cliniko.com/v1/contacts"
+        }
+      },
+      "subcategories": null,
+      "updated_at": "2014-10-09T06:04:55Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/37607"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2014-10-09T06:04:55Z",
+      "id": "37608",
+      "name": "Other",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2014-10-09T06:04:55Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2014-12-13T23:18:49Z",
+      "id": "47947",
+      "name": "Google Search",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2024-07-25T05:19:20Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/47947"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2016-03-29T22:02:45Z",
+      "id": "92771",
+      "name": "GP or Health professional referral (please name)",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2024-07-25T05:20:55Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/92771"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2016-03-29T22:03:49Z",
+      "id": "92772",
+      "name": "Signage",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2016-03-29T22:03:49Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/92772"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2016-03-29T22:04:19Z",
+      "id": "92774",
+      "name": "Sports Medicine Clinic Website ",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2016-03-29T22:04:19Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/92774"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2016-03-29T22:04:34Z",
+      "id": "92775",
+      "name": "Football Club/ Academy ",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2016-03-29T22:04:34Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/92775"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2016-03-29T22:04:49Z",
+      "id": "92776",
+      "name": "Fitness Instructor/ Gym ",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2016-03-29T22:04:49Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/92776"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2024-07-25T05:19:33Z",
+      "id": "1472905121133233315",
+      "name": "Social Media",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2024-07-25T05:19:33Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/1472905121133233315"
+      }
+    },
+    {
+      "archived_at": null,
+      "created_at": "2024-07-25T05:20:11Z",
+      "id": "1472905447097762980",
+      "name": "Friend or Family Member",
+      "referrer_type": null,
+      "referrers": null,
+      "subcategories": null,
+      "updated_at": "2024-07-25T05:20:11Z",
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_source_types/1472905447097762980"
+      }
+    }
+  ],
+  "types_with_referrers": [
+    {
+      "id": "37606",
+      "name": "Patient",
+      "referrer_type": "Patient",
+      "referrers_links": {
+        "self": "https://api.au1.cliniko.com/v1/patients"
+      }
+    },
+    {
+      "id": "37607",
+      "name": "Contact",
+      "referrer_type": "Contact",
+      "referrers_links": {
+        "self": "https://api.au1.cliniko.com/v1/contacts"
+      }
+    }
+  ],
+  "successful_filters": [
+    [
+      "archived_at",
+      "!?",
+      11
+    ],
+    [
+      "created_at",
+      ">2014-01-01T00:00:00Z",
+      11
+    ]
+  ],
+  "referrer_data": [
+    {
+      "type_name": "Patient",
+      "type_id": "37606",
+      "referrer_type": "Patient",
+      "referrers_count": 50,
+      "bronwyn_found": false,
+      "sami_found": false,
+      "endpoint_url": "https://api.au1.cliniko.com/v1/patients"
+    },
+    {
+      "type_name": "Contact",
+      "type_id": "37607",
+      "referrer_type": "Contact",
+      "referrers_count": 50,
+      "bronwyn_found": false,
+      "sami_found": false,
+      "endpoint_url": "https://api.au1.cliniko.com/v1/contacts"
+    }
+  ],
+  "working_endpoints": [
+    {
+      "type_name": "Patient",
+      "type_id": "37606",
+      "referrer_type": "Patient",
+      "referrers_count": 50,
+      "bronwyn_found": false,
+      "sami_found": false,
+      "endpoint_url": "https://api.au1.cliniko.com/v1/patients"
+    },
+    {
+      "type_name": "Contact",
+      "type_id": "37607",
+      "referrer_type": "Contact",
+      "referrers_count": 50,
+      "bronwyn_found": false,
+      "sami_found": false,
+      "endpoint_url": "https://api.au1.cliniko.com/v1/contacts"
+    }
+  ],
+  "bronwyn_referrer_score": 0,
+  "sami_referrer_score": 0,
+  "method": "Comprehensive referral source types analysis"
+}

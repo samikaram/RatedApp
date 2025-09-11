@@ -1,0 +1,214 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const settingsButton = document.getElementById('settings-trigger');
+    const hoverPanel = document.getElementById('settings-hover-panel');
+    const panelCloseBtn = hoverPanel.querySelector('.hover-panel-close');
+    const editButton = hoverPanel.querySelector('#edit-clinic-settings');
+    const saveButton = hoverPanel.querySelector('#save-clinic-settings');
+
+    const clinicNameInput = hoverPanel.querySelector('#clinic-name');
+    const clinicLocationInput = hoverPanel.querySelector('#clinic-location');
+    const clinicTimezoneSelect = hoverPanel.querySelector('#clinic-timezone');
+
+    // Open panel
+    if (settingsButton) {
+        settingsButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            hoverPanel.classList.add('open');
+            hoverPanel.setAttribute('aria-hidden', 'false');
+        
+    // Edit button functionality
+    if (editButton) {
+        editButton.addEventListener('click', function() {
+            // Hide edit button
+            editButton.style.display = 'none';
+            
+            // Show save button
+            saveButton.style.display = 'block';
+            
+            // Enable all input fields in this section
+            clinicNameInput.disabled = false;
+            clinicLocationInput.disabled = false;
+            clinicTimezoneSelect.disabled = false;
+            
+            // Focus on the first input field
+            clinicNameInput.focus();
+        });
+    }
+
+    // Save button functionality
+    if (saveButton) {
+        saveButton.addEventListener('click', function() {
+            const data = {
+                clinic_name: clinicNameInput.value.trim(),
+                clinic_location: clinicLocationInput.value.trim(),
+                clinic_timezone: clinicTimezoneSelect.value
+            };
+
+                alert('Clinic name is required');
+                return;
+            }
+
+            fetch('/update-clinic-settings/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Disable input fields
+                    clinicNameInput.disabled = true;
+                    clinicLocationInput.disabled = true;
+                    clinicTimezoneSelect.disabled = true;
+
+                    // Show edit button, hide save button
+                    editButton.style.display = 'block';
+                    saveButton.style.display = 'none';
+                } else {
+                    alert('Error saving settings: ' + result.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving settings:', error);
+                alert('Network error occurred while saving settings');
+            });
+        });
+    }
+});
+    }
+
+    // Close panel
+    if (panelCloseBtn) {
+        panelCloseBtn.addEventListener('click', function() {
+            hoverPanel.classList.remove('open');
+            hoverPanel.setAttribute('aria-hidden', 'true');
+        
+    // Edit button functionality
+    if (editButton) {
+        editButton.addEventListener('click', function() {
+            // Hide edit button
+            editButton.style.display = 'none';
+            
+            // Show save button
+            saveButton.style.display = 'block';
+            
+            // Enable all input fields in this section
+            clinicNameInput.disabled = false;
+            clinicLocationInput.disabled = false;
+            clinicTimezoneSelect.disabled = false;
+            
+            // Focus on the first input field
+            clinicNameInput.focus();
+        });
+    }
+
+    // Save button functionality
+    if (saveButton) {
+        saveButton.addEventListener('click', function() {
+            const data = {
+                clinic_name: clinicNameInput.value.trim(),
+                clinic_location: clinicLocationInput.value.trim(),
+                clinic_timezone: clinicTimezoneSelect.value
+            };
+
+                alert('Clinic name is required');
+                return;
+            }
+
+            fetch('/update-clinic-settings/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Disable input fields
+                    clinicNameInput.disabled = true;
+                    clinicLocationInput.disabled = true;
+                    clinicTimezoneSelect.disabled = true;
+
+                    // Show edit button, hide save button
+                    editButton.style.display = 'block';
+                    saveButton.style.display = 'none';
+                } else {
+                    alert('Error saving settings: ' + result.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving settings:', error);
+                alert('Network error occurred while saving settings');
+            });
+        });
+    }
+});
+    }
+
+    // Edit button functionality
+    if (editButton) {
+        editButton.addEventListener('click', function() {
+            // Hide edit button
+            editButton.style.display = 'none';
+            
+            // Show save button
+            saveButton.style.display = 'block';
+            
+            // Enable all input fields in this section
+            clinicNameInput.disabled = false;
+            clinicLocationInput.disabled = false;
+            clinicTimezoneSelect.disabled = false;
+            
+            // Focus on the first input field
+            clinicNameInput.focus();
+        });
+    }
+
+    // Save button functionality
+    if (saveButton) {
+        saveButton.addEventListener('click', function() {
+            const data = {
+                clinic_name: clinicNameInput.value.trim(),
+                clinic_location: clinicLocationInput.value.trim(),
+                clinic_timezone: clinicTimezoneSelect.value
+            };
+
+                alert('Clinic name is required');
+                return;
+            }
+
+            fetch('/update-clinic-settings/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    // Disable input fields
+                    clinicNameInput.disabled = true;
+                    clinicLocationInput.disabled = true;
+                    clinicTimezoneSelect.disabled = true;
+
+                    // Show edit button, hide save button
+                    editButton.style.display = 'block';
+                    saveButton.style.display = 'none';
+                } else {
+                    alert('Error saving settings: ' + result.error);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving settings:', error);
+                alert('Network error occurred while saving settings');
+            });
+        });
+    }
+});
+</script>

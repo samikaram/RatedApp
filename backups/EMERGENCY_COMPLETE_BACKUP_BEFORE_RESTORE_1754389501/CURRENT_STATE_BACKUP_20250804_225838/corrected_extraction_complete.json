@@ -1,0 +1,19 @@
+{
+  "extraction_date": "2025-07-02T15:32:53.108435+10:00",
+  "date_range": "16/06/2025 - 21/06/2025",
+  "total_patients": 135,
+  "total_appointments": 157,
+  "total_invoices": 142,
+  "attendance_corrected": {
+    "attended": 146,
+    "dna": 11,
+    "cancelled": 0
+  },
+  "location_stats": {},
+  "cliniko_verification": {
+    "expected_attended": 146,
+    "expected_dna": 11,
+    "attended_match": true,
+    "dna_match": true
+  }
+}

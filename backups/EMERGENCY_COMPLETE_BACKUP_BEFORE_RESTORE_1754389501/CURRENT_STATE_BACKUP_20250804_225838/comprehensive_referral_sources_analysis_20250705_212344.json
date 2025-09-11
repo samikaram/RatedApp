@@ -1,0 +1,1258 @@
+{
+  "extraction_date": "2025-07-05T21:23:44.958054+10:00",
+  "test_patients": {
+    "sami_patient_id": "1104221",
+    "bronwyn_patient_id": "1707655488738428562"
+  },
+  "endpoint_analysis": {
+    "referral_sources_endpoint_exists": true,
+    "referral_sources_data": {
+      "referral_sources": [
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102633",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102633/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102633"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102642",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102642/referral_source"
+          },
+          "notes": "Penrith Nepean Football Club",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102642"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102643",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102643/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102643"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102645",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102645/referral_source"
+          },
+          "notes": "Previous Peakhurst Patient",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2025-01-25T21:25:52Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102645"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102646",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102646/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102646"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102647",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102647/referral_source"
+          },
+          "notes": "Google",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102647"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102648",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102648/referral_source"
+          },
+          "notes": "Doctor Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2025-06-16T00:55:19Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102648"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102649",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102649/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102649"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102650",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102650/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102650"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102651",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102651/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102651"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102652",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102652/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102652"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102656",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102656/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102656"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102658",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102658/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102658"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102662",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102662/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102662"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102663",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102663/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102663"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102664",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102664/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102664"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102665",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102665/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102665"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102666",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102666/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102666"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102667",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102667/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102667"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:19Z",
+          "id": "1102668",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102668/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102668"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102669",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102669/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102669"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102670",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102670/referral_source"
+          },
+          "notes": "Signage",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102670"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102671",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102671/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102671"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102672",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102672/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102672"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102673",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102673/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102673"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102674",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102674/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2021-11-19T15:56:09Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102674"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102675",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102675/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102675"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102677",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102677/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102677"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102678",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102678/referral_source"
+          },
+          "notes": "Doctor Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102678"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102679",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102679/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102679"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102680",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102680/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102680"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102681",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102681/referral_source"
+          },
+          "notes": "Family",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102681"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102682",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102682/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102682"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102683",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102683/referral_source"
+          },
+          "notes": "Soccer Club",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102683"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102684",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102684/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102684"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102685",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102685/referral_source"
+          },
+          "notes": "Signage",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102685"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102686",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102686/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102686"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102687",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102687/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102687"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102688",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102688/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102688"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102689",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102689/referral_source"
+          },
+          "notes": "Google",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102689"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102690",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102690/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102690"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102692",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102692/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102692"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102694",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102694/referral_source"
+          },
+          "notes": "Google",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102694"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102695",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102695/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102695"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102697",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102697/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102697"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102698",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102698/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102698"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102699",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102699/referral_source"
+          },
+          "notes": "Patient Referral",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102699"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102700",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102700/referral_source"
+          },
+          "notes": "Friend Relative",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102700"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102701",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102701/referral_source"
+          },
+          "notes": "Internet",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102701"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        },
+        {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:35:20Z",
+          "id": "1102702",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1102702/referral_source"
+          },
+          "notes": "Google",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2023-12-16T00:36:45Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1102702"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        }
+      ],
+      "total_entries": 7703,
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/referral_sources?page=1",
+        "next": "https://api.au1.cliniko.com/v1/referral_sources?page=2"
+      }
+    },
+    "successful_filters": [
+      [
+        "id",
+        ">0",
+        50
+      ],
+      [
+        "created_at",
+        ">2020-01-01T00:00:00Z",
+        50
+      ],
+      [
+        "updated_at",
+        ">2020-01-01T00:00:00Z",
+        50
+      ]
+    ],
+    "individual_patient_data": [
+      {
+        "patient_id": "1104221",
+        "patient_name": "Sami Karam",
+        "referral_source_data": {
+          "archived_at": null,
+          "created_at": "2012-12-14T04:36:08Z",
+          "id": "1104221",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1104221/referral_source"
+          },
+          "notes": null,
+          "referrer": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1103240"
+            }
+          },
+          "referrer_type": "Patient",
+          "subcategory": null,
+          "updated_at": "2025-07-02T13:12:06Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37606"
+            }
+          }
+        }
+      },
+      {
+        "patient_id": "1707655488738428562",
+        "patient_name": "Bronwyn Kedicioglu",
+        "referral_source_data": {
+          "archived_at": null,
+          "created_at": "2025-06-14T02:46:37Z",
+          "id": "1707655488738428562",
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562/referral_source"
+          },
+          "notes": "Friend / Family member - Victor Kedicioglu 0478102148",
+          "referrer": null,
+          "referrer_type": null,
+          "subcategory": null,
+          "updated_at": "2025-06-15T23:42:19Z",
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1707655488738428562"
+            }
+          },
+          "referral_source_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/referral_source_types/37608"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "referral_matches": [],
+  "referrer_scores": {
+    "sami_karam": 0,
+    "bronwyn_kedicioglu": 0
+  },
+  "efficiency_analysis": {
+    "rating": "HIGH",
+    "recommendation": "Implement referrer scores using discovered filtering",
+    "filtering_works": true,
+    "individual_endpoints_work": true
+  },
+  "method": "Comprehensive referral sources endpoint analysis"
+}

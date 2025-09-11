@@ -1,0 +1,276 @@
+{
+  "extraction_date": "2025-07-07T11:15:40.058974+10:00",
+  "patient_info": {
+    "accepted_email_marketing": true,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": true,
+    "address_1": "8 Linda Pl",
+    "address_2": "",
+    "address_3": "",
+    "appointment_notes": "",
+    "archived_at": null,
+    "city": "Woonona",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2012-12-14T05:54:26Z",
+    "custom_fields": null,
+    "date_of_birth": "1960-12-15",
+    "deleted_at": null,
+    "dva_card_number": null,
+    "email": "sandrabaihn15@hotmail.com",
+    "emergency_contact": "",
+    "first_name": "Sandra",
+    "gender": "Female",
+    "gender_identity": "",
+    "id": "1113051",
+    "invoice_default_to": "",
+    "invoice_email": null,
+    "invoice_extra_information": "",
+    "label": "Sandra Baihn",
+    "last_name": "Baihn",
+    "medicare": "",
+    "medicare_reference_number": "",
+    "merged_at": null,
+    "notes": "Peakhurst",
+    "occupation": "",
+    "old_reference_id": "",
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "61295709261",
+        "number": "295709261",
+        "phone_type": "Home"
+      },
+      {
+        "normalized_number": "61295794911",
+        "number": "295794911",
+        "phone_type": "Work"
+      },
+      {
+        "normalized_number": "61412196050",
+        "number": "0412196050",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2517",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": null,
+    "reminder_type": "SMS & Email",
+    "sex": "",
+    "state": "NSW",
+    "time_zone": "Australia/Sydney",
+    "title": "Ms",
+    "updated_at": "2025-06-25T01:42:23Z",
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1715595687841760299"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1113051/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1113051"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1113051/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1113051/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1113051/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1113051"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1113051"
+    }
+  },
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 0,
+      "future_appointments": []
+    },
+    "age_demographics": {
+      "age": 64,
+      "date_of_birth": "1960-12-15",
+      "in_target_demographic": false
+    },
+    "yearly_spend": {
+      "yearly_spend": 760.0,
+      "paid_invoices_count": 7,
+      "total_invoices_checked": 96
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 4,
+      "total_appointments": 98,
+      "valid_appointments": 98,
+      "cancelled_count": 2,
+      "calculation_method": "CORRECTED: DNA OR cancellation breaks streak"
+    },
+    "likability": {
+      "likability_score": 0,
+      "manual_input_required": true
+    },
+    "open_dna_invoices": {
+      "has_open_dna_invoice": false,
+      "total_unpaid_invoices": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0
+    },
+    "unlikability": {
+      "unlikability_score": 0,
+      "manual_input_required": true
+    },
+    "cancellations": {
+      "total_cancellations": 2,
+      "cancelled_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "Has to find a time to suit since Sami has changed his hours. Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2024-02-12T01:12:16Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1314662960769009087/conflicts"
+            }
+          },
+          "created_at": "2023-12-19T21:20:37Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2024-02-20T22:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1314662960769009087",
+          "invoice_status": null,
+          "notes": "no answer",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Sandra Baihn",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2024-02-20T21:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1314662960769009087/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-02-12T01:12:16Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1113051"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1314662960769009087/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1314662960769009087"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": "2001:8003:3a18:a701:64bb:ccff:fe3e:e5f",
+          "cancellation_note": "booked the Monday online instead. JK",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2024-12-04T22:30:23Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1533120807369180233/conflicts"
+            }
+          },
+          "created_at": "2024-10-16T07:17:22Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2024-12-17T21:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1533120807369180233",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": true,
+          "patient_arrived": false,
+          "patient_name": "Sandra Baihn",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2024-12-17T21:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1533120807369180233/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-04T22:30:23Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1113051"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1533120807369180233/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1533120807369180233"
+          }
+        }
+      ]
+    },
+    "dna": {
+      "dna_count": 0,
+      "dna_appointments": []
+    }
+  },
+  "extraction_method": "CORRECTED 10-category system",
+  "consecutive_attendance_fixed": true,
+  "cliniko_api_documentation_followed": true
+}

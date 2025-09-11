@@ -1,0 +1,24 @@
+{
+  "patient_id": 1104171,
+  "patient_name": "Roger Dib",
+  "extraction_timestamp": "2025-07-04T21:01:01.375191+10:00",
+  "corrected_behaviors": {
+    "demographics": {
+      "date_of_birth": null,
+      "age": null,
+      "in_target_demographic": false
+    },
+    "paid_invoices": {
+      "yearly_spend": 0,
+      "paid_invoice_count": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0
+    },
+    "referral_data": {
+      "referral_source": null,
+      "referral_count": 0
+    }
+  }
+}

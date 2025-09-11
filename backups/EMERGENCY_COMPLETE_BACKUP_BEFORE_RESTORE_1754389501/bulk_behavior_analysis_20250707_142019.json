@@ -1,0 +1,1170 @@
+{
+  "extraction_date": "2025-07-07T14:20:19.379703+10:00",
+  "date_range": "June 16-21, 2025",
+  "total_patients": 50,
+  "grade_distribution": {
+    "F": 5,
+    "B": 20,
+    "C": 16,
+    "D": 7,
+    "A": 2,
+    "A+": 0
+  },
+  "score_statistics": {
+    "average": 49.5,
+    "maximum": 80,
+    "minimum": -75
+  },
+  "detailed_results": [
+    {
+      "patient_info": {
+        "id": "1105984",
+        "name": "Charlie Karam",
+        "email": "charlie.karam@gmail.com",
+        "date_of_birth": "1973-04-26"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 52,
+        "in_target_demographic": true,
+        "yearly_spend": 220.0,
+        "consecutive_attendance": 3,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 11
+      },
+      "total_score": -5,
+      "letter_grade": "F"
+    },
+    {
+      "patient_info": {
+        "id": "4224413",
+        "name": "Henrry Perez",
+        "email": "pmamixedmartialarts@outlook.com",
+        "date_of_birth": "1971-03-17"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 54,
+        "in_target_demographic": true,
+        "yearly_spend": 355.46000000000004,
+        "consecutive_attendance": 2,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 9
+      },
+      "total_score": 0,
+      "letter_grade": "F"
+    },
+    {
+      "patient_info": {
+        "id": "1257488961891207080",
+        "name": "Lyndall Lang",
+        "email": "lyndall@herbalextracts.com.au",
+        "date_of_birth": "1968-10-21"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 56,
+        "in_target_demographic": false,
+        "yearly_spend": 660.0,
+        "consecutive_attendance": 10,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 60,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1103080",
+        "name": "Doli Tyler",
+        "email": "dolisarkis@hotmail.com",
+        "date_of_birth": "1973-09-04"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 51,
+        "in_target_demographic": true,
+        "yearly_spend": 210.0,
+        "consecutive_attendance": 43,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1107118",
+        "name": "Elizabeth Bortolin",
+        "email": "bortoline@optusnet.com.au",
+        "date_of_birth": "1968-12-20"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 56,
+        "in_target_demographic": false,
+        "yearly_spend": 1313.64,
+        "consecutive_attendance": 15,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 9
+      },
+      "total_score": 20,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1169264030313874732",
+        "name": "Alexander Elmargi",
+        "email": "elmargia@hotmail.com",
+        "date_of_birth": "2009-11-04"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 15,
+        "in_target_demographic": false,
+        "yearly_spend": 212.0,
+        "consecutive_attendance": 8,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 2
+      },
+      "total_score": 35,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1701038199800858417",
+        "name": "Claire Tonks",
+        "email": "joanne.tonks@limeblue.com.au",
+        "date_of_birth": "2012-10-24"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 12,
+        "in_target_demographic": false,
+        "yearly_spend": 615.0,
+        "consecutive_attendance": 7,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 45,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1500942878707287256",
+        "name": "David Cassaniti",
+        "email": "david@apexpm.com.au",
+        "date_of_birth": "1965-02-03"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 60,
+        "in_target_demographic": false,
+        "yearly_spend": 3090.0,
+        "consecutive_attendance": 17,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 65,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1394765989165401466",
+        "name": "James Baissari",
+        "email": "james.baissari@hotmail.com",
+        "date_of_birth": "1999-04-16"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 26,
+        "in_target_demographic": true,
+        "yearly_spend": 2850.0,
+        "consecutive_attendance": 20,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 10
+      },
+      "total_score": 25,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1699633128890435509",
+        "name": "Simon Diab",
+        "email": "diabsimon@yahoo.com.au",
+        "date_of_birth": null
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 0,
+        "in_target_demographic": false,
+        "yearly_spend": 460.0,
+        "consecutive_attendance": 0,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 2
+      },
+      "total_score": 5,
+      "letter_grade": "F"
+    },
+    {
+      "patient_info": {
+        "id": "1338779678634149290",
+        "name": "Arthur Dassakis",
+        "email": "arthur.dassakis@live.com",
+        "date_of_birth": "1978-10-04"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 46,
+        "in_target_demographic": true,
+        "yearly_spend": 2290.0,
+        "consecutive_attendance": 36,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1419919900662563911",
+        "name": "Bora Dincel",
+        "email": "bora@dincel.com.au",
+        "date_of_birth": "1980-05-25"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 45,
+        "in_target_demographic": true,
+        "yearly_spend": 4350.0,
+        "consecutive_attendance": 54,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "8446233",
+        "name": "Mark Franks",
+        "email": "marks4maths@gmail.com",
+        "date_of_birth": "1959-12-12"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 65,
+        "in_target_demographic": false,
+        "yearly_spend": 1500.0,
+        "consecutive_attendance": 67,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 65,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "53548585",
+        "name": "Steve Nikolovski",
+        "email": "sjnikolo@outlook.com",
+        "date_of_birth": "1975-03-07"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 50,
+        "in_target_demographic": true,
+        "yearly_spend": 630.0,
+        "consecutive_attendance": 2,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 3
+      },
+      "total_score": 25,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1600110190546388405",
+        "name": "Adam Stefanec",
+        "email": "astefanec@hotmail.com",
+        "date_of_birth": "1974-03-13"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 51,
+        "in_target_demographic": true,
+        "yearly_spend": 1340.0,
+        "consecutive_attendance": 13,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1110197",
+        "name": "Elio Bulian",
+        "email": "bulian@bigpond.com",
+        "date_of_birth": "1942-03-21"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 83,
+        "in_target_demographic": false,
+        "yearly_spend": 308.19,
+        "consecutive_attendance": 11,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 40,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1638012325246011388",
+        "name": "Joseph Khoury",
+        "email": "Khouryj@outlook.com",
+        "date_of_birth": "1960-03-04"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 65,
+        "in_target_demographic": false,
+        "yearly_spend": 1780.0,
+        "consecutive_attendance": 16,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1443195478417081488",
+        "name": "Mahmut Olca",
+        "email": "mjolca1@gmail.com",
+        "date_of_birth": "2001-08-03"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 23,
+        "in_target_demographic": true,
+        "yearly_spend": 3373.64,
+        "consecutive_attendance": 37,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1430669665532643266",
+        "name": "Aisling Davidson",
+        "email": "lingdavidson@outlook.com",
+        "date_of_birth": "1999-08-21"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 25,
+        "in_target_demographic": true,
+        "yearly_spend": 1920.0,
+        "consecutive_attendance": 28,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1446343163747763917",
+        "name": "Samantha Tsaoucis",
+        "email": "Samstsa@gmail.com",
+        "date_of_birth": "1987-04-09"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 38,
+        "in_target_demographic": true,
+        "yearly_spend": 1390.0,
+        "consecutive_attendance": 19,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1105783",
+        "name": "Cameron Strebel",
+        "email": "strebelc@optusnet.com.au",
+        "date_of_birth": "1998-08-28"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 26,
+        "in_target_demographic": true,
+        "yearly_spend": 1166.91,
+        "consecutive_attendance": 21,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1663473012617249924",
+        "name": "Charles Hong",
+        "email": "charles.hong@mail.com",
+        "date_of_birth": "1981-05-12"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 44,
+        "in_target_demographic": true,
+        "yearly_spend": 2390.0,
+        "consecutive_attendance": 16,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "72266243",
+        "name": "Jack Garland",
+        "email": null,
+        "date_of_birth": "1947-11-11"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 77,
+        "in_target_demographic": false,
+        "yearly_spend": 450.0,
+        "consecutive_attendance": 21,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1382104451648587627",
+        "name": "Ava Hounslow",
+        "email": "runhounslow@hotmail.com",
+        "date_of_birth": "2009-10-23"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 15,
+        "in_target_demographic": false,
+        "yearly_spend": 600.0,
+        "consecutive_attendance": 9,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 50,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1635989167286519214",
+        "name": "Wafaa Nakhoul",
+        "email": "wafaanakhoul78@gmail.com",
+        "date_of_birth": "1978-09-25"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 46,
+        "in_target_demographic": true,
+        "yearly_spend": 2410.0,
+        "consecutive_attendance": 16,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "5524341",
+        "name": "Melissa Smith",
+        "email": "beyondhelp1@yahoo.com.au",
+        "date_of_birth": "1973-09-20"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 51,
+        "in_target_demographic": true,
+        "yearly_spend": 880.0,
+        "consecutive_attendance": 0,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 21
+      },
+      "total_score": -75,
+      "letter_grade": "F"
+    },
+    {
+      "patient_info": {
+        "id": "1688750400817071331",
+        "name": "George Elzahoul",
+        "email": "gelzahoul@outlook.com",
+        "date_of_birth": "1981-05-09"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 44,
+        "in_target_demographic": true,
+        "yearly_spend": 790.0,
+        "consecutive_attendance": 8,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 60,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1112274",
+        "name": "Phillip James Thompson",
+        "email": "phillipthompson7@bigpond.com",
+        "date_of_birth": "1948-07-17"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 77,
+        "in_target_demographic": false,
+        "yearly_spend": 1230.0,
+        "consecutive_attendance": 8,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 6
+      },
+      "total_score": 25,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1140763687112410326",
+        "name": "Vivianne Rothwell",
+        "email": "vivianne.rothwell@gmail.com",
+        "date_of_birth": "1956-01-14"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 69,
+        "in_target_demographic": false,
+        "yearly_spend": 540.0,
+        "consecutive_attendance": 12,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 50,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1683645266021844256",
+        "name": "Jessica Tadrosse",
+        "email": "jess.tadrosse@hotmail.com",
+        "date_of_birth": "1990-06-25"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 35,
+        "in_target_demographic": true,
+        "yearly_spend": 880.0,
+        "consecutive_attendance": 5,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1111907",
+        "name": "Paul Burke",
+        "email": "paulandlarraine@bigpond.com",
+        "date_of_birth": "1949-02-02"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 76,
+        "in_target_demographic": false,
+        "yearly_spend": 700.0,
+        "consecutive_attendance": 18,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 50,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1664782069038842886",
+        "name": "Matthew Robson",
+        "email": "matthew.robson1982@gmail.com",
+        "date_of_birth": "1982-03-20"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 43,
+        "in_target_demographic": true,
+        "yearly_spend": 1010.0,
+        "consecutive_attendance": 10,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1668475473526523427",
+        "name": "Therese Kazzi",
+        "email": "johnpaul2000@yahoo.com",
+        "date_of_birth": "1954-10-21"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 70,
+        "in_target_demographic": false,
+        "yearly_spend": 497.0,
+        "consecutive_attendance": 7,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 45,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1465558243207022343",
+        "name": "Mariolina Cassaniti",
+        "email": "mariolina.cassaniti@gmail.com",
+        "date_of_birth": "1966-02-18"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 59,
+        "in_target_demographic": false,
+        "yearly_spend": 5260.0,
+        "consecutive_attendance": 51,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 65,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1709852811916740505",
+        "name": "Renee Gregory",
+        "email": "renee.gregory1111@gmail.com",
+        "date_of_birth": "1993-01-24"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 32,
+        "in_target_demographic": true,
+        "yearly_spend": 350.0,
+        "consecutive_attendance": 4,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 50,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1701025983789794788",
+        "name": "Suzy Melki",
+        "email": "suzy.melki@hotmail.com",
+        "date_of_birth": "1967-05-23"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 58,
+        "in_target_demographic": false,
+        "yearly_spend": 790.0,
+        "consecutive_attendance": 9,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "883012319498471206",
+        "name": "Damien French",
+        "email": "maverickdoors@icloud.com",
+        "date_of_birth": "1970-05-21"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 55,
+        "in_target_demographic": true,
+        "yearly_spend": 3370.0,
+        "consecutive_attendance": 92,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 65,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1638698465909278417",
+        "name": "Sandra Khazi",
+        "email": "sjawaro@hotmail.com",
+        "date_of_birth": "1978-02-13"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 47,
+        "in_target_demographic": true,
+        "yearly_spend": 2330.0,
+        "consecutive_attendance": 23,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 80,
+      "letter_grade": "A"
+    },
+    {
+      "patient_info": {
+        "id": "1360406019615753593",
+        "name": "Sam Salem",
+        "email": "sm.jjns@gmail.com",
+        "date_of_birth": "1975-01-16"
+      },
+      "behavior_data": {
+        "future_appointments": 3,
+        "age": 50,
+        "in_target_demographic": true,
+        "yearly_spend": 2570.0,
+        "consecutive_attendance": 11,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 10
+      },
+      "total_score": 35,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1111141",
+        "name": "Michael McGowan",
+        "email": "mjm2205@gmail.com",
+        "date_of_birth": "1968-05-22"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 57,
+        "in_target_demographic": false,
+        "yearly_spend": 1190.0,
+        "consecutive_attendance": 39,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 9
+      },
+      "total_score": 20,
+      "letter_grade": "D"
+    },
+    {
+      "patient_info": {
+        "id": "1669985135153383376",
+        "name": "Adam Pickrell",
+        "email": "pickrell1@live.com.au",
+        "date_of_birth": "1996-07-19"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 28,
+        "in_target_demographic": true,
+        "yearly_spend": 2300.0,
+        "consecutive_attendance": 15,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 80,
+      "letter_grade": "A"
+    },
+    {
+      "patient_info": {
+        "id": "1709846447479850743",
+        "name": "Joanne Charlton",
+        "email": "charltosmcmj@gmail.com",
+        "date_of_birth": "1968-01-13"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 57,
+        "in_target_demographic": false,
+        "yearly_spend": 440.0,
+        "consecutive_attendance": 7,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 50,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1685460883897058389",
+        "name": "Vijay Kaul",
+        "email": "vijaykaul1@gmail.com",
+        "date_of_birth": "1964-10-08"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 60,
+        "in_target_demographic": false,
+        "yearly_spend": 1767.0,
+        "consecutive_attendance": 16,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 65,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1659161974904194184",
+        "name": "Luke Harris",
+        "email": "luke@harrisidbuild.com.au",
+        "date_of_birth": "1984-11-06"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 40,
+        "in_target_demographic": true,
+        "yearly_spend": 1650.4,
+        "consecutive_attendance": 18,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 13,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 15,
+      "letter_grade": "F"
+    },
+    {
+      "patient_info": {
+        "id": "897410496976651644",
+        "name": "Debrah Gage",
+        "email": "debbiegage007@gmail.com",
+        "date_of_birth": "1962-05-30"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 63,
+        "in_target_demographic": false,
+        "yearly_spend": 2240.0,
+        "consecutive_attendance": 25,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 60,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "68778428",
+        "name": "Nadine Ristovski",
+        "email": "nadine@yugoseafoods.com",
+        "date_of_birth": "1971-06-02"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 54,
+        "in_target_demographic": true,
+        "yearly_spend": 770.0,
+        "consecutive_attendance": 26,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 2
+      },
+      "total_score": 60,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1706907413363295541",
+        "name": "Eddy Tobaji",
+        "email": "eddy.tobaji@gmail.com",
+        "date_of_birth": "1989-10-10"
+      },
+      "behavior_data": {
+        "future_appointments": 2,
+        "age": 35,
+        "in_target_demographic": true,
+        "yearly_spend": 460.0,
+        "consecutive_attendance": 2,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 45,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1103437",
+        "name": "Jihane Karam",
+        "email": null,
+        "date_of_birth": null
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 0,
+        "in_target_demographic": false,
+        "yearly_spend": 193.5,
+        "consecutive_attendance": 30,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 1
+      },
+      "total_score": 45,
+      "letter_grade": "C"
+    },
+    {
+      "patient_info": {
+        "id": "1679472096071124663",
+        "name": "Maria Skouras",
+        "email": "skourasmaria@hotmail.com",
+        "date_of_birth": "1980-12-02"
+      },
+      "behavior_data": {
+        "future_appointments": 1,
+        "age": 44,
+        "in_target_demographic": true,
+        "yearly_spend": 1340.0,
+        "consecutive_attendance": 14,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 75,
+      "letter_grade": "B"
+    },
+    {
+      "patient_info": {
+        "id": "1112096",
+        "name": "Peter Brame",
+        "email": "brame.pj@gmail.com",
+        "date_of_birth": "1969-12-26"
+      },
+      "behavior_data": {
+        "future_appointments": 0,
+        "age": 55,
+        "in_target_demographic": true,
+        "yearly_spend": 220.0,
+        "consecutive_attendance": 17,
+        "likability": 0,
+        "open_dna_invoices": false,
+        "unpaid_invoices_count": 0,
+        "unlikability": 0,
+        "cancellations": 0,
+        "dna_count": 0
+      },
+      "total_score": 55,
+      "letter_grade": "C"
+    }
+  ]
+}

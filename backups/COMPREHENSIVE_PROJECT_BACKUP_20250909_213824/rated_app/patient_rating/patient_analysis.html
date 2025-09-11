@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        .back-btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        .analyze-btn { background: #27ae60; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
+        .behavior-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 20px 0; }
+        .behavior-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; padding: 20px; }
+        .behavior-card.positive { border-color: #27ae60; }
+        .behavior-card.negative { border-color: #e74c3c; }
+        .behavior-title { font-weight: bold; margin-bottom: 10px; }
+        .behavior-points { font-size: 1.2em; font-weight: bold; }
+        .positive .behavior-points { color: #27ae60; }
+        .negative .behavior-points { color: #e74c3c; }
+        .grade { font-size: 4em; font-weight: bold; text-align: center; margin: 20px 0; color: #e67e22; }
+        .score { text-align: center; font-size: 1.5em; color: #7f8c8d; margin-bottom: 30px; }
+        .points-edit-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .edit-btn { background: #28a745; color: white; border: none; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+        .edit-btn.unlikability { background: #dc3545; }
+        .edit-btn.save { background: #007bff; }
+        .status-text { margin-bottom: 8px; font-size: 14px; }
+        .slider-container { margin-top: 5px; }
+        .compact-slider { width: 100%; margin: 0; }
+        .behavior-card.positive:has(.compact-slider) { padding: 15px; }
+        .behavior-card.negative:has(.compact-slider) { padding: 15px; }
+        .behavior-card.positive .compact-slider:disabled { accent-color: #27ae60; opacity: 0.8; }
+    </style>
+    <div class="container">
+        <a href="/patients/search/" class="back-btn">← Back to Search</a>
+        
+        <h1>📊 Patient Behavioral Analysis</h1>
+        <h2>Patient ID: {{ patient_id }}</h2>
+        
+        <button onclick="startAnalysis()" class="analyze-btn" id="analyzeBtn">
+            🎯 Start 30-Second Analysis
+        </button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function formatBehaviorName(key) {
+            var names = {
+                'future_appointments': '📅 Future Appointments',
+                'age_demographics': '👤 Age Demographics',
+                'yearly_spend': '💰 Yearly Spend',
+                'consecutive_attendance': '✅ Consecutive Attendance',
+                'likability': '😊 Likability',
+                'unlikability': '😠 Unlikability',
+                'cancellations': '❌ Cancellations',
+                'dna': '🚫 DNA (Did Not Arrive)',
+                'unpaid_invoices': '💳 Unpaid Invoices',
+                'open_dna_invoices': '📋 Open DNA Invoices'
+            };
+            return names[key] || key.replace('_', ' ').toUpperCase();
+        }
+
+        function editLikability() {
+            document.getElementById('likability-slider').disabled = false;
+            document.getElementById('likability-btn').onclick = saveLikability;
+            document.getElementById('likability-btn').textContent = 'Save';
+            document.getElementById('likability-btn').className = 'edit-btn save';
+        }
+
+        function saveLikability() {
+            var value = document.getElementById('likability-slider').value;
+            var patientId = '{{ patient_id }}';
+            
+            fetch('/patients/update-likability/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    patient_id: patientId,
+                    likability: value
+                })
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                if (data.success) {
+                    document.getElementById('likability-slider').disabled = true;
+                    document.getElementById('likability-btn').onclick = editLikability;
+                    document.getElementById('likability-btn').textContent = 'Edit';
+                    document.getElementById('likability-btn').className = 'edit-btn';
+                    startAnalysis();
+                } else {
+                    alert('Error saving likability: ' + (data.error || 'Unknown error'));
+                }
+            }).catch(function(error) {
+                alert('Error saving likability: ' + error.message);
+            });
+        }
+
+        function editUnlikability() {
+            document.getElementById('unlikability-slider').disabled = false;
+            document.getElementById('unlikability-btn').onclick = saveUnlikability;
+            document.getElementById('unlikability-btn').textContent = 'Save';
+            document.getElementById('unlikability-btn').className = 'edit-btn save';
+        }
+
+        function saveUnlikability() {
+            var value = document.getElementById('unlikability-slider').value;
+            var patientId = '{{ patient_id }}';
+            
+            fetch('/patients/update-unlikability/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({
+                    patient_id: patientId,
+                    unlikability: value
+                })
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                if (data.success) {
+                    document.getElementById('unlikability-slider').disabled = true;
+                    document.getElementById('unlikability-btn').onclick = editUnlikability;
+                    document.getElementById('unlikability-btn').textContent = 'Edit';
+                    document.getElementById('unlikability-btn').className = 'edit-btn unlikability';
+                    startAnalysis();
+                } else {
+                    alert('Error saving unlikability: ' + (data.error || 'Unknown error'));
+                }
+            }).catch(function(error) {
+                alert('Error saving unlikability: ' + error.message);
+            });
+        }
+
+        function updateLikabilityDisplay(value) {
+            document.getElementById('likability-points').textContent = '+' + value + ' points';
+        }
+
+        function updateUnlikabilityDisplay(value) {
+            document.getElementById('unlikability-points').textContent = '-' + value + ' points';
+        }
+
+        function startAnalysis() {
+            var btn = document.getElementById('analyzeBtn');
+            var results = document.getElementById('results');
+            
+            btn.disabled = true;
+            btn.textContent = '🔄 Analyzing...';
+            results.innerHTML = '<h3>🔄 Analyzing Patient Behavior...</h3>';
+            
+            var patientId = '{{ patient_id }}';
+            var url = '/patients/' + patientId + '/analyze/';
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.textContent = '🎯 Start 30-Second Analysis';
+                
+                if (data.status === 'success') {
+                    var patientName = data.analysis.patient_name || 'Unknown Patient';
+                    
+                    var behaviorCards = '';
+                    if (data.analysis.behavior_data) {
+                        for (var key in data.analysis.behavior_data) {
+                            var behaviorData = data.analysis.behavior_data[key];
+                            var cardClass = behaviorData.points >= 0 ? 'positive' : 'negative';
+                            var pointsText = behaviorData.points >= 0 ? '+' + behaviorData.points : behaviorData.points;
+                            
+                            if (key === 'likability' || key === 'unlikability') {
+                                var currentValue = Math.abs(behaviorData.points);
+                                var statusText = 'Set by practitioner';
+                                
+                                behaviorCards += '<div class="behavior-card ' + cardClass + '">';
+                                behaviorCards += '<div class="behavior-title">' + formatBehaviorName(key) + '</div>';
+                                behaviorCards += '<div class="points-edit-row">';
+                                behaviorCards += '<div class="behavior-points" id="' + key + '-points">' + pointsText + ' points (' + statusText + ')</div>';
+                                behaviorCards += '<button id="' + key + '-btn" onclick="edit' + key.charAt(0).toUpperCase() + key.slice(1) + '()" class="edit-btn ' + (key === 'unlikability' ? 'unlikability' : '') + '">Edit</button>';
+                                behaviorCards += '</div>';
+                                behaviorCards += '<div class="slider-container">';
+                                behaviorCards += '<input type="range" id="' + key + '-slider" min="0" max="100" value="' + currentValue + '" disabled class="compact-slider" oninput="update' + key.charAt(0).toUpperCase() + key.slice(1) + 'Display(this.value)">';
+                                behaviorCards += '</div>';
+                                behaviorCards += '</div>';
+                            } else {
+                                behaviorCards += '<div class="behavior-card ' + cardClass + '">';
+                                behaviorCards += '<div class="behavior-title">' + formatBehaviorName(key) + '</div>';
+                                behaviorCards += '<div class="behavior-points">' + pointsText + ' points</div>';
+                                behaviorCards += '<div>' + behaviorData.description + '</div>';
+                                behaviorCards += '</div>';
+                            }
+                        }
+                    }
+                    
+                    results.innerHTML = '<h3>✅ Analysis Complete for ' + patientName + '</h3>' +
+                                      '<div class="grade">' + data.analysis.letter_grade + '</div>' +
+                                      '<div class="score">Total Score: ' + data.analysis.total_score + ' points</div>' +
+                                      '<div class="behavior-grid">' + behaviorCards + '</div>';
+                } else {
+                    results.innerHTML = '<div style="color: red;">Error: ' + (data.error || 'Analysis failed') + '</div>';
+                }
+            })
+            .catch(function(error) {
+                btn.disabled = false;
+                btn.textContent = '🎯 Start 30-Second Analysis';
+                results.innerHTML = '<div style="color: red;">Error: ' + error.message + '</div>';
+            });
+        }
+    </script>
+</body>
+</html>

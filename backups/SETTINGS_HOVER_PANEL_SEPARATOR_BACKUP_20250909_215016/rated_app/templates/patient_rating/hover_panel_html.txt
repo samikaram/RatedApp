@@ -1,0 +1,38 @@
+<div id="settings-hover-panel" class="settings-hover-panel" aria-hidden="true">
+    <div class="hover-panel-close" aria-label="Close Settings">×</div>
+    <div class="hover-panel-content">
+        <h2>RatedApp Settings</h2>
+        
+        <div class="clinic-info-container">
+            <section class="settings-section">
+                <h3>Clinic Information</h3>
+                
+                <div class="form-group">
+                    <label for="clinic-name">Clinic Name</label>
+                    <input type="text" id="clinic-name" name="clinic_name" placeholder="Enter clinic name" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="clinic-location">Location</label>
+                    <input type="text" id="clinic-location" name="clinic_location" placeholder="Enter location" disabled>
+                </div>
+
+                <div class="form-group">
+                    <label for="clinic-timezone">Timezone</label>
+                    <select id="clinic-timezone" name="clinic_timezone" disabled>
+                        <option value="Australia/Sydney">Sydney (AEST)</option>
+                        <option value="Australia/Melbourne">Melbourne (AEST)</option>
+                        <option value="Australia/Brisbane">Brisbane (AEST)</option>
+                        <option value="Australia/Perth">Perth (AWST)</option>
+                        <option value="Australia/Adelaide">Adelaide (ACST)</option>
+                    </select>
+                </div>
+
+                <div class="settings-actions">
+                    <button id="edit-clinic-settings" aria-label="Edit Clinic Settings">Edit</button>
+                    <button id="save-clinic-settings" style="display:none;" aria-label="Save Clinic Settings">Save</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

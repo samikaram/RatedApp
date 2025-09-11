@@ -1,0 +1,72 @@
+{
+  "future_appointments": {
+    "count": 0,
+    "appointments": [],
+    "scoring_bracket": "None (0)",
+    "points_awarded": 0
+  },
+  "age_demographics": {
+    "age": 38,
+    "date_of_birth": "1987-03-04",
+    "in_target_demographic": true,
+    "target_range": "20-55 years",
+    "points_awarded": 10
+  },
+  "yearly_spend": {
+    "amount": 0,
+    "invoice_count": 0,
+    "spending_bracket": "None ($0)",
+    "points_awarded": 0
+  },
+  "consecutive_attendance": {
+    "streak": 11,
+    "attendance_bracket": "Excellent (10+ consecutive)",
+    "points_awarded": 30,
+    "streak_broken_by": null
+  },
+  "likability": {
+    "score": 0,
+    "manual_input_required": true,
+    "points_awarded": 0
+  },
+  "open_dna_invoices": {
+    "has_open_dna_invoice": false,
+    "dna_invoice_count": 0,
+    "points_deducted": 0
+  },
+  "unpaid_invoices": {
+    "count": 0,
+    "points_deducted": 0,
+    "total_unpaid_amount": 0
+  },
+  "cancellations": {
+    "count": 0,
+    "appointments": [],
+    "reasons": {},
+    "points_deducted": 0,
+    "cancellation_rate": 0.0
+  },
+  "dna": {
+    "count": 0,
+    "appointments": [],
+    "dates": [],
+    "points_deducted": 0,
+    "dna_rate": 0.0
+  },
+  "unlikability": {
+    "score": 0,
+    "manual_input_required": true,
+    "range": "0-100 points (100 = most unlikable)",
+    "points_deducted": 0
+  },
+  "total_score": 40,
+  "letter_grade": "C",
+  "patient_info": {
+    "id": "1108803",
+    "first_name": "Jodie",
+    "last_name": "Vlassis",
+    "email": null,
+    "phone": null,
+    "date_of_birth": "1987-03-04"
+  }
+}

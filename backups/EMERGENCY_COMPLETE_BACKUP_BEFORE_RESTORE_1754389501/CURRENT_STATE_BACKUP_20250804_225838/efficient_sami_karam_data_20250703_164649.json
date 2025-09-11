@@ -1,0 +1,116 @@
+{
+  "extraction_date": "2025-07-03T16:46:49.075041+10:00",
+  "method": "SERVER-SIDE FILTERED - Official Cliniko API Documentation",
+  "patient_id": "1104221",
+  "patient_info": {
+    "accepted_email_marketing": true,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": false,
+    "address_1": "11 Richmond Street",
+    "address_2": "",
+    "address_3": "",
+    "appointment_notes": "Rated B+",
+    "archived_at": null,
+    "city": "South Wentworthville",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2012-12-14T04:36:08Z",
+    "custom_fields": null,
+    "date_of_birth": "1951-01-15",
+    "deleted_at": null,
+    "dva_card_number": "",
+    "email": "sami_k81@hotmail.com",
+    "emergency_contact": "",
+    "first_name": "Sami",
+    "gender": null,
+    "gender_identity": "",
+    "id": "1104221",
+    "invoice_default_to": "",
+    "invoice_email": null,
+    "invoice_extra_information": "",
+    "label": "Sami Karam",
+    "last_name": "Karam",
+    "medicare": "",
+    "medicare_reference_number": "",
+    "merged_at": null,
+    "notes": "**30/12/2024 Peptalkr Transactional Email sent to patient at sami_k81@hotmail.com: No Appointment (6 weeks)\r\n\r\nParramatta\r\nRated C+",
+    "occupation": "Osteopath",
+    "old_reference_id": "",
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "61412840855",
+        "number": "0412840855",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2145",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": null,
+    "reminder_type": "Email",
+    "sex": "Male",
+    "state": "Nsw",
+    "time_zone": null,
+    "title": "Dr",
+    "updated_at": "2025-07-02T13:12:06Z",
+    "concession_type": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/concession_types/379"
+      }
+    },
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1556864884275152586"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1104221"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1104221"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+    }
+  },
+  "appointments": [],
+  "invoices": [],
+  "metrics": {
+    "total_appointments": 0,
+    "attended": 0,
+    "cancelled": 0,
+    "dna": 0,
+    "attendance_rate": 0,
+    "total_invoiced": 0,
+    "total_paid": 0,
+    "unpaid_amount": 0,
+    "payment_rate": 0
+  },
+  "efficiency_note": "Used server-side filtering per official API docs - no bulk data download required"
+}

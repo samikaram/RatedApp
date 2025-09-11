@@ -1,0 +1,14 @@
+{
+  "extraction_date": "2025-07-02T12:24:25.530942+10:00",
+  "date_range": "16/06/2025 - 21/06/2025",
+  "total_patients": 135,
+  "total_appointments": 157,
+  "total_invoices": 142,
+  "total_referral_sources": 36,
+  "location_stats": {},
+  "behavior_stats": {
+    "attended": 143,
+    "dna": 11,
+    "cancelled": 0
+  }
+}

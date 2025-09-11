@@ -1,0 +1,1223 @@
+import json
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse, HttpResponseRedirect
+from django.views.decorators.http import require_POST
+from django.views import View
+from django.contrib import messages
+from django.urls import reverse
+from django.db.models import F
+from django.db import models, IntegrityError, transaction
+import requests
+import base64
+import time
+from .models import ScoringConfiguration, Patient, AgeBracket, SpendBracket
+from .utils.patient_analyzer import analyze_patient_behavior
+from django.views.decorators.csrf import csrf_exempt
+
+# Cliniko API Configuration
+RAW_API_KEY = "MS0xNzIwNjExOTk1MjMwNjY3Nzk4LWJieWZXTDBvV2w5L1pYOFVsK3hsRlFPeHlocmhkbVRw-au1"
+ENCODED_API_KEY = base64.b64encode(f"{RAW_API_KEY}:".encode()).decode()
+BASE_URL = "https://api.au1.cliniko.com/v1"
+HEADERS = {
+    'Authorization': f'Basic {ENCODED_API_KEY}',
+    'Accept': 'application/json',
+    'User-Agent': 'RatedApp Patient Search'
+}
+
+class HomeView(View):
+    def get(self, request):
+        return render(request, 'patient_rating/home.html')
+
+class PatientSearchView(View):
+    def get(self, request):
+        return render(request, 'patient_rating/patient_search.html')
+    
+    def post(self, request):
+        search_type = request.POST.get('search_type', 'name')
+        search_value = request.POST.get('search_value', '').strip()
+        
+        if not search_value:
+            return render(request, 'patient_rating/patient_search.html', {
+                'error': 'Please enter a search value'
+            })
+        
+        try:
+            if search_type == 'name':
+                patients = self.search_by_name(search_value)
+            elif search_type == 'id':
+                patients = self.search_by_id(search_value)
+            else:
+                patients = []
+            
+            return render(request, 'patient_rating/patient_search.html', {
+                'patients': patients,
+                'search_value': search_value,
+                'search_type': search_type
+            })
+        except Exception as e:
+            return render(request, 'patient_rating/patient_search.html', {
+                'error': f'Search failed: {str(e)}'
+            })
+    
+    def get_phone_numbers(self, patient):
+        phone_numbers = patient.get('patient_phone_numbers', [])
+        if not phone_numbers:
+            return "Not provided"
+        formatted_phones = []
+        for phone in phone_numbers:
+            number = phone.get('number', '')
+            phone_type = phone.get('phone_type', '')
+            if number:
+                formatted_phones.append(f"{number} ({phone_type})")
+        return " | ".join(formatted_phones) if formatted_phones else "Not provided"
+    
+    def search_by_name(self, name):
+        name_parts = name.split(' ', 1)
+        first_name = name_parts[0]
+        url = f"{BASE_URL}/patients"
+        params = {'q[]': f'first_name:={first_name}'}
+        response = requests.get(url, headers=HEADERS, params=params)
+        response.raise_for_status()
+        data = response.json()
+        patients = data.get('patients', [])
+        formatted_patients = []
+        for patient in patients:
+            phone = self.get_phone_numbers(patient)
+            formatted_patients.append({
+                'id': patient.get('id'),
+                'first_name': patient.get('first_name'),
+                'last_name': patient.get('last_name'),
+                'email': patient.get('email'),
+                'phone': phone,
+                'date_of_birth': patient.get('date_of_birth'),
+                'full_name': f"{patient.get('first_name', '')} {patient.get('last_name', '')}".strip()
+            })
+        return formatted_patients
+    
+    def search_by_id(self, patient_id):
+        url = f"{BASE_URL}/patients/{patient_id}"
+        response = requests.get(url, headers=HEADERS)
+        response.raise_for_status()
+        patient = response.json()
+        phone = self.get_phone_numbers(patient)
+        return [{
+            'id': patient.get('id'),
+            'first_name': patient.get('first_name'),
+            'last_name': patient.get('last_name'),
+            'email': patient.get('email'),
+            'phone': phone,
+            'date_of_birth': patient.get('date_of_birth'),
+            'full_name': f"{patient.get('first_name', '')} {patient.get('last_name', '')}".strip()
+        }]
+
+class PatientAnalysisView(View):
+    def get(self, request, patient_id):
+        return render(request, 'patient_rating/patient_analysis.html', {
+            'patient_id': patient_id
+        })
+    
+    def post(self, request, patient_id):
+        try:
+            # Get active scoring configuration for dynamic weights
+            config = ScoringConfiguration.get_active_config()
+            analysis = analyze_patient_behavior(patient_id, config)
+            
+            if analysis:
+                return JsonResponse({
+                    'status': 'success',
+                    'analysis': analysis
+                })
+            else:
+                return JsonResponse({
+                    'status': 'error',
+                    'message': 'Analysis failed'
+                })
+        except Exception as e:
+            return JsonResponse({
+                'status': 'error',
+                'message': str(e)
+            })
+
+class UpdateLikabilityView(View):
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            patient_id = data.get('patient_id')
+            likability_value = int(data.get('likability', 0))
+            
+            # Get or create patient record
+            patient, created = Patient.objects.get_or_create(
+                cliniko_patient_id=patient_id,
+                defaults={'patient_name': f'Patient {patient_id}'}
+            )
+            
+            # Update likability value
+            patient.likability = likability_value
+            patient.save()
+            
+            return JsonResponse({'success': True})
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+class UpdateUnlikabilityView(View):
+    def post(self, request):
+        try:
+            data = json.loads(request.body)
+            patient_id = data.get('patient_id')
+            unlikability_value = int(data.get('unlikability', 0))
+            
+            # Get or create patient record
+            patient, created = Patient.objects.get_or_create(
+                cliniko_patient_id=patient_id,
+                defaults={'patient_name': f'Patient {patient_id}'}
+            )
+            
+            # Update unlikability value
+            patient.unlikability = unlikability_value
+            patient.save()
+            
+            return JsonResponse({'success': True})
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+def unified_dashboard(request):
+    # Canonical URL redirect - always use /patients/dashboard/
+    if request.path == "/dashboard/":
+        return HttpResponseRedirect("/patients/dashboard/")
+
+    if request.method == "POST":
+        try:
+            active_config = ScoringConfiguration.objects.get(is_active=True)
+            action = request.POST.get('action')
+            
+            # Handle age bracket operations
+            if action == 'delete_age_bracket':
+                bracket_id = request.POST.get('bracket_id')
+                if bracket_id:
+                    bracket = get_object_or_404(AgeBracket, id=bracket_id)
+                    bracket.delete()
+                    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                        return JsonResponse({"success": True})
+            
+            elif action == 'add_age_bracket':
+                print("DEBUG: add_age_bracket action triggered")
+                min_age = request.POST.get('min_age')
+                max_age = request.POST.get('max_age')
+                percentage = request.POST.get('percentage')
+                
+                if min_age and max_age and percentage:
+                    try:
+                        new_min_age = int(min_age)
+                        new_max_age = int(max_age)
+                        new_percentage = int(percentage)
+                        
+                        print(f"DEBUG: Values - min_age: {new_min_age}, max_age: {new_max_age}, percentage: {new_percentage}")
+                        
+                        # Simple approach: just add with next available order
+                        max_order = AgeBracket.objects.filter(
+                            config=active_config
+                        ).aggregate(max_order=models.Max('order'))['max_order'] or 0
+                        
+                        print(f"DEBUG: Creating bracket with order {max_order + 1}")
+                        
+                        # Create new bracket
+                        AgeBracket.objects.create(
+                            config=active_config,
+                            min_age=new_min_age,
+                            max_age=new_max_age,
+                            percentage=new_percentage,
+                            order=max_order + 1
+                        )
+                        
+                        print("DEBUG: Bracket created successfully")
+                        
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": True})
+                            
+                    except Exception as e:
+                        print(f"DEBUG: Error creating bracket: {e}")
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+
+            # Handle spend bracket operations
+            elif action == 'delete_spend_bracket':
+                bracket_id = request.POST.get('bracket_id')
+                if bracket_id:
+                    bracket = get_object_or_404(SpendBracket, id=bracket_id)
+                    bracket.delete()
+                    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                        return JsonResponse({"success": True})
+            
+            elif action == 'add_spend_bracket':
+                print("DEBUG: add_spend_bracket action triggered")
+                min_spend = request.POST.get('min_spend')
+                max_spend = request.POST.get('max_spend')
+                percentage = request.POST.get('percentage')
+                
+                if min_spend and max_spend and percentage:
+                    try:
+                        new_min_spend = float(min_spend)
+                        new_max_spend = float(max_spend)
+                        new_percentage = int(percentage)
+                        
+                        print(f"DEBUG: Values - min_spend: {new_min_spend}, max_spend: {new_max_spend}, percentage: {new_percentage}")
+                        
+                        # Simple approach: just add with next available order
+                        max_order = SpendBracket.objects.filter(
+                            config=active_config
+                        ).aggregate(max_order=models.Max('order'))['max_order'] or 0
+                        
+                        print(f"DEBUG: Creating spend bracket with order {max_order + 1}")
+                        
+                        # Create new bracket
+                        SpendBracket.objects.create(
+                            config=active_config,
+                            min_spend=new_min_spend,
+                            max_spend=new_max_spend,
+                            percentage=new_percentage,
+                            order=max_order + 1
+                        )
+                        
+                        print("DEBUG: Spend bracket created successfully")
+                        
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": True})
+                            
+                    except Exception as e:
+                        print(f"DEBUG: Error creating spend bracket: {e}")
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+            
+            # Handle weight updates
+
+            # Handle Unpaid Invoices points update
+
+            # Bulk bracket operations for preset application
+            elif action == "clear_age_brackets":
+                try:
+                    active_config = ScoringConfiguration.objects.get(is_active=True)
+                    AgeBracket.objects.filter(config=active_config).delete()
+                    return JsonResponse({"success": True, "message": "Age brackets cleared"})
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": str(e)})
+
+            elif action == "clear_spend_brackets":
+                try:
+                    active_config = ScoringConfiguration.objects.get(is_active=True)
+                    SpendBracket.objects.filter(config=active_config).delete()
+                    return JsonResponse({"success": True, "message": "Spend brackets cleared"})
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": str(e)})
+
+            elif action == "insert_age_brackets":
+                try:
+                    import json
+                    active_config = ScoringConfiguration.objects.get(is_active=True)
+                    brackets_data = json.loads(request.POST.get("brackets_data", "[]"))
+                    
+                    for bracket_data in brackets_data:
+                        AgeBracket.objects.create(
+                            config=active_config,
+                            min_age=bracket_data["min_age"],
+                            max_age=bracket_data["max_age"],
+                            percentage=bracket_data["percentage"],
+                            order=bracket_data["order"]
+                        )
+                    return JsonResponse({"success": True, "message": f"Inserted {len(brackets_data)} age brackets"})
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": str(e)})
+
+            elif action == "insert_spend_brackets":
+                try:
+                    import json
+                    active_config = ScoringConfiguration.objects.get(is_active=True)
+                    brackets_data = json.loads(request.POST.get("brackets_data", "[]"))
+                    
+                    for bracket_data in brackets_data:
+                        SpendBracket.objects.create(
+                            config=active_config,
+                            min_spend=bracket_data["min_spend"],
+                            max_spend=bracket_data["max_spend"],
+                            percentage=bracket_data["percentage"],
+                            order=bracket_data["order"]
+                        )
+                    return JsonResponse({"success": True, "message": f"Inserted {len(brackets_data)} spend brackets"})
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": str(e)})
+            elif action == 'update_unpaid_invoices_points':
+                points_value = request.POST.get('points_per_unpaid_invoice')
+                if points_value:
+                    try:
+                        points_int = int(points_value)
+                        if 1 <= points_int <= 100:
+                            active_config.points_per_unpaid_invoice = points_int
+                            active_config.save()
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": True})
+                        else:
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": False, "error": "Points must be between 1 and 100"})
+                    except ValueError:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": "Invalid points value"})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+
+
+            # Handle DNA points update
+            elif action == 'update_dna_points':
+                points_value = request.POST.get('points_per_dna')
+                if points_value:
+                    try:
+                        points_int = int(points_value)
+                        if 1 <= points_int <= 100:
+                            active_config.points_per_dna = points_int
+                            active_config.save()
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": True})
+                        else:
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": False, "error": "Points must be between 1 and 100"})
+                    except ValueError:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": "Invalid points value"})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+
+
+            # Handle cancellations points update
+            elif action == 'update_cancellations_points':
+                points_value = request.POST.get('points_per_cancellation')
+                if points_value:
+                    try:
+                        points_int = int(points_value)
+                        if 1 <= points_int <= 100:
+                            active_config.points_per_cancellation = points_int
+                            active_config.save()
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": True})
+                        else:
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": False, "error": "Points must be between 1 and 100"})
+                    except ValueError:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": "Invalid points value"})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+
+
+            # Handle consecutive attendance points update
+            elif action == 'update_consecutive_points':
+                points_value = request.POST.get('points_per_consecutive_attendance')
+                if points_value:
+                    try:
+                        points_int = int(points_value)
+                        if 1 <= points_int <= 100:
+                            active_config.points_per_consecutive_attendance = points_int
+                            active_config.save()
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": True})
+                        else:
+                            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                                return JsonResponse({"success": False, "error": "Points must be between 1 and 100"})
+                    except ValueError:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": "Invalid points value"})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({"success": False, "error": str(e)})
+            elif action == 'apply_preset':
+                preset_id = request.POST.get('preset_id')
+                if preset_id:
+                    try:
+                        # Clear all active flags
+                        ScoringConfiguration.objects.update(is_active=False)
+                        # Set selected preset as active
+                        preset = ScoringConfiguration.objects.get(id=preset_id)
+                        preset.is_active = True
+                        preset.save()
+                        
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({
+                                'success': True, 
+                                'message': f'Preset {preset.name} applied successfully'
+                            })
+                    except ScoringConfiguration.DoesNotExist:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({'success': False, 'error': 'Preset not found'})
+                    except Exception as e:
+                        if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                            return JsonResponse({'success': False, 'error': str(e)})
+            elif action == "delete_preset":
+                preset_id = request.POST.get("preset_id")
+                if not preset_id:
+                    return JsonResponse({"success": False, "error": "No preset ID provided"})
+                
+                try:
+                    # Check if this is the only preset
+                    total_presets = ScoringConfiguration.objects.count()
+                    if total_presets <= 1:
+                        return JsonResponse({"success": False, "error": "Cannot delete the last remaining preset"})
+                    
+                    # Get and delete the preset
+                    # Get preset and check if it's currently active
+                    preset = ScoringConfiguration.objects.get(id=preset_id)
+                    preset_name = preset.name
+                    was_active = preset.is_active
+                    
+                    # If active preset is being deleted, find fallback
+                    fallback_preset = None
+                    if was_active:
+                        # Priority 1: Always try Factory Settings first
+                        try:
+                            fallback_preset = ScoringConfiguration.objects.get(name='Factory Settings')
+                            if fallback_preset.id == preset_id:
+                                # If deleting Factory Settings itself, get next available
+                                fallback_preset = ScoringConfiguration.objects.exclude(id=preset_id).first()
+                        except ScoringConfiguration.DoesNotExist:
+                            # If Factory Settings doesn't exist, get next available
+                            fallback_preset = ScoringConfiguration.objects.exclude(id=preset_id).first()
+                        if fallback_preset:
+                            fallback_preset.is_active = True
+                            fallback_preset.save()
+                    
+                    # Delete the preset
+                    preset.delete()
+                    
+                    # Enhanced JSON response with fallback data
+                    return JsonResponse({
+                        "success": True, 
+                        "message": f"Preset {preset_name} deleted successfully",
+                        "was_active_preset_deleted": was_active,
+                        "deleted_preset_name": preset_name,
+                        "fallback_preset": {
+                            "id": fallback_preset.id if fallback_preset else None,
+                            "name": fallback_preset.name if fallback_preset else None,
+                        } if fallback_preset else None
+                    })
+                    return JsonResponse({"success": False, "error": "Preset not found"})
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": str(e)})
+            elif action == "create_preset":
+                try:
+                    # Get preset data from request
+                    preset_name = request.POST.get('preset_name', '').strip()
+                    preset_description = request.POST.get('preset_description', '').strip()
+                    
+                    if not preset_name:
+                        return JsonResponse({"success": False, "error": "Preset name is required"})
+
+                    # Get active configuration (source for copying brackets)
+                    try:
+                        active_config = ScoringConfiguration.objects.get(is_active=True)
+                        print(f"DEBUG: Using active config '{active_config.name}' as source for brackets")
+                    except ScoringConfiguration.DoesNotExist:
+                        return JsonResponse({"success": False, "error": "No active configuration found"})
+
+                    # Process slider values from screen (FormData)
+                    slider_fields = {
+                        'future_appointments_weight': int(request.POST.get('future_appointments_weight', active_config.future_appointments_weight)),
+                        'age_demographics_weight': int(request.POST.get('age_demographics_weight', active_config.age_demographics_weight)),
+                        'yearly_spend_weight': int(request.POST.get('yearly_spend_weight', active_config.yearly_spend_weight)),
+                        'consecutive_attendance_weight': int(request.POST.get('consecutive_attendance_weight', active_config.consecutive_attendance_weight)),
+                        'cancellations_weight': int(request.POST.get('cancellations_weight', active_config.cancellations_weight)),
+                        'dna_weight': int(request.POST.get('dna_weight', active_config.dna_weight)),
+                        'unpaid_invoices_weight': int(request.POST.get('unpaid_invoices_weight', active_config.unpaid_invoices_weight)),
+                        'open_dna_invoice_weight': int(request.POST.get('open_dna_invoice_weight', active_config.open_dna_invoice_weight))
+                    }
+                    
+                    # Process points values from screen (FormData)
+                    points_fields = {
+                        'points_per_consecutive_attendance': int(request.POST.get('points_per_consecutive_attendance', active_config.points_per_consecutive_attendance)),
+                        'points_per_cancellation': int(request.POST.get('points_per_cancellation', active_config.points_per_cancellation)),
+                        'points_per_dna': int(request.POST.get('points_per_dna', active_config.points_per_dna)),
+                        'points_per_unpaid_invoice': int(request.POST.get('points_per_unpaid_invoice', active_config.points_per_unpaid_invoice))
+                    }
+                    
+                    print(f"DEBUG: Creating preset with screen values - sliders: {slider_fields}")
+                    print(f"DEBUG: Creating preset with screen values - points: {points_fields}")
+
+                    # Create new preset with screen values
+                    new_preset = ScoringConfiguration.objects.create(
+                        name=preset_name,
+                        description=preset_description,
+                        is_active=False,  # Don't activate immediately
+                        **slider_fields,
+                        **points_fields
+                    )
+                    
+                    # Copy brackets from active config (screen bracket capture will be added later)
+                    for age_bracket in active_config.age_brackets.all():
+                        new_preset.age_brackets.create(
+                            min_age=age_bracket.min_age,
+                            max_age=age_bracket.max_age,
+                            percentage=age_bracket.percentage,
+                            order=age_bracket.order
+                        )
+                    
+                    for spend_bracket in active_config.spend_brackets.all():
+                        new_preset.spend_brackets.create(
+                            min_spend=spend_bracket.min_spend,
+                            max_spend=spend_bracket.max_spend,
+                            percentage=spend_bracket.percentage,
+                            order=spend_bracket.order
+                        )
+                    
+                    print(f"DEBUG: Created preset '{preset_name}' with {new_preset.age_brackets.count()} age brackets and {new_preset.spend_brackets.count()} spend brackets")
+                    
+                    return JsonResponse({
+                        "success": True, 
+                        "message": f"Preset '{preset_name}' created successfully",
+                        "preset_id": new_preset.id,
+                        "preset_name": new_preset.name
+                    })
+                    
+                except ValueError as e:
+                    return JsonResponse({"success": False, "error": f"Invalid field values: {str(e)}"})
+                except Exception as e:
+                    print(f"ERROR: Failed to create preset: {str(e)}")
+                    return JsonResponse({"success": False, "error": f"Failed to create preset: {str(e)}"})
+                        print("DEBUG: No active config found, using hardcoded defaults")
+                        active_config = None
+
+                    
+                    # Create new ScoringConfiguration with current form values
+                    new_preset = ScoringConfiguration.objects.create(
+                        name=preset_name,
+                        description=preset_description,
+                        is_active=False,  # New presets are not active by default
+                        
+                        # Copy current slider values from form
+                        future_appointments_weight=int(request.POST.get('future_appointments_weight', active_config.future_appointments_weight if active_config else 20)),
+                        age_demographics_weight=int(request.POST.get('age_demographics_weight', active_config.age_demographics_weight if active_config else 10)),
+                        yearly_spend_weight=int(request.POST.get('yearly_spend_weight', active_config.yearly_spend_weight if active_config else 25)),
+                        consecutive_attendance_weight=int(request.POST.get('consecutive_attendance_weight', active_config.consecutive_attendance_weight if active_config else 30)),
+                        likability_weight=int(request.POST.get('likability_weight', active_config.likability_weight if active_config else 20)),
+                        cancellations_weight=int(request.POST.get('cancellations_weight', active_config.cancellations_weight if active_config else 20)),
+                        dna_weight=int(request.POST.get('dna_weight', active_config.dna_weight if active_config else 15)),
+                        unpaid_invoices_weight=int(request.POST.get('unpaid_invoices_weight', active_config.unpaid_invoices_weight if active_config else 50)),
+                        open_dna_invoice_weight=int(request.POST.get('open_dna_invoice_weight', active_config.open_dna_invoice_weight if active_config else 100)),
+                        
+                        # Copy points per occurrence values
+                        points_per_consecutive_attendance=int(request.POST.get('points_per_consecutive_attendance', active_config.points_per_consecutive_attendance if active_config else 0)),
+                        points_per_cancellation=int(request.POST.get('points_per_cancellation', active_config.points_per_cancellation if active_config else 0)),
+                        points_per_dna=int(request.POST.get('points_per_dna', active_config.points_per_dna if active_config else 0)),
+                        points_per_unpaid_invoice=int(request.POST.get('points_per_unpaid_invoice', active_config.points_per_unpaid_invoice if active_config else 0))
+                    )
+                    
+                    # Return preset details for frontend dropdown update
+                    return JsonResponse({
+                        "success": True,
+                        "preset_id": new_preset.id,
+                        "preset_name": new_preset.name,
+                        "message": f"Preset '{preset_name}' created successfully"
+                    })
+                    
+                except Exception as e:
+                    return JsonResponse({"success": False, "error": f"Error creating preset: {str(e)}"})
+
+
+
+
+
+
+            elif action == "update_preset":
+                try:
+                    # Get active configuration to update
+                    active_config = ScoringConfiguration.objects.get(is_active=True)
+                    
+                    # DEBUG: Log what backend receives
+                    print(f"=== UPDATE PRESET DEBUG ===")
+                    print(f"open_dna_invoice_weight received: {request.POST.get('open_dna_invoice_weight')}")
+                    print(f"Active config before update: {active_config.open_dna_invoice_weight}")
+                    
+                    # Update all weight values from current screen state
+                    active_config.future_appointments_weight = int(request.POST.get("future_appointments_weight", active_config.future_appointments_weight))
+                    active_config.age_demographics_weight = int(request.POST.get("age_demographics_weight", active_config.age_demographics_weight))
+                    active_config.yearly_spend_weight = int(request.POST.get("yearly_spend_weight", active_config.yearly_spend_weight))
+                    active_config.consecutive_attendance_weight = int(request.POST.get("consecutive_attendance_weight", active_config.consecutive_attendance_weight))
+                    active_config.cancellations_weight = int(request.POST.get("cancellations_weight", active_config.cancellations_weight))
+                    active_config.dna_weight = int(request.POST.get("dna_weight", active_config.dna_weight))
+                    active_config.unpaid_invoices_weight = int(request.POST.get("unpaid_invoices_weight", active_config.unpaid_invoices_weight))
+                    active_config.open_dna_invoice_weight = int(request.POST.get("open_dna_invoice_weight", active_config.open_dna_invoice_weight))
+                    
+                    # Update all points values from current screen state
+                    active_config.points_per_consecutive_attendance = int(request.POST.get("points_per_consecutive_attendance", active_config.points_per_consecutive_attendance))
+                    active_config.points_per_cancellation = int(request.POST.get("points_per_cancellation", active_config.points_per_cancellation))
+                    active_config.points_per_dna = int(request.POST.get("points_per_dna", active_config.points_per_dna))
+                    active_config.points_per_unpaid_invoice = int(request.POST.get("points_per_unpaid_invoice", active_config.points_per_unpaid_invoice))
+                    
+                    # Clear existing brackets for this preset
+                    AgeBracket.objects.filter(config=active_config).delete()
+                    SpendBracket.objects.filter(config=active_config).delete()
+                    
+                    # Recreate age brackets from current screen state
+                    age_brackets_data = request.POST.get("age_brackets_data")
+                    if age_brackets_data:
+                        import json
+                        try:
+                            brackets_data = json.loads(age_brackets_data)
+                            for bracket_data in brackets_data:
+                                AgeBracket.objects.create(
+                                    config=active_config,
+                                    min_age=bracket_data["min_age"],
+                                    max_age=bracket_data["max_age"],
+                                    percentage=bracket_data["percentage"],
+                                    order=bracket_data.get("order", 0)
+                                )
+                        except json.JSONDecodeError:
+                            pass  # Skip if invalid JSON
+                    
+                    # Recreate spend brackets from current screen state
+                    spend_brackets_data = request.POST.get("spend_brackets_data")
+                    if spend_brackets_data:
+                        import json
+                        try:
+                            brackets_data = json.loads(spend_brackets_data)
+                            for bracket_data in brackets_data:
+                                SpendBracket.objects.create(
+                                    config=active_config,
+                                    min_spend=bracket_data["min_spend"],
+                                    max_spend=bracket_data["max_spend"],
+                                    percentage=bracket_data["percentage"],
+                                    order=bracket_data.get("order", 0)
+                                )
+                        except json.JSONDecodeError:
+                            pass  # Skip if invalid JSON
+                    
+                    # Save the updated configuration
+                    print(f"Active config after update: {active_config.open_dna_invoice_weight}")
+                    active_config.save()
+                    print(f"Active config after save: {active_config.open_dna_invoice_weight}")
+                    
+                    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                        return JsonResponse({
+                            "success": True, 
+                            "message": f"Updated preset '{active_config.name}' successfully",
+                            "preset_name": active_config.name
+                        })
+                        
+                except ScoringConfiguration.DoesNotExist:
+                    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                        return JsonResponse({"success": False, "error": "No active preset found to update"})
+                except Exception as e:
+                    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                        return JsonResponse({"success": False, "error": str(e)})
+
+
+            else:
+                active_config.future_appointments_weight = int(request.POST.get("future_appointments_weight", active_config.future_appointments_weight))
+                active_config.age_demographics_weight = int(request.POST.get("age_demographics_weight", active_config.age_demographics_weight))
+                active_config.yearly_spend_weight = int(request.POST.get("yearly_spend_weight", active_config.yearly_spend_weight))
+                active_config.consecutive_attendance_weight = int(request.POST.get("consecutive_attendance_weight", active_config.consecutive_attendance_weight))
+                active_config.cancellations_weight = int(request.POST.get("cancellations_weight", active_config.cancellations_weight))
+                active_config.dna_weight = int(request.POST.get("dna_weight", active_config.dna_weight))
+                active_config.unpaid_invoices_weight = int(request.POST.get("unpaid_invoices_weight", active_config.unpaid_invoices_weight))
+                active_config.open_dna_invoice_weight = int(request.POST.get("open_dna_invoice_weight", active_config.open_dna_invoice_weight))
+
+                # Save points values from form data
+                active_config.points_per_consecutive_attendance = int(request.POST.get("points_per_consecutive_attendance", active_config.points_per_consecutive_attendance))
+                active_config.points_per_cancellation = int(request.POST.get("points_per_cancellation", active_config.points_per_cancellation))
+                active_config.points_per_dna = int(request.POST.get("points_per_dna", active_config.points_per_dna))
+                active_config.points_per_unpaid_invoice = int(request.POST.get("points_per_unpaid_invoice", active_config.points_per_unpaid_invoice))
+                active_config.save()
+                
+                if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                    return JsonResponse({"success": True})
+                    
+                return HttpResponseRedirect(reverse("unified_dashboard"))
+                
+        except Exception as e:
+            if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+                return JsonResponse({"success": False, "error": str(e)})
+
+            pass
+    
+    # GET request - display the dashboard
+    try:
+        # Force completely fresh database query to bypass all Django caching
+        from django.db import connection
+        connection.queries_log.clear()  # Clear query cache
+        active_config = ScoringConfiguration.objects.select_related().get(is_active=True)
+        # Double refresh to ensure fresh data
+        active_config.refresh_from_db()
+        # DEBUG: Check what values are loaded for template
+        print(f"=== GET REQUEST DEBUG ===")
+        print(f"Template will receive open_dna_invoice_weight: {active_config.open_dna_invoice_weight}")
+        age_brackets = AgeBracket.objects.filter(config=active_config).order_by('min_age')
+        spend_brackets = SpendBracket.objects.filter(config=active_config).order_by('min_spend')
+    except ScoringConfiguration.DoesNotExist:
+        active_config = None
+        age_brackets = []
+        spend_brackets = []
+    
+    context = {
+        'active_config': active_config,
+        'age_brackets': age_brackets,
+        'spend_brackets': spend_brackets,
+    }
+    
+    return render(request, 'patient_rating/unified_dashboard.html', context)
+
+
+def get_presets(request):
+    """Return JSON list of all saved presets for dropdown population"""
+    if request.method == 'GET':
+        try:
+            presets = ScoringConfiguration.objects.all().order_by('name')
+            preset_list = []
+            for preset in presets:
+                preset_data = {
+                    'id': preset.id,
+                    'name': preset.name,
+                    'description': preset.description or '',
+                    'is_active': preset.is_active,
+                    'created_at': preset.created_at.isoformat() if preset.created_at else None,
+                    'updated_at': preset.updated_at.isoformat() if preset.updated_at else None
+                }
+                preset_list.append(preset_data)
+            
+            return JsonResponse({
+                'success': True,
+                'presets': preset_list,
+                'count': len(preset_list)
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+
+def get_preset_details(request, preset_id):
+    """Get detailed preset data including all slider values and brackets"""
+    try:
+        preset = ScoringConfiguration.objects.get(id=preset_id)
+        
+        # Get age brackets for this preset
+        age_brackets = []
+        for bracket in preset.age_brackets.all().order_by('order'):
+            age_brackets.append({
+                'id': bracket.id,
+                'min_age': bracket.min_age,
+                'max_age': bracket.max_age,
+                'percentage': bracket.percentage,
+                'order': bracket.order
+            })
+        
+        # Get spend brackets for this preset
+        spend_brackets = []
+        for bracket in preset.spend_brackets.all().order_by('order'):
+            spend_brackets.append({
+                'id': bracket.id,
+                'min_spend': float(bracket.min_spend),
+                'max_spend': float(bracket.max_spend) if bracket.max_spend else None,
+                'percentage': bracket.percentage,
+                'order': bracket.order
+            })
+        
+        preset_data = {
+            'id': preset.id,
+            'name': preset.name,
+            'description': preset.description,
+            'is_active': preset.is_active,
+            'created_at': preset.created_at.isoformat(),
+            'updated_at': preset.updated_at.isoformat(),
+            'slider_values': {
+                # Positive behaviors - EXACT FIELD NAMES FROM INVESTIGATION
+                'future_appointments_weight': preset.future_appointments_weight,
+                'age_demographics_weight': preset.age_demographics_weight,
+                'yearly_spend_weight': preset.yearly_spend_weight,
+                'consecutive_attendance_weight': preset.consecutive_attendance_weight,
+                'points_per_consecutive_attendance': preset.points_per_consecutive_attendance,
+                
+                # Negative behaviors - EXACT FIELD NAMES FROM INVESTIGATION
+                'cancellations_weight': preset.cancellations_weight,
+                'points_per_cancellation': preset.points_per_cancellation,
+                'dna_weight': preset.dna_weight,
+                'points_per_dna': preset.points_per_dna,
+                'unpaid_invoices_weight': preset.unpaid_invoices_weight,
+                'points_per_unpaid_invoice': preset.points_per_unpaid_invoice,
+                'open_dna_invoice_weight': preset.open_dna_invoice_weight,
+                
+                # Metadata fields
+                'likability_weight': preset.likability_weight,
+                'unlikability_weight': preset.unlikability_weight,
+            },
+            'age_brackets': age_brackets,
+            'spend_brackets': spend_brackets
+        }
+        
+        return JsonResponse({
+            'success': True,
+            'preset': preset_data
+        })
+        
+    except ScoringConfiguration.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': 'Preset not found'
+        })
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': str(e)
+        })
+
+# Apply Button - Bracket Bulk Operations
+def clear_age_brackets(request):
+    """Clear all age brackets for the active configuration"""
+    if request.method == 'POST':
+        try:
+            from .models import ScoringConfiguration, AgeBracket
+            
+            # Get active configuration
+            active_config = ScoringConfiguration.objects.filter(is_active=True).first()
+            if not active_config:
+                return JsonResponse({'success': False, 'error': 'No active configuration found'})
+            
+            # Clear all age brackets for this configuration
+            deleted_count = AgeBracket.objects.filter(config=active_config).delete()[0]
+            
+            return JsonResponse({
+                'success': True, 
+                'message': f'Cleared {deleted_count} age brackets',
+                'deleted_count': deleted_count
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+def bulk_insert_age_brackets(request):
+    """Bulk insert age brackets for the active configuration"""
+    if request.method == 'POST':
+        try:
+            import json
+            from .models import ScoringConfiguration, AgeBracket
+            
+            # Get active configuration
+            active_config = ScoringConfiguration.objects.filter(is_active=True).first()
+            if not active_config:
+                return JsonResponse({'success': False, 'error': 'No active configuration found'})
+            
+            # Parse brackets data from request
+            data = json.loads(request.body)
+            brackets_data = data.get('brackets', [])
+            
+            # Create AgeBracket objects for bulk insert
+            age_brackets = []
+            for i, bracket in enumerate(brackets_data):
+                age_brackets.append(AgeBracket(
+                    config=active_config,
+                    min_age=bracket.get('min_age', 0),
+                    max_age=bracket.get('max_age', 100),
+                    percentage=bracket.get('percentage', 0),
+                    order=i + 1
+                ))
+            
+            # Bulk insert
+            AgeBracket.objects.bulk_create(age_brackets)
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Inserted {len(age_brackets)} age brackets',
+                'inserted_count': len(age_brackets)
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+def clear_spend_brackets(request):
+    """Clear all spend brackets for the active configuration"""
+    if request.method == 'POST':
+        try:
+            from .models import ScoringConfiguration, SpendBracket
+            
+            # Get active configuration
+            active_config = ScoringConfiguration.objects.filter(is_active=True).first()
+            if not active_config:
+                return JsonResponse({'success': False, 'error': 'No active configuration found'})
+            
+            # Clear all spend brackets for this configuration
+            deleted_count = SpendBracket.objects.filter(config=active_config).delete()[0]
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Cleared {deleted_count} spend brackets',
+                'deleted_count': deleted_count
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+def bulk_insert_spend_brackets(request):
+    """Bulk insert spend brackets for the active configuration"""
+    if request.method == 'POST':
+        try:
+            import json
+            from .models import ScoringConfiguration, SpendBracket
+            
+            # Get active configuration
+            active_config = ScoringConfiguration.objects.filter(is_active=True).first()
+            if not active_config:
+                return JsonResponse({'success': False, 'error': 'No active configuration found'})
+            
+            # Parse brackets data from request
+            data = json.loads(request.body)
+            brackets_data = data.get('brackets', [])
+            
+            # Create SpendBracket objects for bulk insert
+            spend_brackets = []
+            for i, bracket in enumerate(brackets_data):
+                spend_brackets.append(SpendBracket(
+                    config=active_config,
+                    min_spend=bracket.get('min_spend', 0),
+                    max_spend=bracket.get('max_spend', 10000),
+                    percentage=bracket.get('percentage', 0),
+                    order=i + 1
+                ))
+            
+            # Bulk insert
+            SpendBracket.objects.bulk_create(spend_brackets)
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Inserted {len(spend_brackets)} spend brackets',
+                'inserted_count': len(spend_brackets)
+            })
+            
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+
+@csrf_exempt
+@require_POST
+# @transaction.atomic
+def delete_preset(request):
+    """
+    Delete a scoring preset with protection logic.
+    Prevents deletion if only 1 preset remains.
+    Handles active preset switching if needed.
+    """
+    try:
+        # Get preset ID from POST data
+        preset_id = request.POST.get('preset_id')
+        
+        if not preset_id:
+            return JsonResponse({
+                'success': False,
+                'error': 'No preset ID provided'
+            })
+        
+        # Check if preset exists
+        try:
+            preset_to_delete = ScoringConfiguration.objects.get(id=preset_id)
+        except ScoringConfiguration.DoesNotExist:
+            return JsonResponse({
+                'success': False,
+                'error': 'Preset not found'
+            })
+        
+        # PROTECTION: Check if this is the last preset
+        total_presets = ScoringConfiguration.objects.count()
+        if total_presets <= 1:
+            return JsonResponse({
+                'success': False,
+                'error': 'Cannot delete the last remaining preset'
+            })
+        
+        # Check if we're deleting the currently active preset
+        is_active_preset = preset_to_delete.is_active
+        
+        # If deleting active preset, switch to another one first
+        if is_active_preset:
+            # Find another preset to make active
+            # Priority 1: Always try Factory Settings first
+            try:
+                next_preset = ScoringConfiguration.objects.get(name='Factory Settings')
+                if next_preset.id == preset_id:
+                    # If deleting Factory Settings itself, get next available
+                    next_preset = ScoringConfiguration.objects.exclude(id=preset_id).first()
+            except ScoringConfiguration.DoesNotExist:
+                # If Factory Settings doesn't exist, get next available
+                next_preset = ScoringConfiguration.objects.exclude(id=preset_id).first()
+            if next_preset:
+                # Deactivate all presets first
+                ScoringConfiguration.objects.update(is_active=False)
+                # Activate the next preset
+                next_preset.is_active = True
+                next_preset.save()
+        
+        # Delete the preset (CASCADE will handle related objects)
+        preset_name = preset_to_delete.name
+        preset_to_delete.delete()
+        
+        # Verify deletion succeeded
+        try:
+            # Check if preset still exists (should raise DoesNotExist)
+            ScoringConfiguration.objects.get(id=preset_id)
+            # If we reach here, deletion failed
+            return JsonResponse({
+                'success': False,
+                'error': f'Deletion failed - preset {preset_name} still exists'
+            })
+        except ScoringConfiguration.DoesNotExist:
+            # This is expected - deletion succeeded
+            print(f"DEBUG: Deletion verified - preset {preset_name} (ID: {preset_id}) successfully removed")
+            pass
+        
+        
+        # Get updated preset list for dropdown
+        remaining_presets = list(ScoringConfiguration.objects.values('id', 'name', 'is_active'))
+        
+        # Find the currently active preset
+        active_preset = ScoringConfiguration.objects.filter(is_active=True).first()
+        # DEBUG: Log fallback preset info
+        if active_preset:
+            print(f"DEBUG: Fallback preset found - ID: {active_preset.id}, Name: {active_preset.name}")
+        else:
+            print("DEBUG: No active preset found after deletion")
+            print(f"DEBUG: Total presets after deletion: {ScoringConfiguration.objects.count()}")
+            print(f"DEBUG: is_active_preset was: {is_active_preset}")
+            if is_active_preset:
+                print("DEBUG: Should have switched to fallback preset, investigating...")
+                all_presets = ScoringConfiguration.objects.all()
+                for p in all_presets:
+                    print(f"DEBUG: Preset {p.id} ({p.name}) - is_active: {p.is_active}")
+        print(f"DEBUG: was_active_preset_deleted will be: {is_active_preset}")
+        active_preset_id = active_preset.id if active_preset else None
+        
+        return JsonResponse({
+            'success': True,
+            'message': f'Preset "{preset_name}" deleted successfully',
+            'was_active_preset_deleted': is_active_preset,
+            'deleted_preset_id': int(preset_id),
+            'fallback_preset': {
+                'id': active_preset.id if active_preset else None,
+                'name': active_preset.name if active_preset else None
+            } if is_active_preset and active_preset else None,
+            'remaining_presets': remaining_presets,
+            'active_preset_id': active_preset_id,
+            'total_remaining': len(remaining_presets)
+        })
+        
+    except Exception as e:
+        return JsonResponse({
+            'success': False,
+            'error': f'Error deleting preset: {str(e)}'
+        })
+
+
+
+@csrf_exempt
+def create_preset(request):
+    """
+    Create a new preset by copying current active configuration values.
+    
+    Workflow:
+    1. Validate name (required, max 50 chars)
+    2. Auto-save current screen state to active config
+    3. Create new preset copying from active config
+    4. Return success with preset details
+    """
+    if request.method == 'POST':
+        try:
+            import json
+            data = json.loads(request.body)
+            
+            name = data.get('name', '').strip()
+            description = data.get('description', '').strip()
+            
+            # Validation
+            if not name:
+                return JsonResponse({'success': False, 'error': 'Preset name is required'})
+            
+            if len(name) > 50:
+                return JsonResponse({'success': False, 'error': 'Preset name must be 50 characters or less'})
+            
+            if len(description) > 200:
+                return JsonResponse({'success': False, 'error': 'Description must be 200 characters or less'})
+            
+            # Check for duplicate names
+            if ScoringConfiguration.objects.filter(name=name).exists():
+                return JsonResponse({'success': False, 'error': f'Preset name "{name}" already exists'})
+            
+            # Get active configuration (source for copying)
+            active_config = ScoringConfiguration.objects.filter(is_active=True).first()
+            if not active_config:
+                return JsonResponse({'success': False, 'error': 'No active configuration found'})
+            
+            # Create new preset by copying active config
+            new_preset = ScoringConfiguration.objects.create(
+                name=name,
+                description=description,
+                is_active=False,  # New presets are not active by default
+                
+                # Copy all weight values from active config
+                future_appointments_weight=active_config.future_appointments_weight,
+                age_demographics_weight=active_config.age_demographics_weight,
+                yearly_spend_weight=active_config.yearly_spend_weight,
+                consecutive_attendance_weight=active_config.consecutive_attendance_weight,
+                cancellations_weight=active_config.cancellations_weight,
+                dna_weight=active_config.dna_weight,
+                unpaid_invoices_weight=active_config.unpaid_invoices_weight,
+                open_dna_invoice_weight=active_config.open_dna_invoice_weight,
+                
+                # Copy all points values from active config
+                points_per_consecutive_attendance=active_config.points_per_consecutive_attendance,
+                points_per_cancellation=active_config.points_per_cancellation,
+                points_per_dna=active_config.points_per_dna,
+                points_per_unpaid_invoice=active_config.points_per_unpaid_invoice
+            )
+            
+            # Copy age brackets
+            age_brackets_copied = 0
+            for bracket in active_config.age_brackets.all():
+                AgeBracket.objects.create(
+                    config=new_preset,
+                    min_age=bracket.min_age,
+                    max_age=bracket.max_age,
+                    percentage=bracket.percentage,
+                    order=bracket.order
+                )
+                age_brackets_copied += 1
+            
+            # Copy spend brackets
+            spend_brackets_copied = 0
+            for bracket in active_config.spend_brackets.all():
+                SpendBracket.objects.create(
+                    config=new_preset,
+                    min_spend=bracket.min_spend,
+                    max_spend=bracket.max_spend,
+                    percentage=bracket.percentage,
+                    order=bracket.order
+                )
+                spend_brackets_copied += 1
+            
+            return JsonResponse({
+                'success': True,
+                'preset_id': new_preset.id,
+                'preset_name': new_preset.name,
+                'age_brackets_copied': age_brackets_copied,
+                'spend_brackets_copied': spend_brackets_copied,
+                'message': f'Preset "{name}" created successfully'
+            })
+            
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': f'Server error: {str(e)}'})
+    
+    return JsonResponse({'success': False, 'error': 'Only POST method allowed'})

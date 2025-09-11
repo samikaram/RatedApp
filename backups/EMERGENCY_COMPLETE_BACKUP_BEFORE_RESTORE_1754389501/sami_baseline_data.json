@@ -1,0 +1,528 @@
+{
+  "extraction_date": "2025-07-02T23:15:06.773524+10:00",
+  "patient_info": {
+    "accepted_email_marketing": true,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": false,
+    "address_1": "11 Richmond Street",
+    "address_2": "",
+    "address_3": "",
+    "appointment_notes": "Rated B+",
+    "archived_at": null,
+    "city": "South Wentworthville",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2012-12-14T04:36:08Z",
+    "custom_fields": null,
+    "date_of_birth": "1951-01-15",
+    "deleted_at": null,
+    "dva_card_number": "",
+    "email": "sami_k81@hotmail.com",
+    "emergency_contact": "",
+    "first_name": "Sami",
+    "gender": null,
+    "gender_identity": "",
+    "id": "1104221",
+    "invoice_default_to": "",
+    "invoice_email": null,
+    "invoice_extra_information": "",
+    "label": "Sami Karam",
+    "last_name": "Karam",
+    "medicare": "",
+    "medicare_reference_number": "",
+    "merged_at": null,
+    "notes": "**30/12/2024 Peptalkr Transactional Email sent to patient at sami_k81@hotmail.com: No Appointment (6 weeks)\r\n\r\nParramatta\r\nRated C+",
+    "occupation": "Osteopath",
+    "old_reference_id": "",
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "61412840855",
+        "number": "0412840855",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2145",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": null,
+    "reminder_type": "Email",
+    "sex": "Male",
+    "state": "Nsw",
+    "time_zone": null,
+    "title": "Dr",
+    "updated_at": "2025-07-02T13:12:06Z",
+    "concession_type": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/concession_types/379"
+      }
+    },
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1556864884275152586"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1104221"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104221/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1104221"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+    }
+  },
+  "total_appointments": 38,
+  "status_breakdown": {
+    "attended": 27,
+    "dna": 1,
+    "cancelled": 0,
+    "scheduled": 10
+  },
+  "appointment_details": [
+    {
+      "id": "15479648",
+      "starts_at": "25/10/2014 10:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2014-10-24T23:38:20Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "15975158",
+      "starts_at": "08/11/2014 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2014-11-08T00:24:43Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "19783659",
+      "starts_at": "12/02/2015 17:40 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2015-02-12T06:56:02Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "19825558",
+      "starts_at": "13/02/2015 12:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2015-02-13T02:04:55Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "20619785",
+      "starts_at": "03/03/2015 10:20 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2015-03-02T23:25:09Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "42896215",
+      "starts_at": "17/12/2015 10:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2016-04-19T22:37:36Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "53971494",
+      "starts_at": "01/10/2016 10:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2016-10-01T00:32:23Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "106315913",
+      "starts_at": "13/04/2018 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2018-04-13T00:47:28Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "107263300",
+      "starts_at": "21/04/2018 09:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2018-04-20T23:46:33Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "108829401",
+      "starts_at": "04/05/2018 15:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2018-05-04T05:50:57Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "145246469",
+      "starts_at": "15/02/2019 10:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2019-02-14T23:53:02Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "146340693",
+      "starts_at": "22/02/2019 11:20 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2019-02-22T00:43:21Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "146889361",
+      "starts_at": "26/02/2019 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2019-02-26T01:18:40Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "150268347",
+      "starts_at": "19/03/2019 11:40 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2019-03-20T23:18:00Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "150503933",
+      "starts_at": "22/03/2019 11:30 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2019-03-22T03:15:34Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "153293234",
+      "starts_at": "10/04/2019 14:40 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2019-04-10T05:41:14Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "168586651",
+      "starts_at": "22/07/2019 11:30 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2019-07-22T02:04:18Z",
+      "updated_at": "2020-07-06T10:38:35Z"
+    },
+    {
+      "id": "231270330",
+      "starts_at": "23/07/2020 14:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2020-07-23T05:06:23Z",
+      "updated_at": "2020-08-05T04:59:31Z"
+    },
+    {
+      "id": "233942949",
+      "starts_at": "06/08/2020 15:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2020-08-06T05:30:06Z",
+      "updated_at": "2020-09-15T05:26:53Z"
+    },
+    {
+      "id": "236295211",
+      "starts_at": "19/08/2020 15:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2020-08-19T05:26:11Z",
+      "updated_at": "2020-08-19T06:44:42Z"
+    },
+    {
+      "id": "242564693",
+      "starts_at": "22/09/2020 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2020-09-22T01:27:14Z",
+      "updated_at": "2020-09-22T01:37:00Z"
+    },
+    {
+      "id": "245750184",
+      "starts_at": "08/10/2020 14:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2020-10-08T04:27:01Z",
+      "updated_at": "2020-10-11T23:10:28Z"
+    },
+    {
+      "id": "287536246",
+      "starts_at": "29/04/2021 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-04-29T01:29:07Z",
+      "updated_at": "2021-04-29T01:29:33Z"
+    },
+    {
+      "id": "288990129",
+      "starts_at": "06/05/2021 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-05-06T01:10:11Z",
+      "updated_at": "2021-05-06T01:10:34Z"
+    },
+    {
+      "id": "294441202",
+      "starts_at": "01/06/2021 11:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-06-01T01:36:58Z",
+      "updated_at": "2021-06-04T06:08:32Z"
+    },
+    {
+      "id": "295210811",
+      "starts_at": "04/06/2021 09:40 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2021-06-03T23:46:53Z",
+      "updated_at": "2021-06-08T03:01:36Z"
+    },
+    {
+      "id": "298381666",
+      "starts_at": "21/06/2021 10:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-06-21T00:33:25Z",
+      "updated_at": "2021-06-22T06:40:47Z"
+    },
+    {
+      "id": "309863616",
+      "starts_at": "17/08/2021 14:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-08-17T05:57:43Z",
+      "updated_at": "2021-08-17T05:58:00Z"
+    },
+    {
+      "id": "314177844",
+      "starts_at": "09/09/2021 15:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-09-09T05:13:32Z",
+      "updated_at": "2021-09-09T05:14:18Z"
+    },
+    {
+      "id": "316378157",
+      "starts_at": "21/09/2021 15:30 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-09-21T06:34:31Z",
+      "updated_at": "2021-09-26T01:41:53Z"
+    },
+    {
+      "id": "329405741",
+      "starts_at": "25/11/2021 10:15 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2021-11-24T22:54:24Z",
+      "updated_at": "2021-11-24T22:55:27Z"
+    },
+    {
+      "id": "339410120",
+      "starts_at": "20/01/2022 09:30 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2022-01-19T22:59:24Z",
+      "updated_at": "2022-01-19T22:59:42Z"
+    },
+    {
+      "id": "928579037029205596",
+      "starts_at": "05/07/2022 14:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2022-07-05T04:40:47Z",
+      "updated_at": "2022-07-05T04:41:39Z"
+    },
+    {
+      "id": "1036612455553304489",
+      "starts_at": "01/12/2022 18:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2022-12-01T06:03:54Z",
+      "updated_at": "2022-12-01T06:05:00Z"
+    },
+    {
+      "id": "1153329863638123983",
+      "starts_at": "11/05/2023 17:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2023-05-11T07:00:33Z",
+      "updated_at": "2023-07-21T05:22:10Z"
+    },
+    {
+      "id": "1535054517341521348",
+      "starts_at": "19/10/2024 10:00 AEST",
+      "status": "Attended",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": true,
+      "did_not_arrive": false,
+      "created_at": "2024-10-18T23:19:18Z",
+      "updated_at": "2024-10-18T23:45:14Z"
+    },
+    {
+      "id": "1556864884275152586",
+      "starts_at": "18/11/2024 13:00 AEST",
+      "status": "Scheduled",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": false,
+      "created_at": "2024-11-18T01:32:36Z",
+      "updated_at": "2025-04-08T05:19:21Z"
+    },
+    {
+      "id": "1719298851443050346",
+      "starts_at": "30/06/2025 11:20 AEST",
+      "status": "DNA",
+      "cancelled_at": null,
+      "cancellation_reason": null,
+      "patient_arrived": false,
+      "did_not_arrive": true,
+      "created_at": "2025-06-30T04:19:54Z",
+      "updated_at": "2025-06-30T04:20:39Z"
+    }
+  ],
+  "cancelled_appointments": []
+}

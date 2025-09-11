@@ -1,0 +1,465 @@
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Analysis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        .back-btn { background: #3498db; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        .analyze-btn { background: #27ae60; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
+        .behavior-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 20px 0; }
+        .behavior-card { background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 8px; padding: 20px; }
+        .behavior-card.positive { border-color: #27ae60; }
+        .behavior-card.negative { border-color: #e74c3c; }
+        .behavior-title { font-weight: bold; margin-bottom: 10px; font-size: 18px; }
+        .behavior-points { font-size: 16px; font-weight: bold; }
+/* REFERRER SCORE CARD: Only layout differences, fonts use global styles */
+.behavior-card.referrer-score {
+    grid-column: span 2;  /* Double width */
+    position: relative;   /* For absolute positioning of points */
+}
+
+.behavior-card.referrer-score .behavior-points {
+    position: absolute;   /* Position points on right */
+    top: 20px;
+    right: 15px;
+    margin: 0;
+    /* All font styling inherited from global .behavior-points */
+}
+/* REFERRER SCORE CARD: Double width, matching other cards exactly */
+
+
+        .positive .behavior-points { color: #27ae60; }
+        .negative .behavior-points { color: #e74c3c; }
+        .grade { font-size: 4em; font-weight: bold; text-align: center; margin: 20px 0; color: #e67e22; }
+        .score { text-align: center; font-size: 1.5em; color: #7f8c8d; margin-bottom: 30px; }
+        .points-edit-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .edit-btn { background: #28a745; color: white; border: none; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 12px; }
+        .edit-btn.unlikability { background: #dc3545; }
+        .edit-btn.save { background: #007bff; }
+        .status-text { margin-bottom: 8px; font-size: 0.875em; }
+        .slider-container { margin-top: 5px; }
+        .compact-slider { width: 100%; margin: 0; }
+        .behavior-card.positive:has(.compact-slider) { padding: 15px; }
+        .behavior-card.negative:has(.compact-slider) { padding: 15px; }
+        .behavior-card.positive .compact-slider:disabled { accent-color: #27ae60; opacity: 0.8; }
+    
+/* ONLY affect the referrer score card - half height */
+/* REFERRER SCORE CARD: Double width matching actual other cards */
+
+
+
+
+
+/* Status text styling to match other cards */
+
+
+
+/* Keep status below title normally */
+
+
+
+
+/* Hide status text for referrer card to keep it clean */
+
+
+
+
+
+/* FLEXBOX ALIGNMENT: Perfect header-points alignment */
+.behavior-card {
+    position: relative;              /* For absolute positioning if needed */
+}
+
+.behavior-card .behavior-title {
+    display: flex;                   /* Use flexbox for perfect alignment */
+    justify-content: space-between;  /* Space between title and points */
+    align-items: center;             /* Vertically center both elements */
+    margin-bottom: 10px;             /* Normal spacing below header */
+}
+
+.behavior-card .behavior-points {
+    position: absolute;              /* Position points absolutely */
+    top: 12px;                       /* Align with header text (not card top) */
+    right: 15px;                     /* Right margin */
+    margin: 0;                       /* No margins */
+    font-size: 18px;                /* Same as headers */
+    font-weight: bold;               /* Bold for visibility */
+    line-height: 1.2;                /* Match header line height */
+}
+
+/* Special handling for referrer card to maintain its existing layout */
+.behavior-card.referrer-score .behavior-points {
+    float: none;                     /* Override float for referrer */
+    margin-top: 0;                   /* Reset margin */
+    /* Keeps existing absolute positioning from lines 22-28 */
+}
+
+/* INLINE POINTS: Points inside title div, right-aligned */
+.behavior-card .behavior-title {
+    display: flex;                   /* Use flexbox */
+    justify-content: space-between;  /* Space between title and points */
+    align-items: center;             /* Vertically center */
+    margin-bottom: 10px;             /* Normal spacing */
+}
+
+.behavior-points-inline {
+    font-size: 16px;                 /* Same as original points */
+    font-weight: bold;               /* Same as original points */
+    color: inherit;                  /* Inherit from parent (green/red) */
+    flex-shrink: 0;                  /* Don't shrink */
+}
+
+/* MAKE ALL CARDS LIKE REFERRER CARD: Position relative + absolute points */
+.behavior-card {
+    position: relative;              /* Enable absolute positioning for points */
+}
+
+.behavior-card .behavior-points {
+    position: absolute;              /* Position points absolutely */
+    top: 12px;                       /* Align with header text (not card top) */
+    right: 15px;                     /* Right margin */
+    margin: 0;                       /* No margins */
+    font-size: 18px;                /* Same as headers */
+    font-weight: bold;               /* Bold for visibility */
+    line-height: 1.2;                /* Match header line height */
+}
+
+/* INLINE SLIDER: Style sliders that are inline with edit buttons */
+.points-edit-row {
+    display: flex;                   /* Use flexbox for alignment */
+    align-items: center;             /* Vertically center all items */
+    gap: 10px;                       /* Space between items */
+    flex-wrap: nowrap;               /* Keep items on same line */
+    width: 100%;                     /* Full width of card */
+}
+
+.compact-slider.inline-slider {
+    flex: 1;                         /* Take up remaining space */
+    min-width: 200px;                /* Minimum width for usability */
+    margin: 0 0 0 10px;              /* Left margin for spacing from button */
+    flex-shrink: 0;                  /* Don't shrink */
+}
+
+/* Ensure edit button doesn't get squashed */
+.edit-btn {
+    flex-shrink: 0;                  /* Don't shrink edit button */
+    white-space: nowrap;             /* Keep button text on one line */
+}
+
+/* REDUCE CARD HEIGHT: Make all cards 3/4 their current height */
+.behavior-card {
+    padding: 12px 15px;             /* Reduced from default ~16px 20px */
+    min-height: auto;               /* Remove any min-height constraints */
+    line-height: 1.2;               /* Tighter line spacing */
+}
+
+.behavior-title {
+    margin-bottom: 8px;             /* Reduced spacing below title */
+    font-size: 18px;                /* Maintain font size but reduce spacing */
+    line-height: 1.2;               /* Tighter line height */
+}
+
+.behavior-points {
+    font-size: 18px;                /* Match header font size */
+    line-height: 1.2;               /* Tighter line height */
+    margin: 0;                      /* Remove any margins */
+    font-weight: bold;               /* Bold for visibility */
+}
+
+/* Reduce spacing in points-edit-row for likability cards */
+.points-edit-row {
+    margin-bottom: 6px;             /* Reduced spacing */
+    padding: 0;                     /* No extra padding */
+}
+
+/* Compact slider styling for reduced height */
+.compact-slider {
+    margin: 4px 0;                  /* Minimal vertical margins */
+}
+
+/* Special handling for referrer card to maintain proportions */
+.behavior-card.referrer-score {
+    padding: 12px 15px;             /* Same reduced padding */
+}
+
+/* LIKABILITY/UNLIKABILITY CARDS: Match height of other cards */
+.behavior-card.positive:has(.compact-slider),
+.behavior-card.negative:has(.compact-slider) {
+    padding: 8px 15px;              /* Even more reduced padding */
+}
+
+/* Tighter spacing for points-edit-row in likability cards */
+.behavior-card:has(.compact-slider) .points-edit-row {
+    margin-bottom: 2px;             /* Minimal spacing */
+    gap: 8px;                       /* Smaller gap between elements */
+}
+
+/* Compact the inline sliders further */
+.compact-slider.inline-slider {
+    height: 20px;                   /* Reduce slider height */
+    margin: 2px 0 2px 8px;          /* Minimal margins */
+}
+
+/* Reduce edit button size in likability cards */
+.behavior-card:has(.compact-slider) .edit-btn {
+    padding: 3px 8px;               /* Smaller button padding */
+    font-size: 11px;                /* Smaller font */
+    height: 24px;                   /* Fixed height */
+}
+
+/* Tighter behavior-points in likability cards */
+.behavior-card:has(.compact-slider) .behavior-points {
+    font-size: 18px;                /* Match header font size */
+    line-height: 1.1;               /* Tighter line height */
+    font-weight: bold;               /* Bold for visibility */
+}
+
+/* Ensure title spacing matches other cards */
+.behavior-card:has(.compact-slider) .behavior-title {
+    margin-bottom: 6px;             /* Match other cards */
+    line-height: 1.1;               /* Tighter line height */
+}
+
+/* MATCH POINTS FONT SIZE TO HEADERS */
+.behavior-card .behavior-points {
+    position: absolute;              /* Position points absolutely */
+    top: 12px;                       /* Align with header text (not card top) */
+    right: 15px;                     /* Right margin */
+    margin: 0;                       /* No margins */
+    font-size: 18px;                /* Same as headers */
+    font-weight: bold;               /* Bold for visibility */
+    line-height: 1.2;                /* Match header line height */
+}
+
+/* Ensure absolute positioned points also match */
+.behavior-card .behavior-points {
+    position: absolute;              /* Position points absolutely */
+    top: 12px;                       /* Align with header text (not card top) */
+    right: 15px;                     /* Right margin */
+    margin: 0;                       /* No margins */
+    font-size: 18px;                /* Same as headers */
+    font-weight: bold;               /* Bold for visibility */
+    line-height: 1.2;                /* Match header line height */
+}
+
+/* ENSURE PERFECT HEADER-POINTS BASELINE ALIGNMENT */
+.behavior-card .behavior-title {
+    position: relative;              /* Create positioning context */
+    font-size: 18px;                /* Explicit font size */
+    line-height: 1.2;                /* Explicit line height */
+    margin-bottom: 8px;              /* Consistent spacing */
+}
+
+/* Removed conflicting top: 0px rule */
+</style>
+    <div class="container">
+        <a href="/patients/search/" class="back-btn">← Back to Search</a>
+        
+        <h1>📊 Patient Behavioral Analysis</h1>
+        <h2>Patient ID: {{ patient_id }}</h2>
+        
+        <button onclick="startAnalysis()" class="analyze-btn" id="analyzeBtn">
+            🎯 Start 30-Second Analysis
+        </button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function formatBehaviorName(key) {
+            var names = {
+                'future_appointments': '📅 Future Appointments',
+                'age_demographics': '👤 Age Demographics',
+                'yearly_spend': '💰 Yearly Spend',
+                'consecutive_attendance': '✅ Consecutive Attendance',
+                'likability': '😊 Likability',
+                'unlikability': '😠 Unlikability',
+                'cancellations': '❌ Cancellations',
+                'dna': '🚫 DNA (Did Not Arrive)',
+                'unpaid_invoices': '💳 Unpaid Invoices',
+                'open_dna_invoices': '📋 Open DNA Invoices',
+                'referrer_score': '👥 Referrer Score'
+            };
+            return names[key] || key.replace('_', ' ').toUpperCase();
+        }
+
+        function editLikability() {
+            document.getElementById('likability-slider').disabled = false;
+            document.getElementById('likability-btn').onclick = saveLikability;
+            document.getElementById('likability-btn').textContent = 'Save';
+            document.getElementById('likability-btn').className = 'edit-btn save';
+        }
+
+        function saveLikability() {
+            var value = document.getElementById('likability-slider').value;
+            var patientId = '{{ patient_id }}';
+            
+            fetch('/patients/{{ patient_id }}/analyze/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: 'action=update_likability&patient_id=' + patientId + '&likability=' + value
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                if (data.success) {
+                    document.getElementById('likability-slider').disabled = true;
+                    document.getElementById('likability-btn').onclick = editLikability;
+                    document.getElementById('likability-btn').textContent = 'Edit';
+                    document.getElementById('likability-btn').className = 'edit-btn';
+                    startAnalysis();
+                } else {
+                    alert('Error saving likability: ' + (data.error || 'Unknown error'));
+                }
+            }).catch(function(error) {
+                console.error('Likability save error:', error);
+                alert('Error saving likability: ' + error.message);
+            });
+        }
+
+        function editUnlikability() {
+            document.getElementById('unlikability-slider').disabled = false;
+            document.getElementById('unlikability-btn').onclick = saveUnlikability;
+            document.getElementById('unlikability-btn').textContent = 'Save';
+            document.getElementById('unlikability-btn').className = 'edit-btn save';
+        }
+
+        function saveUnlikability() {
+            var value = document.getElementById('unlikability-slider').value;
+            var patientId = '{{ patient_id }}';
+            
+            fetch('/patients/{{ patient_id }}/analyze/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: 'action=update_unlikability&patient_id=' + patientId + '&unlikability=' + value
+            }).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                if (data.success) {
+                    document.getElementById('unlikability-slider').disabled = true;
+                    document.getElementById('unlikability-btn').onclick = editUnlikability;
+                    document.getElementById('unlikability-btn').textContent = 'Edit';
+                    document.getElementById('unlikability-btn').className = 'edit-btn unlikability';
+                    startAnalysis();
+                } else {
+                    alert('Error saving unlikability: ' + (data.error || 'Unknown error'));
+                }
+            }).catch(function(error) {
+                console.error('Unlikability save error:', error);
+                alert('Error saving unlikability: ' + error.message);
+            });
+        }
+
+        function updateLikabilityDisplay(value) {
+            document.getElementById('likability-points').textContent = '+' + value + ' points';
+        }
+
+        function updateUnlikabilityDisplay(value) {
+            document.getElementById('unlikability-points').textContent = '-' + value + ' points';
+        }
+
+        function startAnalysis() {
+            var btn = document.getElementById('analyzeBtn');
+            var results = document.getElementById('results');
+            
+            btn.disabled = true;
+            btn.textContent = '🔄 Analyzing...';
+            results.innerHTML = '<h3>🔄 Analyzing Patient Behavior...</h3>';
+            
+            var patientId = '{{ patient_id }}';
+            var url = '/patients/' + patientId + '/analyze/';
+            
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                btn.disabled = false;
+                btn.textContent = '🎯 Start 30-Second Analysis';
+                
+                if (data.status === 'success') {
+                    var patientName = data.analysis.patient_name || 'Unknown Patient';
+                    
+                    var behaviorCards = '';
+                    if (data.analysis.behavior_data) {
+                        for (var key in data.analysis.behavior_data) {
+                            var behaviorData = data.analysis.behavior_data[key];
+                            // Classify by behavior type, not points value
+                var negativeBehaiors = ['open_dna_invoices', 'unpaid_invoices', 'cancellations', 'dna', 'unlikability'];
+                var cardClass = negativeBehaiors.includes(key) ? 'negative' : 'positive';
+                // Special class for referrer_score card
+                if (key === 'referrer_score') {
+                    cardClass += ' referrer-score';
+                }
+                            var pointsText = behaviorData.points >= 0 ? '+' + behaviorData.points : behaviorData.points;
+                            
+                            if (key === 'likability' || key === 'unlikability') {
+                                var currentValue = Math.abs(behaviorData.points);
+                                var statusText = 'Set by practitioner';
+                                
+                                behaviorCards += '<div class="behavior-card ' + cardClass + '">';
+                                behaviorCards += '<div class="behavior-title">' + formatBehaviorName(key) + '</div>';
+                                behaviorCards += '<div class="points-edit-row">';
+                                behaviorCards += '<div class="behavior-points" id="' + key + '-points">' + pointsText + '</div>';
+                                behaviorCards += '<button id="' + key + '-btn" onclick="edit' + key.charAt(0).toUpperCase() + key.slice(1) + '()" class="edit-btn ' + (key === 'unlikability' ? 'unlikability' : '') + '">Edit</button>';
+                                                behaviorCards += '<input type="range" id="' + key + '-slider" min="0" max="100" value="' + currentValue + '" disabled class="compact-slider inline-slider" oninput="update' + key.charAt(0).toUpperCase() + key.slice(1) + 'Display(this.value)">';
+                                behaviorCards += '</div>';
+                // Slider moved inline - container removed
+                // Slider moved inline - see edit button line
+                // Slider container closing div removed
+                                behaviorCards += '</div>';
+                            } else {
+                                behaviorCards += '<div class="behavior-card ' + cardClass + '">';
+                                behaviorCards += '<div class="behavior-title">' + formatBehaviorName(key) + '</div>';
+                                behaviorCards += '<div class="behavior-points">' + pointsText + '</div>';
+                                behaviorCards += '<div>' + behaviorData.description + '</div>';
+                                behaviorCards += '</div>';
+                            }
+                        }
+                    }
+                    
+                    results.innerHTML = '<h3>✅ Analysis Complete for ' + patientName + '</h3>' +
+                                      '<div class="grade">' + data.analysis.letter_grade + '</div>' +
+                                      '<div class="score">Total Score: ' + data.analysis.total_score + ' points</div>' +
+                                      '<div class="behavior-grid">' + behaviorCards + '</div>';
+                } else {
+                    results.innerHTML = '<div style="color: red;">Error: ' + (data.error || 'Analysis failed') + '</div>';
+                }
+            })
+            .catch(function(error) {
+                btn.disabled = false;
+                btn.textContent = '🎯 Start 30-Second Analysis';
+                results.innerHTML = '<div style="color: red;">Error: ' + error.message + '</div>';
+            });
+        }
+    </script>
+</body>
+</html>

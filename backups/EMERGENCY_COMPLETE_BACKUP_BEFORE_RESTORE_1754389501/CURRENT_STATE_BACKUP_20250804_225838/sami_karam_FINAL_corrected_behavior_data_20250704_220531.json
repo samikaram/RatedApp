@@ -1,0 +1,346 @@
+{
+  "extraction_date": "2025-07-04T22:05:31.935498+10:00",
+  "patient_id": 1104221,
+  "patient_name": "Sami Karam",
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 0,
+      "appointments": []
+    },
+    "age_demographics": {
+      "age": 74,
+      "in_target_demographic": false,
+      "date_of_birth": "1951-01-15"
+    },
+    "yearly_spend": {
+      "yearly_spend": 80.0,
+      "paid_invoices_count": 3
+    },
+    "referrer_score": {
+      "referrer_score": 0,
+      "referral_sources": []
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 0
+    },
+    "likability": {
+      "likability_score": 0
+    },
+    "open_dna_invoices": {
+      "has_open_dna_invoice": true,
+      "unpaid_invoices_for_dna_check": [
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": null,
+          "created_at": "2025-06-30T04:21:21Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1719299579012187514",
+          "invoice_to": "Dr Sami Karam\r\n11 Richmond Street\r\nSouth Wentworthville  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-06-30",
+          "net_amount": "110.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2573883,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/KSMNUerp032-dTIQHFmU7u9FQQciFKHBu4",
+          "patient_extra_information": "",
+          "status": 10,
+          "status_description": "Open",
+          "tax_amount": "0.0",
+          "total_amount": "110.0",
+          "updated_at": "2025-06-30T04:21:21Z",
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1719299579012187514/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1719299579012187514"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1719299579012187514"
+          }
+        }
+      ]
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 1,
+      "unpaid_amount": 110.0
+    },
+    "unlikability": {
+      "unlikability_score": 0
+    },
+    "cancellations": {
+      "cancellation_count": 3,
+      "cancelled_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": 10,
+          "cancellation_reason_description": "Feeling Better",
+          "cancelled_at": "2022-10-18T21:05:27Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1004713038189692541/conflicts"
+            }
+          },
+          "created_at": "2022-10-18T05:45:27Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2022-10-20T03:40:00Z",
+          "has_patient_appointment_notes": true,
+          "id": "1004713038189692541",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Sami Karam",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2022-10-20T03:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1004713038189692541/connect",
+          "treatment_note_status": null,
+          "updated_at": "2022-10-18T21:05:27Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1004713038189692541/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1004713038189692541"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2023-12-05T21:32:23Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1304521319529841900/conflicts"
+            }
+          },
+          "created_at": "2023-12-05T21:30:59Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2023-12-05T22:40:00Z",
+          "has_patient_appointment_notes": true,
+          "id": "1304521319529841900",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Sami Karam",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2023-12-05T22:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1304521319529841900/connect",
+          "treatment_note_status": null,
+          "updated_at": "2023-12-05T21:32:23Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1304521319529841900/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1304521319529841900"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "testing Cliniko",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2025-07-02T13:12:06Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1721015886858421691/conflicts"
+            }
+          },
+          "created_at": "2025-07-02T13:11:21Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2025-07-03T05:00:00Z",
+          "has_patient_appointment_notes": true,
+          "id": "1721015886858421691",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Sami Karam",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2025-07-03T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1721015886858421691/connect",
+          "treatment_note_status": null,
+          "updated_at": "2025-07-02T13:12:06Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1721015886858421691/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1721015886858421691"
+          }
+        }
+      ]
+    },
+    "dna": {
+      "dna_count": 1,
+      "dna_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1719298851443050346/conflicts"
+            }
+          },
+          "created_at": "2025-06-30T04:19:54Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2025-06-30T01:40:00Z",
+          "has_patient_appointment_notes": true,
+          "id": "1719298851443050346",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Sami Karam",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2025-06-30T01:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1719298851443050346/connect",
+          "treatment_note_status": null,
+          "updated_at": "2025-06-30T04:20:39Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/3285"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104221"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1719298851443050346/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1719298851443050346"
+          }
+        }
+      ]
+    }
+  },
+  "extraction_method": "Official Cliniko API Documentation Compliant - FIXED VERSION",
+  "corrections_applied": [
+    "Future appointments only (not total)",
+    "Referrer score calculation",
+    "Consecutive attendance streak",
+    "FIXED: Unpaid invoice filter (closed_at:!?)",
+    "SEPARATED: DNA invoice vs Unpaid invoice behaviors",
+    "All 11 behavior categories with proper logic"
+  ]
+}

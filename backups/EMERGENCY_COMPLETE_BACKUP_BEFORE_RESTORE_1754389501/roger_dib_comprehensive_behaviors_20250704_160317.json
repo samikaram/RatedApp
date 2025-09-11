@@ -1,0 +1,53 @@
+{
+  "patient_id": 1104171,
+  "patient_name": "Roger Dib",
+  "extraction_timestamp": "2025-07-04T16:03:16.283320+10:00",
+  "behaviors": {
+    "appointments_booked": {
+      "has_future_appointments": false,
+      "future_appointment_count": 0
+    },
+    "age_demographics": {
+      "age": null,
+      "in_target_demographic": false
+    },
+    "yearly_spend": {
+      "yearly_spend": 0,
+      "paid_invoices_count": 0,
+      "total_invoices_count": 0
+    },
+    "referrer_score": {
+      "referral_count": 0,
+      "referred_patients": []
+    },
+    "consecutive_attendance": {
+      "current_streak": 0,
+      "total_appointments": 0
+    },
+    "likability": {
+      "score": null,
+      "note": "Manual admin input required (0-100 scale)"
+    },
+    "open_dna_fee_invoice": {
+      "has_open_dna_fee": false,
+      "open_dna_invoices": []
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0,
+      "total_invoices": 0
+    },
+    "unlikability": {
+      "score": null,
+      "note": "Manual admin input required (0-100 scale)"
+    },
+    "cancellations": {
+      "cancellation_count": 0,
+      "cancelled_appointments": []
+    },
+    "dna": {
+      "dna_count": 0,
+      "dna_appointments": []
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<style>
+.settings-hover-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25%;
+    height: 100vh;
+    background: #f8f9fa;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    z-index: 9999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.settings-hover-panel[aria-hidden="true"] {
+    visibility: hidden;
+}
+
+.settings-hover-panel.open {
+    transform: translateX(0);
+    visibility: visible;
+}
+</style>

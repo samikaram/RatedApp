@@ -1,0 +1,1799 @@
+{
+  "extraction_date": "2025-07-04T21:44:13.906923+10:00",
+  "patient_id": 1104171,
+  "patient_name": "Roger Dib",
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 1,
+      "appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1722232333139969702/conflicts"
+            }
+          },
+          "created_at": "2025-07-04T05:28:12Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2025-07-15T04:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1722232333139969702",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2025-07-15T04:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1722232333139969702/connect",
+          "treatment_note_status": null,
+          "updated_at": "2025-07-04T05:28:31Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/14197"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1722232333139969702/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1722232333139969702"
+          }
+        }
+      ]
+    },
+    "age_demographics": {
+      "age": 52,
+      "in_target_demographic": true,
+      "date_of_birth": "1972-07-20"
+    },
+    "yearly_spend": {
+      "yearly_spend": 1805.46,
+      "paid_invoices_count": 25
+    },
+    "referrer_score": {
+      "referrer_score": 0,
+      "referral_sources": []
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 24
+    },
+    "likability": {
+      "likability_score": 0
+    },
+    "non_attendance_fees": {
+      "non_attendance_fee_count": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0
+    },
+    "unlikability": {
+      "unlikability_score": 0
+    },
+    "cancellations": {
+      "cancellation_count": 3,
+      "cancelled_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "will call to rebook. JK",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2020-03-18T03:20:16Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/208320704/conflicts"
+            }
+          },
+          "created_at": "2020-03-10T03:54:36Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2020-03-19T03:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "208320704",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2020-03-19T03:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/208320704/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/208320704/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/208320704"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "Replied No to sms. Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2020-06-05T08:24:42Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/221126331/conflicts"
+            }
+          },
+          "created_at": "2020-06-02T02:12:40Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2020-06-05T23:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "221126331",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2020-06-05T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/221126331/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/221126331/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/221126331"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "Taking care of sick brother. Also wanted to cancel for Simon Dib. AS",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2024-09-13T01:31:27Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1504072824808015265/conflicts"
+            }
+          },
+          "created_at": "2024-09-06T05:24:12Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2024-09-13T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1504072824808015265",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-09-13T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1504072824808015265/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1504072824808015265/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1504072824808015265"
+          }
+        }
+      ]
+    },
+    "dna": {
+      "dna_count": 25,
+      "dna_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/143833578/conflicts"
+            }
+          },
+          "created_at": "2019-02-06T05:02:18Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2019-02-11T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "143833578",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2019-02-11T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/143833578/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/143833578/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/143833578"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/153315298/conflicts"
+            }
+          },
+          "created_at": "2019-04-10T07:23:22Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2019-04-17T05:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "153315298",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2019-04-17T05:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/153315298/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/153315298/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/153315298"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/178510471/conflicts"
+            }
+          },
+          "created_at": "2019-09-24T03:59:58Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2019-09-24T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "178510471",
+          "invoice_status": null,
+          "notes": "Sick, R/S to Thurs. JK",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2019-09-24T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/178510471/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/178510471/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/178510471"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/180062216/conflicts"
+            }
+          },
+          "created_at": "2019-10-03T05:50:40Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2019-10-08T04:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "180062216",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2019-10-08T03:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/180062216/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/180062216/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/180062216"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/183404434/conflicts"
+            }
+          },
+          "created_at": "2019-10-24T04:07:59Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2019-10-31T03:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "183404434",
+          "invoice_status": null,
+          "notes": "running late can't make it. JK",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2019-10-31T03:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/183404434/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/183404434/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/183404434"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/222359713/conflicts"
+            }
+          },
+          "created_at": "2020-06-09T01:46:32Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2020-06-12T23:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "222359713",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2020-06-12T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/222359713/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/222359713/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/222359713"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/295969888/conflicts"
+            }
+          },
+          "created_at": "2021-06-08T07:46:59Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2021-06-15T08:30:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "295969888",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2021-06-15T08:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/295969888/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/186471"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/34615"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/295969888/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/295969888"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/895124430974354587/conflicts"
+            }
+          },
+          "created_at": "2022-05-20T00:52:27Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2022-05-20T04:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "895124430974354587",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2022-05-20T04:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/895124430974354587/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/895124430974354587/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/895124430974354587"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1045285090235516242/conflicts"
+            }
+          },
+          "created_at": "2022-12-13T05:14:52Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2022-12-23T04:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1045285090235516242",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2022-12-23T04:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1045285090235516242/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1045285090235516242/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1045285090235516242"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1077892876806915684/conflicts"
+            }
+          },
+          "created_at": "2023-01-27T05:00:44Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-02-09T03:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1077892876806915684",
+          "invoice_status": null,
+          "notes": "Forgot about appointment, rebooked for tuesday .AB",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2023-02-09T03:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1077892876806915684/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1077892876806915684/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1077892876806915684"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1087258752177931533/conflicts"
+            }
+          },
+          "created_at": "2023-02-09T03:09:03Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-02-14T03:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1087258752177931533",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-02-14T03:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1087258752177931533/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1087258752177931533/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1087258752177931533"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1164164364261918538/conflicts"
+            }
+          },
+          "created_at": "2023-05-26T05:46:46Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-05-30T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1164164364261918538",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-05-30T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1164164364261918538/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1164164364261918538/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1164164364261918538"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1174199454534731070/conflicts"
+            }
+          },
+          "created_at": "2023-06-09T02:04:42Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-06-15T04:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1174199454534731070",
+          "invoice_status": null,
+          "notes": "Left voicemail can't make it, on- recall .AB",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-06-15T04:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1174199454534731070/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1174199454534731070/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1174199454534731070"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1274877856463194037/conflicts"
+            }
+          },
+          "created_at": "2023-10-25T23:54:43Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-10-31T04:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1274877856463194037",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-10-31T03:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1274877856463194037/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1274877856463194037/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1274877856463194037"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114130686052215/conflicts"
+            }
+          },
+          "created_at": "2023-11-02T05:18:16Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-11-17T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1280114130686052215",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-11-17T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1280114130686052215/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114130686052215/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114130686052215"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114247438698413/conflicts"
+            }
+          },
+          "created_at": "2023-11-02T05:18:29Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-11-09T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1280114247438698413",
+          "invoice_status": null,
+          "notes": "R/S",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-11-09T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1280114247438698413/connect",
+          "treatment_note_status": null,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114247438698413/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1280114247438698413"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1290955232448087047/conflicts"
+            }
+          },
+          "created_at": "2023-11-17T04:17:36Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-11-24T05:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1290955232448087047",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-11-24T05:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1290955232448087047/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1290955232448087047/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1290955232448087047"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1298925569857029264/conflicts"
+            }
+          },
+          "created_at": "2023-11-28T04:13:14Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-12-04T23:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1298925569857029264",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-12-04T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1298925569857029264/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1298925569857029264/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1298925569857029264"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1315499810693841977/conflicts"
+            }
+          },
+          "created_at": "2023-12-21T01:03:17Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2023-12-22T03:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1315499810693841977",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2023-12-22T03:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1315499810693841977/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1315499810693841977/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1315499810693841977"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1335734427375896480/conflicts"
+            }
+          },
+          "created_at": "2024-01-17T23:05:52Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-01-22T23:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1335734427375896480",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-01-22T23:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1335734427375896480/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1335734427375896480/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1335734427375896480"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1376500927749424513/conflicts"
+            }
+          },
+          "created_at": "2024-03-14T05:01:37Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-03-22T04:20:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1376500927749424513",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-03-22T04:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1376500927749424513/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1376500927749424513/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1376500927749424513"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1386690451406324770/conflicts"
+            }
+          },
+          "created_at": "2024-03-28T06:26:23Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-04-05T04:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1386690451406324770",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-04-05T03:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1386690451406324770/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1386690451406324770/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1386690451406324770"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1396153574651594566/conflicts"
+            }
+          },
+          "created_at": "2024-04-10T07:47:55Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-04-12T04:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1396153574651594566",
+          "invoice_status": null,
+          "notes": "R/S",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-04-12T03:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1396153574651594566/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1396153574651594566/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1396153574651594566"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1473682341317576524/conflicts"
+            }
+          },
+          "created_at": "2024-07-26T07:03:44Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-08-09T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1473682341317576524",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-08-09T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1473682341317576524/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1473682341317576524/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1473682341317576524"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1483819203432547408/conflicts"
+            }
+          },
+          "created_at": "2024-08-09T06:43:53Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": false,
+          "ends_at": "2024-08-16T05:00:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1483819203432547408",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Roger Dib",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-08-16T04:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1483819203432547408/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-12-06T04:52:34Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104171"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1483819203432547408/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1483819203432547408"
+          }
+        }
+      ]
+    }
+  },
+  "extraction_method": "Official Cliniko API Documentation Compliant",
+  "corrections_applied": [
+    "Future appointments only (not total)",
+    "Referrer score calculation",
+    "Consecutive attendance streak",
+    "Proper server-side filtering",
+    "All 11 behavior categories"
+  ]
+}

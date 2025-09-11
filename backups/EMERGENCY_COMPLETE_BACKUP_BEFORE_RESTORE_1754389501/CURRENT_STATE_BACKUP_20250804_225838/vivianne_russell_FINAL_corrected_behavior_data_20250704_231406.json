@@ -1,0 +1,820 @@
+{
+  "extraction_date": "2025-07-04T23:14:06.717414+10:00",
+  "patient_id": "1104455",
+  "patient_name": "Vivianne Russell",
+  "patient_data": {
+    "accepted_email_marketing": true,
+    "accepted_privacy_policy": true,
+    "accepted_sms_marketing": true,
+    "address_1": "5 Laver Place",
+    "address_2": "",
+    "address_3": "",
+    "appointment_notes": null,
+    "archived_at": null,
+    "city": "Greystanes",
+    "country": "Australia",
+    "country_code": "AU",
+    "created_at": "2012-12-14T04:36:17Z",
+    "custom_fields": null,
+    "date_of_birth": "1977-05-31",
+    "deleted_at": null,
+    "dva_card_number": null,
+    "email": "vivianne@randrfamily.com.au",
+    "emergency_contact": "",
+    "first_name": "Vivianne",
+    "gender": null,
+    "gender_identity": null,
+    "id": "1104455",
+    "invoice_default_to": "",
+    "invoice_email": null,
+    "invoice_extra_information": "",
+    "label": "Vivianne Russell",
+    "last_name": "Russell",
+    "medicare": "",
+    "medicare_reference_number": null,
+    "merged_at": null,
+    "notes": "**31/01/2025 Peptalkr Transactional Email sent to patient at vivianne@randrfamily.com.au: No Appointment (12months)\r\n\r\nParramatta",
+    "occupation": "Home Duties",
+    "old_reference_id": "",
+    "patient_phone_numbers": [
+      {
+        "normalized_number": "6196883637",
+        "number": "96883637",
+        "phone_type": "Home"
+      },
+      {
+        "normalized_number": "61404053233",
+        "number": "0404053233",
+        "phone_type": "Mobile"
+      }
+    ],
+    "post_code": "2145",
+    "preferred_first_name": null,
+    "pronouns": null,
+    "receives_cancellation_emails": true,
+    "receives_confirmation_emails": true,
+    "referral_source": "Patient Referral",
+    "reminder_type": "SMS & Email",
+    "sex": null,
+    "state": "Nsw",
+    "time_zone": "Australia/Sydney",
+    "title": "Mrs",
+    "updated_at": "2025-05-20T22:59:23Z",
+    "concession_type": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/concession_types/13128"
+      }
+    },
+    "latest_booking": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/bookings/1680253772594414619"
+      }
+    },
+    "appointments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104455/appointments"
+      }
+    },
+    "attendees": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/attendees?q%5B%5D=patient_id%3A%3D1104455"
+      }
+    },
+    "invoices": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104455/invoices"
+      }
+    },
+    "patient_attachments": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104455/patient_attachments"
+      }
+    },
+    "medical_alerts": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/patients/1104455/medical_alerts"
+      }
+    },
+    "relationships": {
+      "links": {
+        "self": "https://api.au1.cliniko.com/v1/relationships?q%5B%5D=patient_id%3A%3D1104455"
+      }
+    },
+    "links": {
+      "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+    }
+  },
+  "behavior_data": {
+    "appointments_booked": {
+      "future_appointments_count": 0,
+      "future_appointments": []
+    },
+    "age_demographics": {
+      "age": 48,
+      "date_of_birth": "1977-05-31",
+      "in_target_demographic": true
+    },
+    "yearly_spend": {
+      "yearly_spend": 510.0,
+      "paid_invoices_count": 4,
+      "paid_invoices": [
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-04-22T01:08:00Z",
+          "created_at": "2025-04-15T00:02:02Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1664086102547367656",
+          "invoice_to": "Mrs Vivianne Russell\r\n5 Laver Place\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-04-15",
+          "net_amount": "300.0",
+          "notes": "Mrs Yasmin Karam (Podiatrist)\r\nProvider #5430217H",
+          "number": 2572141,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/iXhXw1ZwVY1-wRHplpTszd1BTuKhVyOpv4",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "300.0",
+          "updated_at": "2025-04-22T01:08:56Z",
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1664086102547367656/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1664086102547367656"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1664086102547367656"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-04-15T00:52:00Z",
+          "created_at": "2025-04-15T00:52:17Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1664111394418591005",
+          "invoice_to": "Mrs Vivianne Russell\r\n5 Laver Place\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-04-15",
+          "net_amount": "70.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2572147,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/vPrXJiaEVY1-pG8N15aUhVtnoegnWvfTD2",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "70.0",
+          "updated_at": "2025-04-15T00:52:32Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1660660405611005073"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1660660405954938129"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1664111394418591005/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1664111394418591005"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1664111394418591005"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-04-22T01:09:00Z",
+          "created_at": "2025-04-22T01:09:05Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1669193282309064266",
+          "invoice_to": "Mrs Vivianne Russell\r\n5 Laver Place\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-04-22",
+          "net_amount": "70.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2572252,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/aIOGSMdViZ1-h11HKuycxYnma9v3ZeDQx5",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "70.0",
+          "updated_at": "2025-04-22T01:09:11Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1664110446287783934"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1664110446665270660"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1669193282309064266/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1669193282309064266"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1669193282309064266"
+          }
+        },
+        {
+          "archived_at": null,
+          "calculation_method": 1,
+          "calculation_method_description": "Legacy",
+          "closed_at": "2025-05-08T04:53:00Z",
+          "created_at": "2025-05-08T04:53:40Z",
+          "deleted_at": null,
+          "discounted_amount": "0.0",
+          "id": "1680902732036179080",
+          "invoice_to": "Mrs Vivianne Russell\r\n5 Laver Place\r\nGreystanes  Nsw  2145\r\nAustralia",
+          "issue_date": "2025-05-08",
+          "net_amount": "70.0",
+          "notes": "Sports Medicine Clinic provides support services and facilities to the independent health care providers who work from their respective business addresses. These health care providers are the entity responsible for your care.",
+          "number": 2572647,
+          "online_payment_url": "https://sportsmedicineclinic.au1.cliniko.com/s/i/Kt5mtdfya02-sIQnl26zfwtPNcVHjNf3q5",
+          "patient_extra_information": "",
+          "status": 20,
+          "status_description": "Paid",
+          "tax_amount": "0.0",
+          "total_amount": "70.0",
+          "updated_at": "2025-05-08T04:53:48Z",
+          "appointment": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointments/1680253772594414619"
+            }
+          },
+          "attendee": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/attendees/1680253772846073247"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "invoice_items": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices/1680902732036179080/invoice_items"
+            }
+          },
+          "reversed_invoices": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/invoices?q%5B%5D=original_invoice_id%3A%3D1680902732036179080"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/invoices/1680902732036179080"
+          }
+        }
+      ],
+      "total_invoices_checked": 17
+    },
+    "referrer_score": {
+      "referrer_score": 0,
+      "patient_referral_source": "Patient Referral",
+      "note": "Optimized - full scan skipped for performance"
+    },
+    "consecutive_attendance": {
+      "consecutive_attendance_streak": 4,
+      "total_appointments": 18
+    },
+    "likability": {
+      "likability_score": 0,
+      "manual_input_required": true
+    },
+    "open_dna_invoices": {
+      "has_open_dna_invoice": false,
+      "total_unpaid_invoices": 0
+    },
+    "unpaid_invoices": {
+      "unpaid_invoice_count": 0,
+      "unpaid_amount": 0,
+      "unpaid_invoices": []
+    },
+    "unlikability": {
+      "unlikability_score": 0,
+      "manual_input_required": true
+    },
+    "cancellations": {
+      "cancellation_count": 6,
+      "cancelled_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "will call back to rescedule",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-07-30T04:42:15Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4112787/conflicts"
+            }
+          },
+          "created_at": "2013-07-24T00:44:49Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2013-07-31T00:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "4112787",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-07-31T00:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/4112787/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4112787/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/4112787"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "kids have something at school cant make it- will call when sami gets back to make an appointment -lm ",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2013-08-27T02:56:46Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4265880/conflicts"
+            }
+          },
+          "created_at": "2013-08-02T07:46:51Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2013-08-27T23:40:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "4265880",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2013-08-27T23:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/4265880/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/4265880/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/4265880"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "sick child home from school.  Jw",
+          "cancellation_reason": 50,
+          "cancellation_reason_description": "Other",
+          "cancelled_at": "2014-04-01T22:14:18Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/8892755/conflicts"
+            }
+          },
+          "created_at": "2014-03-25T23:24:21Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2014-04-01T23:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "8892755",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2014-04-01T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/8892755/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/8892755/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/8892755"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "cant make it",
+          "cancellation_reason": 10,
+          "cancellation_reason_description": "Feeling Better",
+          "cancelled_at": "2014-12-01T23:42:53Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/16543812/conflicts"
+            }
+          },
+          "created_at": "2014-11-24T00:04:48Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": false,
+          "ends_at": "2014-12-02T23:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "16543812",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": false,
+          "starts_at": "2014-12-02T22:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/16543812/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/16543812/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/16543812"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "has sick child home from school.  Jw",
+          "cancellation_reason": 10,
+          "cancellation_reason_description": "Feeling Better",
+          "cancelled_at": "2015-05-17T23:23:43Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/23733973/conflicts"
+            }
+          },
+          "created_at": "2015-05-11T01:22:19Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2015-05-18T00:00:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "23733973",
+          "invoice_status": null,
+          "notes": "",
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {
+            "number_of_repeats": "",
+            "repeat_type": "",
+            "repeating_interval": ""
+          },
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2015-05-17T23:40:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/23733973/connect",
+          "treatment_note_status": null,
+          "updated_at": "2016-03-05T18:05:28Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/23733973/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/23733973"
+          }
+        },
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": "very sick.  Will call to reschedule.  Jw",
+          "cancellation_reason": 30,
+          "cancellation_reason_description": "Sick",
+          "cancelled_at": "2018-11-20T21:36:45Z",
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/132344421/conflicts"
+            }
+          },
+          "created_at": "2018-11-13T22:39:50Z",
+          "deleted_at": null,
+          "did_not_arrive": false,
+          "email_reminder_sent": true,
+          "ends_at": "2018-11-20T22:20:00Z",
+          "has_patient_appointment_notes": null,
+          "id": "132344421",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2018-11-20T22:00:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/132344421/connect",
+          "treatment_note_status": null,
+          "updated_at": "2018-11-20T21:36:45Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/132344421/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/132344421"
+          }
+        }
+      ]
+    },
+    "dna": {
+      "dna_count": 1,
+      "dna_appointments": [
+        {
+          "archived_at": null,
+          "booking_ip_address": null,
+          "cancellation_note": null,
+          "cancellation_reason": null,
+          "cancellation_reason_description": "",
+          "cancelled_at": null,
+          "conflicts": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1346090026563274327/conflicts"
+            }
+          },
+          "created_at": "2024-02-01T06:00:35Z",
+          "deleted_at": null,
+          "did_not_arrive": true,
+          "email_reminder_sent": true,
+          "ends_at": "2024-02-07T23:40:00Z",
+          "has_patient_appointment_notes": false,
+          "id": "1346090026563274327",
+          "invoice_status": null,
+          "notes": null,
+          "online_booking_policy_accepted": null,
+          "patient_arrived": false,
+          "patient_name": "Vivianne Russell",
+          "repeat_rule": {},
+          "repeats": null,
+          "sms_reminder_sent": true,
+          "starts_at": "2024-02-07T23:20:00Z",
+          "telehealth_url": "https://sportsmedicineclinic.au1.cliniko.com/appointments/1346090026563274327/connect",
+          "treatment_note_status": 90,
+          "updated_at": "2024-09-02T23:42:43Z",
+          "appointment_type": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/appointment_types/6090"
+            }
+          },
+          "business": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/businesses/1547"
+            }
+          },
+          "practitioner": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/practitioners/2441"
+            }
+          },
+          "patient": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/patients/1104455"
+            }
+          },
+          "attendees": {
+            "links": {
+              "self": "https://api.au1.cliniko.com/v1/individual_appointments/1346090026563274327/attendees"
+            }
+          },
+          "links": {
+            "self": "https://api.au1.cliniko.com/v1/individual_appointments/1346090026563274327"
+          }
+        }
+      ]
+    }
+  },
+  "extraction_method": "FINAL CORRECTED - All Critical Issues Fixed",
+  "final_fixes_applied": [
+    "UTC timestamp formatting for AEST timezone (FINAL FIX)",
+    "Client-side invoice filtering for yearly spend (SHOULD SHOW $510)",
+    "Corrected consecutive attendance calculation (SHOULD SHOW 4)",
+    "Proper attendance logic: not cancelled AND not DNA AND patient_arrived",
+    "Cancellation detection using proven cancelled_at:? method",
+    "Unpaid invoice detection using closed_at:!? method",
+    "All 11 behavior categories with final corrected logic"
+  ]
+}
