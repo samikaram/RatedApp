@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
+from datetime import datetime
 
 class BaseClient(ABC):
     def __init__(self, settings):
@@ -99,5 +100,78 @@ class BaseClient(ABC):
         Validate the connection to the software's API
         
         :return: Boolean indicating successful connection
+        """
+        pass
+
+    @abstractmethod
+    def get_appointments_by_date_range(
+        self, 
+        start_date: str, 
+        end_date: str, 
+        page: int = 1, 
+        per_page: int = 100
+    ) -> List[Dict]:
+        """
+        Retrieve appointments within a date range
+        
+        :param start_date: Start date in ISO format
+        :param end_date: End date in ISO format
+        :param page: Page number for pagination
+        :param per_page: Number of results per page
+        :return: List of appointment data
+        """
+        pass
+    
+    @abstractmethod
+    def update_appointment_notes(
+        self, 
+        appointment_id: str, 
+        notes: str, 
+        append: bool = True
+    ) -> bool:
+        """
+        Update appointment notes field
+        
+        :param appointment_id: Unique appointment identifier
+        :param notes: Notes text to add
+        :param append: Whether to append or replace notes
+        :return: Success status
+        """
+        pass
+    
+    @abstractmethod
+    def batch_get_patients(
+        self, 
+        patient_ids: List[str]
+    ) -> List[Dict]:
+        """
+        Get multiple patients in one or more API calls
+        
+        :param patient_ids: List of patient IDs to fetch
+        :return: List of patient data
+        """
+        pass
+    
+    @abstractmethod
+    def get_patients_with_appointments_in_range(
+        self,
+        start_date: str,
+        end_date: str
+    ) -> List[Dict]:
+        """
+        Get unique patients who had appointments in date range
+        
+        :param start_date: Start date in ISO format
+        :param end_date: End date in ISO format
+        :return: List of unique patient data with basic info
+        """
+        pass
+    
+    @abstractmethod
+    def get_rate_limits(self) -> Dict[str, Any]:
+        """
+        Get API rate limit information for this integration
+        
+        :return: Dictionary with rate limit details
         """
         pass

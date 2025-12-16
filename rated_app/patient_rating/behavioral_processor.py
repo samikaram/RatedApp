@@ -33,8 +33,18 @@ class BehavioralProcessor:
         dob = patient_data.get('date_of_birth')
         age = 0
         if dob:
-            birth_date = datetime.strptime(dob, '%Y-%m-%d').replace(tzinfo=clinic_tz)
-            age = (datetime.now(clinic_tz) - birth_date).days // 365
+            # Handle multiple date formats
+            for date_format in ['%Y-%m-%d', '%d-%m-%Y', '%d/%m/%Y']:
+                try:
+                    birth_date = datetime.strptime(dob, date_format)
+                    today = datetime.now(clinic_tz).date()
+                    age = (today - birth_date.date()).days // 365
+                    break
+                except ValueError:
+                    continue
+            
+            if age == 0 and dob:
+                print(f"Warning: Could not parse date of birth: {dob}")
         
         # Find matching age bracket
         matching_bracket = next(

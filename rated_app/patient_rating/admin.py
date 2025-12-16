@@ -19,14 +19,14 @@ class ScoringBracketInline(admin.TabularInline):
 @admin.register(BehaviorCategory)
 class BehaviorCategoryAdmin(admin.ModelAdmin):
     """Configure all behavior categories with sliding scales"""
-    list_display = ['name', 'behavior_type', 'scoring_method', 'max_points', 'is_active']
-    list_filter = ['behavior_type', 'scoring_method', 'is_active']
+    list_display = ['name', 'behavior_type', 'scoring_method', 'max_points']
+    list_filter = ['behavior_type', 'scoring_method']
     search_fields = ['name', 'description']
     inlines = [ScoringBracketInline]
 
     fieldsets = (
         ('Basic Configuration', {
-            'fields': ('name', 'behavior_type', 'scoring_method', 'is_active')
+            'fields': ('name', 'behavior_type', 'scoring_method')
         }),
         ('Scoring Parameters', {
             'fields': ('max_points', 'description'),
@@ -108,14 +108,14 @@ admin.site.index_title = "Configure Patient Scoring Parameters"
 # Register ScoringConfiguration model
 @admin.register(ScoringConfiguration)
 class ScoringConfigurationAdmin(admin.ModelAdmin):
-    list_display = ['name', 'is_active', 'created_at', 'updated_at']
-    list_filter = ['is_active', 'created_at']
+    list_display = ['name', 'is_active_for_behavior', 'is_active_for_analytics', 'created_at', 'updated_at']
+    list_filter = ['is_active_for_behavior', 'is_active_for_analytics', 'created_at']
     search_fields = ['name', 'description']
     readonly_fields = ['created_at', 'updated_at']
 
     fieldsets = (
         ('Configuration Info', {
-            'fields': ('name', 'description', 'is_active')
+            'fields': ('name', 'description', 'is_active_for_behavior', 'is_active_for_analytics')
         }),
         ('Positive Behaviors (0-100)', {
             'fields': (
@@ -156,3 +156,19 @@ class RatedAppSettingsAdmin(admin.ModelAdmin):
     list_display = ('clinic_name', 'clinic_location', 'clinic_timezone', 'created_at', 'updated_at')
     search_fields = ('clinic_name', 'clinic_location')
     list_filter = ('clinic_timezone',)
+    
+    fieldsets = (
+        ('Clinic Information', {
+            'fields': ('clinic_name', 'clinic_location', 'clinic_timezone', 'clinic_email')
+        }),
+        ('Software Integration', {
+            'fields': ('software_type', 'base_url', 'api_key', 'auth_type')
+        }),
+        ('Email Configuration', {
+            'fields': ('smtp_host', 'smtp_port', 'smtp_username', 'smtp_password', 'smtp_use_tls'),
+            'description': 'Configure SMTP settings for analytics email reports'
+        }),
+        ('Analytics Settings', {
+            'fields': ('analytics_enabled', 'analytics_preset', 'analytics_last_job')
+        })
+    )

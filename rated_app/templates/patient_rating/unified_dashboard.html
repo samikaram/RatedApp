@@ -260,11 +260,6 @@
     cursor: pointer;
 }
 
-
-
-
-
-
 .settings-hover-panel .hover-panel-content {
     padding: 15px;
     position: relative;
@@ -278,69 +273,6 @@
     padding: 15px;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .settings-hover-panel .settings-section .form-group input, .settings-hover-panel .settings-section .form-group select {
     width: calc(60% - 15px);  /* Balanced, flexible width */
@@ -362,7 +294,6 @@
 }
 
 
-
 .settings-hover-panel .settings-section .form-group {
     margin-top: 10px;     /* Space above first field */
     padding-left: 15px;   /* Consistent with margin */
@@ -375,7 +306,6 @@
     gap: 5px;            /* Better spacing between label and input */
 }
 
-
 .settings-hover-panel .hover-panel-content h2 {
     color: #6c757d;
     font-size: 1.5rem;
@@ -385,10 +315,6 @@
     letter-spacing: -0.5px;
     display: inline-block;
 }
-
-
-
-
 
 .settings-hover-panel h3 {
     color: #6c757d;
@@ -511,81 +437,16 @@
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .settings-hover-panel .settings-section .form-group input:focus {
     outline: none;
     border-bottom-color: #007bff;  /* Light blue on focus */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .settings-hover-panel .settings-section .form-group input::placeholder {
     font-size: 0.85rem;  /* Smaller than input's 0.95rem */
     color: #6c757d;     /* Light grey for subtlety */
     opacity: 0.7;       /* Slightly more subtle */
 }
-
 
 .settings-hover-panel .settings-section .form-group label {
     color: #007bff;           /* Light blue */
@@ -601,19 +462,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 
     <meta name="format-detection" content="telephone=no, email=no, address=no">
@@ -626,14 +474,89 @@
         color: white;
         margin-bottom: 2px;
     }
-    .header-content > div:last-child #clinic-location-header {
-        font-size: 0.8rem;
-        color: white;
-        line-height: 1;
-        text-align: left;
-    }
-    </style>
-    </head>
+.header-content > div:last-child #clinic-location-header {
+    font-size: 0.8rem;
+    color: white;
+    line-height: 1;
+    text-align: left;
+}
+
+/* Analytics Section Styles */
+.analytics-container {
+    position: relative;
+    min-height: 200px;
+}
+
+.analytics-disabled-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(248, 249, 250, 0.95);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Analytics Status Animations */
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.analytics-status-text::after {
+    content: '';
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.analytics-status.running .analytics-status-text::after {
+    content: '...';
+    animation: flash 1.5s infinite;
+}
+
+.analytics-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    margin-top: 10px !important;
+    padding: 8px !important;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #6c757d;
+    max-height: 60px;
+    overflow-y: auto;
+}
+
+.analytics-status.running {
+    background: #fff3cd !important;
+    color: #856404 !important;
+}
+
+.analytics-status.completed {
+    background: #d4edda !important;
+    color: #155724 !important;
+}
+
+.analytics-status.failed {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+}
+
+/* Ensure Analytics controls stay compact */
+.form-group.analytics-controls {
+    margin-bottom: 5px !important;
+}
+
+.form-group.analytics-status {
+    margin-top: 5px !important;
+}
+</style>
+</head>
 <body>
     <header class="header">
         
@@ -1431,7 +1354,7 @@ function deletePreset() {
         }
 
         // Step 3D: Send AJAX DELETE request to backend
-        fetch("/patients/delete-preset/", {
+        fetch("{% url 'delete_preset' %}", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -2240,7 +2163,7 @@ function saveUnpaidInvoicesPoints() {
             }
             
             // Call backend (basic structure)
-            fetch('/patients/dashboard/', {
+            fetch("{% url 'unified_dashboard' %}", {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -2331,7 +2254,7 @@ function saveUnpaidInvoicesPoints() {
         updateBtn.disabled = true;
         
         // Send AJAX request to backend
-        fetch('/patients/dashboard/', {
+        fetch("{% url 'unified_dashboard' %}", {
             method: 'POST',
             body: formData,
             headers: {
@@ -2575,7 +2498,7 @@ function toggleScoringPresets() {
         function loadPresets() {
             console.log('🔄 Loading presets into dropdown...');
             
-            fetch('/patients/presets/get/')
+            fetch("{% url 'get_presets' %}")
                 .then(response => {
                     console.log('📡 Response received:', response.status);
                     return response.json();
@@ -2656,7 +2579,7 @@ function toggleScoringPresets() {
             
             console.log('Fetching preset data for ID:', selectedValue);
             
-            fetch('/patients/presets/get/' + selectedValue + '/')
+            fetch(`/presets/get/${selectedValue}/`)
                 .then(function(response) {
                     console.log('Response status:', response.status);
                     if (response.ok === false) {
@@ -2989,7 +2912,7 @@ function toggleScoringPresets() {
         console.log("🔍 Applying preset ID:", selectedPresetId);
         
         // Use the working applyPresetById logic
-        fetch('/patients/dashboard/', {
+        fetch("{% url 'unified_dashboard' %}", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -3310,7 +3233,7 @@ function applyPresetById(presetId, presetName) {
     }
     
     // Send AJAX request to apply the preset without form submission
-    fetch('/patients/dashboard/', {
+    fetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -3702,7 +3625,7 @@ function searchPatients() {
     searchBtn.disabled = true;
     
     // AJAX search request
-    fetch('/patients/dashboard/', {
+    fetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -3738,7 +3661,7 @@ function displaySearchResults(patients) {
     } else {
         resultsList.innerHTML = patients.map(patient => `
             <div class="search-result-item" style="padding: 8px 12px; border-bottom: 1px solid #f0f0f0; cursor: pointer; font-size: 0.85rem; width: 100%;" 
-                 onclick="selectPatient(${patient.id}, '${patient.name.replace(/'/g, "\'")}')">
+                 onclick="selectPatient('${patient.id}', '${patient.name.replace(/'/g, "\'")}')">
                 <span style="font-weight: 500;">${patient.name}</span>
                 <span style="color: #666; font-size: 0.75rem;">ID: ${patient.id}</span>
             </div>
@@ -3750,6 +3673,9 @@ function displaySearchResults(patients) {
 
 // Select Patient Function
 function selectPatient(patientId, patientName) {
+    // Store as string to preserve full precision
+    window.currentPatientId = String(patientId);
+
     // Update selected patient header
     document.getElementById('selected-patient-name').textContent = patientName;
 
@@ -3769,18 +3695,14 @@ function selectPatient(patientId, patientName) {
     // Show behavior cards container
     document.getElementById('behavior-cards-container').style.display = 'block';
     
-    // Store current patient ID
-    window.currentPatientId = patientId;
-    
     // Load patient behavior data
-    loadPatientBehaviorData(patientId);
+    loadPatientBehaviorData(window.currentPatientId);
     
     // Load behavior data for all cards when patient is selected
-    console.log('Loading behavior data for patient:', patientId);
+    console.log('Loading behavior data for patient:', window.currentPatientId);
 
-    
     // Display patient score
-    displayPatientScore(patientId);
+    displayPatientScore(window.currentPatientId);
 }
 
 // Load Patient Behavior Data Function
@@ -3824,7 +3746,7 @@ function saveLikability() {
         return;
     }
     
-    fetch('/patients/dashboard/', {
+    fetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -4617,6 +4539,10 @@ function displayPatientScore(patientId) {
                 <label for="clinic-name">Name:</label>
                 <input type="text" id="clinic-name" name="clinic_name" placeholder="Enter clinic name">
             </div>
+            <div class="form-group clinic-email">
+                <label for="clinic-email">Email:</label>
+                <input type="email" id="clinic-email" name="clinic_email" placeholder="email@domain.com">
+            </div>
             <div class="form-group clinic-location">
                 <label for="clinic-location">Location:</label>
                 <input type="text" id="clinic-location" name="clinic_location" placeholder="Suburb">
@@ -4653,25 +4579,119 @@ function displayPatientScore(patientId) {
             </div>
 </section>
         <div class="section-separator section-separator-2" style="width: 100%; height: 1px; background-color: #e0e0e0; margin: 15px 0;"></div>
-        <h3>Analytics</h3>
 
+<section class="settings-section analytics-settings">
+    <h3>Analytics</h3>
+    <div class="analytics-container" id="analytics-container">
+        <!-- Disabled overlay (shown when not connected) -->
+        <div class="analytics-disabled-overlay" id="analytics-disabled-overlay" style="display: none;">
+            <div style="text-align: center; padding: 40px; color: #6c757d;">
+                <span style="font-size: 2em;">🔒</span>
+                <p style="margin-top: 10px;">Connect to software first to enable Analytics</p>
+            </div>
+        </div>
+        
+        <!-- Analytics configuration form -->
+        <div class="analytics-form" id="analytics-form">
+            <!-- Date Range Selection -->
+            <div class="form-group analytics-date-range">
+                <label for="analytics-date-range">Range:</label>
+                <select id="analytics-date-range" name="analytics_date_range">
+                    <option value="">Select date range...</option>
+                    <option value="1d">1 day</option>
+                    <option value="3">3 months</option>
+                    <option value="6">6 months</option>
+                    <option value="1y">1 year</option>
+                    <option value="2y">2 years</option>
+                    <option value="5y">5 years</option>
+                    <option value="10y">10 years</option>
+                </select>
+            </div>
+            
+            <!-- Frequency Selection -->
+            <div class="form-group analytics-frequency">
+                <label for="analytics-frequency">Frequency:</label>
+                <select id="analytics-frequency" name="analytics_frequency" onchange="toggleAnalyticsDaySelector()">
+                    <option value="">Select frequency...</option>
+                    <option value="manual">Manual</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+            </div>
+            
+            <!-- Day Selection (for weekly) -->
+            <div class="form-group analytics-day" id="analytics-day-group" style="display: none;">
+                <label for="analytics-day">Day:</label>
+                <select id="analytics-day" name="analytics_day">
+                    <option value="">Select day...</option>
+                    <option value="0">Monday</option>
+                    <option value="1">Tuesday</option>
+                    <option value="2">Wednesday</option>
+                    <option value="3">Thursday</option>
+                    <option value="4">Friday</option>
+                    <option value="5">Saturday</option>
+                    <option value="6">Sunday</option>
+                </select>
+            </div>
+            
+            <!-- Time Selection -->
+            <div class="form-group analytics-time" id="analytics-time-group" style="display: none;">
+                <label for="analytics-time">Time:</label>
+                <input type="time" id="analytics-time" name="analytics_time">
+                <span class="info-icon" title="Best practice: Schedule outside business hours (e.g., 2:00 AM - 5:00 AM) to avoid impacting clinic operations">ℹ️</span>
+            </div>
+            
+            <!-- Preset Selection -->
+            <div class="form-group analytics-preset">
+                <label for="analytics-preset">Preset:</label>
+                <select id="analytics-preset" name="analytics_preset">
+                    <option value="">Select preset...</option>
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="testModeCheckbox">
+                        <label class="form-check-label" for="testModeCheckbox">
+                            <strong>Test Mode</strong> - Process without updating Cliniko
+                            <small class="text-muted d-block">Use this to test your analytics configuration</small>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Control Buttons and Status -->
+            <div class="form-group analytics-controls">
+                <label></label>
+                <div>
+                    <button type="button" id="analytics-action-btn" onclick="toggleAnalytics()" style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 0.9rem; cursor: pointer;" disabled>
+                        Start
+                    </button>
+                </div>
+                <span class="edit-save-text" data-form-group="analytics">Edit</span>
+            </div>
+            
+            <!-- Status Display -->
+            <div class="form-group analytics-status">
+                <label></label>
+                <div id="analytics-status" style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 4px; font-size: 0.85rem; color: #6c757d;">
+                    <span id="analytics-status-text">Not configured</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
 
     </div>
     <div class="hover-panel-close" aria-label="Close Settings">×</div>
 </div>
 
-        </section>
-
-        </div>
-</div>
-
-
-
-
-    <script>
+<script>
     // Function to load clinic settings
     function loadClinicSettings() {
-    fetch('/update-clinic-settings/')
+    fetch("{% url 'update_clinic_settings' %}")
     .then(response => {
         if (!response.ok) {
             throw new Error('No settings found');
@@ -4686,6 +4706,7 @@ function displayPatientScore(patientId) {
             document.getElementById('clinic-name').value = settings.clinic_information.clinic_name;
             document.getElementById('clinic-location').value = settings.clinic_information.clinic_location;
             document.getElementById('clinic-timezone').value = settings.clinic_information.clinic_timezone;
+            document.getElementById('clinic-email').value = settings.clinic_information.clinic_email || '';
             
             // Populate Connectivity
 const softwareSelect = document.getElementById('software-integration');
@@ -4850,7 +4871,8 @@ const editSaveSpan = timezoneFormGroup.querySelector(".edit-save-text");
             const saveData = {
                 clinic_name: document.getElementById("clinic-name").value,
                 clinic_location: document.getElementById("clinic-location").value,
-                clinic_timezone: document.querySelector("#clinic-timezone").value
+                clinic_timezone: document.querySelector("#clinic-timezone").value,
+                clinic_email: document.getElementById("clinic-email").value
             };
             
             console.log("💾 Clinic Settings Updated:", saveData);
@@ -4899,7 +4921,7 @@ function getCookie(name) {
 
 // Unified Save Mechanism
 function saveSettings(section, data) {
-    return fetch('/update-clinic-settings/', {
+    return fetch("{% url 'update_clinic_settings' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -5029,7 +5051,7 @@ validateClinikoAPIKey(saveData.api_key)
 });
 
 async function validateClinikoAPIKey(apiKey) {
-    const validationUrl = `/validate-cliniko-api-key/?api_key=${encodeURIComponent(apiKey)}`;
+    const validationUrl = "{% url 'validate_cliniko_api_key' %}?api_key=${encodeURIComponent(apiKey)}";
     
     try {
         const response = await fetch(validationUrl);
@@ -5108,6 +5130,758 @@ connectionStatusStyle.textContent = `
     }
 `;
 document.head.appendChild(connectionStatusStyle);
+
+// Analytics JavaScript Functions - Enhanced Version
+let analyticsConfig = null;
+let analyticsStatusInterval = null;
+let analyticsProcessingInterval = null;
+
+// Initialize analytics section
+document.addEventListener('DOMContentLoaded', function() {
+    // Check connection status and initialize
+    checkAnalyticsConnection();
+    loadAnalyticsPresets();
+    loadAnalyticsConfig();
+    
+    // Start status monitoring
+    startAnalyticsStatusMonitoring();
+});
+
+function checkAnalyticsConnection() {
+    // Check if software is connected in Connectivity section
+    const softwareIntegration = document.getElementById('software-integration');
+    const apiKey = document.getElementById('api-key');
+    const analyticsOverlay = document.getElementById('analytics-disabled-overlay');
+    const analyticsForm = document.getElementById('analytics-form');
+    
+    // Check for connected status
+    const isConnected = softwareIntegration && 
+                       softwareIntegration.value && 
+                       apiKey && 
+                       apiKey.value &&
+                       document.querySelector('.connection-status.connected');
+    
+    if (isConnected) {
+        // Enable analytics
+        analyticsOverlay.style.display = 'none';
+        analyticsForm.style.opacity = '1';
+        analyticsForm.style.pointerEvents = 'auto';
+        
+        // Enable Edit button
+        const editBtn = document.querySelector('.settings-section.analytics-settings .edit-save-text');
+        if (editBtn) {
+            editBtn.style.pointerEvents = 'auto';
+            editBtn.style.opacity = '1';
+        }
+    } else {
+        // Disable analytics
+        analyticsOverlay.style.display = 'flex';
+        analyticsForm.style.opacity = '0.3';
+        analyticsForm.style.pointerEvents = 'none';
+    }
+}
+
+function toggleAnalyticsDaySelector() {
+    const frequency = document.getElementById('analytics-frequency').value;
+    const dayGroup = document.getElementById('analytics-day-group');
+    const timeGroup = document.getElementById('analytics-time-group');
+    const startBtn = document.getElementById('analytics-action-btn');
+    const statusText = document.getElementById('analytics-status-text');
+    
+    if (frequency === 'weekly') {
+        dayGroup.style.display = 'flex';
+        timeGroup.style.display = 'flex';
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.6';
+        
+        // Update status for scheduled mode
+        const savedTime = document.getElementById('analytics-time').value;
+        const savedDay = document.getElementById('analytics-day').value;
+        if (savedTime && savedDay) {
+            updateScheduledStatus(savedTime, savedDay, 'weekly');
+        }
+    } else if (frequency === 'daily') {
+        dayGroup.style.display = 'none';
+        timeGroup.style.display = 'flex';
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.6';
+        
+        // Update status for scheduled mode
+        const savedTime = document.getElementById('analytics-time').value;
+        if (savedTime) {
+            updateScheduledStatus(savedTime, null, 'daily');
+        }
+    } else if (frequency === 'manual') {
+        dayGroup.style.display = 'none';
+        timeGroup.style.display = 'none';
+        
+        // Enable Start button only if preset is selected
+        const preset = document.getElementById('analytics-preset').value;
+        if (preset) {
+            startBtn.disabled = false;
+            startBtn.style.opacity = '1';
+        }
+        
+        // Update status for manual mode
+        statusText.textContent = 'Ready to run';
+    } else {
+        dayGroup.style.display = 'none';
+        timeGroup.style.display = 'none';
+        startBtn.disabled = true;
+        startBtn.style.opacity = '0.6';
+    }
+}
+
+function updateScheduledStatus(time, day, frequency) {
+    const statusText = document.getElementById('analytics-status-text');
+    const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    
+    // Calculate next run time
+    const now = new Date();
+    const [hours, minutes] = time.split(':');
+    let nextRun = new Date();
+    nextRun.setHours(parseInt(hours));
+    nextRun.setMinutes(parseInt(minutes));
+    nextRun.setSeconds(0);
+    
+    if (frequency === 'daily') {
+        // If time has passed today, set for tomorrow
+        if (nextRun <= now) {
+            nextRun.setDate(nextRun.getDate() + 1);
+        }
+    } else if (frequency === 'weekly' && day !== null) {
+        const targetDay = parseInt(day);
+        const currentDay = now.getDay();
+        let daysUntil = (targetDay - currentDay + 7) % 7;
+        
+        // If it's the same day but time has passed, schedule for next week
+        if (daysUntil === 0 && nextRun <= now) {
+            daysUntil = 7;
+        }
+        
+        nextRun.setDate(nextRun.getDate() + daysUntil);
+    }
+    
+    // Format the date
+    const formattedDate = nextRun.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    });
+    const formattedTime = nextRun.toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
+    
+    statusText.textContent = `Ready to run on: ${formattedDate} ${formattedTime}`;
+}
+
+function loadAnalyticsPresets() {
+    fetch("{% url 'get_presets' %}")
+        .then(response => response.json())
+        .then(data => {
+            const presetSelect = document.getElementById('analytics-preset');
+            if (presetSelect && data.presets) {
+                // Clear existing options except first
+                const firstOption = presetSelect.firstElementChild;
+                presetSelect.innerHTML = '';
+                if (firstOption) {
+                    presetSelect.appendChild(firstOption);
+                }
+                
+                // Add preset options
+                data.presets.forEach(preset => {
+                    const option = document.createElement('option');
+                    option.value = preset.id;
+                    option.textContent = preset.name;
+                    presetSelect.appendChild(option);
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error loading presets:', error);
+        });
+}
+
+function loadAnalyticsConfig() {
+    fetch('/analytics/config/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.current_job) {
+                analyticsConfig = data.current_job;
+                
+                // Populate form with saved values
+                document.getElementById('analytics-date-range').value = data.current_job.date_range || '';
+                document.getElementById('analytics-frequency').value = data.current_job.frequency || '';
+                document.getElementById('analytics-preset').value = data.current_job.preset_id || '';
+                document.getElementById('testModeCheckbox').checked = data.current_job.is_test_mode || false;
+                
+                if (data.current_job.scheduled_time) {
+                    document.getElementById('analytics-time').value = data.current_job.scheduled_time;
+                }
+                
+                if (data.current_job.frequency === 'weekly' && data.current_job.scheduled_day !== null) {
+                    document.getElementById('analytics-day').value = data.current_job.scheduled_day;
+                }
+                
+                // Trigger UI updates
+                toggleAnalyticsDaySelector();
+                
+                // Update status
+                updateAnalyticsStatus(data.current_job);
+            }
+        })
+        .catch(error => {
+            console.error('Error loading analytics config:', error);
+        });
+}
+
+function updateFrequencyOptions() {
+    const dateRange = document.getElementById('analytics-date-range').value;
+    const frequencySelect = document.getElementById('analytics-frequency');
+    
+    if (dateRange === '1d') {
+        // For 1 day, only allow Manual
+        frequencySelect.value = 'manual';
+        
+        // Disable other options
+        Array.from(frequencySelect.options).forEach(option => {
+            if (option.value !== 'manual') {
+                option.disabled = true;
+                option.text = option.text.includes('(1 day only allows Manual)') ? 
+                    option.text : option.text + ' (1 day only allows Manual)';
+            }
+        });
+    } else {
+        // Enable all options for other date ranges
+        Array.from(frequencySelect.options).forEach(option => {
+            option.disabled = false;
+            option.text = option.text.replace(' (1 day only allows Manual)', '');
+        });
+    }
+}
+
+// Add event listener for date range changes
+document.getElementById('analytics-date-range').addEventListener('change', updateFrequencyOptions);
+
+function saveAnalyticsConfig() {
+    const dateRange = document.getElementById('analytics-date-range').value;
+    const frequency = document.getElementById('analytics-frequency').value;
+    const presetId = document.getElementById('analytics-preset').value;
+    const scheduledTime = document.getElementById('analytics-time').value || '02:00';
+    const scheduledDay = document.getElementById('analytics-day').value;
+    const testMode = document.getElementById('testModeCheckbox').checked;
+    
+    // Validation
+    if (!dateRange || !frequency || !presetId) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    // Validate 1 day can only be manual
+    if (dateRange === '1d' && frequency !== 'manual') {
+        alert('1 day range can only use Manual frequency');
+        return;
+    }
+    
+    if (frequency !== 'manual' && !scheduledTime) {
+        alert('Please select a scheduled time for automated runs');
+        return;
+    }
+    
+    if (frequency === 'weekly' && !scheduledDay) {
+        alert('Please select a day for weekly runs');
+        return;
+    }
+    
+    // Show confirmation if replacing existing job
+    const confirmMessage = testMode ? 
+        'Start test analytics run? (Will not update Cliniko)' :
+        'Save analytics configuration? This will replace any existing scheduled job.';
+        
+    if (!confirm(confirmMessage)) {
+        return;
+    }
+    
+    // Prepare data
+    const configData = {
+        date_range: dateRange,
+        frequency: frequency,
+        preset_id: presetId,
+        scheduled_time: scheduledTime,
+        is_test_mode: testMode
+    };
+    
+    if (frequency === 'weekly') {
+        configData.scheduled_day = parseInt(scheduledDay);
+    }
+    
+    // Save configuration
+    fetch('/analytics/config/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify(configData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            const saveMessage = document.getElementById('save-message');
+            if (saveMessage) {
+                saveMessage.textContent = '✓ Analytics configured';
+                saveMessage.style.display = 'block';
+                setTimeout(() => {
+                    saveMessage.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Enable action button if manual
+            if (frequency === 'manual') {
+                document.getElementById('analytics-action-btn').disabled = false;
+            }
+            
+            // Reload config
+            loadAnalyticsConfig();
+            
+            // If test mode, auto-start might be desired
+            if (testMode && confirm('Start test run now?')) {
+                startAnalytics();
+            }
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error saving analytics config:', error);
+        alert('Failed to save configuration');
+    });
+}
+
+function toggleAnalytics() {
+    const actionBtn = document.getElementById('analytics-action-btn');
+    
+    if (actionBtn.textContent === 'Start') {
+        // Check if preset is selected for manual mode
+        const frequency = document.getElementById('analytics-frequency').value;
+        const preset = document.getElementById('analytics-preset').value;
+        
+        if (frequency === 'manual' && !preset) {
+            alert('Please select a preset before starting');
+            return;
+        }
+        
+        startAnalytics();
+    } else if (actionBtn.textContent === 'Stop') {
+        cancelAnalytics();
+    }
+}
+
+function startAnalytics() {
+    const actionBtn = document.getElementById('analytics-action-btn');
+    const statusText = document.getElementById('analytics-status-text');
+    
+    // Confirm action
+    if (!confirm('Start analytics processing? This will analyze all patients in the selected date range.')) {
+        return;
+    }
+    
+    // Disable button during request
+    actionBtn.disabled = true;
+    
+    // Start processing
+    fetch('/analytics/start/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update button to Stop
+            actionBtn.textContent = 'Stop';
+            actionBtn.style.background = '#dc3545';
+            actionBtn.disabled = false;
+            
+            // Update status immediately
+            statusText.textContent = 'Initialising...';
+            document.getElementById('analytics-status').className = 'analytics-status running';
+            
+            // Start monitoring - this will update the status dynamically
+            setTimeout(() => {
+                startAnalyticsProcessingMonitoring();
+            }, 1000);
+        } else {
+            alert('Error: ' + data.error);
+            actionBtn.disabled = false;
+        }
+    })
+    .catch(error => {
+        console.error('Error starting analytics:', error);
+        alert('Failed to start analytics');
+        actionBtn.disabled = false;
+    });
+}
+
+function cancelAnalytics() {
+    const actionBtn = document.getElementById('analytics-action-btn');
+    
+    // Confirm cancellation
+    if (!confirm('Stop analytics processing? The current patient will be completed before stopping.')) {
+        return;
+    }
+    
+    // Cancel processing
+    fetch('/analytics/cancel/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update status
+            document.getElementById('analytics-status-text').textContent = 'Process Aborted';
+            
+            // Button will update on next status check
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error cancelling analytics:', error);
+        alert('Failed to cancel analytics');
+    });
+}
+
+function startAnalyticsProcessingMonitoring() {
+    // Clear existing processing interval
+    if (analyticsProcessingInterval) {
+        clearInterval(analyticsProcessingInterval);
+    }
+    
+    // Check status every 2 seconds during processing
+    analyticsProcessingInterval = setInterval(() => {
+        checkAnalyticsProcessingStatus();
+    }, 2000);
+    
+    // Check immediately
+    checkAnalyticsProcessingStatus();
+}
+
+function checkAnalyticsProcessingStatus() {
+    fetch('/analytics/status/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateAnalyticsProcessingStatus(data);
+                
+                // Stop frequent monitoring if not running
+                if (data.status !== 'running') {
+                    if (analyticsProcessingInterval) {
+                        clearInterval(analyticsProcessingInterval);
+                        analyticsProcessingInterval = null;
+                    }
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error checking analytics status:', error);
+        });
+}
+
+function updateAnalyticsProcessingStatus(statusData) {
+    const statusElement = document.getElementById('analytics-status');
+    const statusText = document.getElementById('analytics-status-text');
+    const actionBtn = document.getElementById('analytics-action-btn');
+    
+    // Calculate ETA based on processing rate
+    let statusMessage = '';
+    
+    if (statusData.status === 'running') {
+        const processed = statusData.patients_processed || 0;
+        const total = statusData.total_patients || 0;
+        
+        if (total === 0) {
+            statusMessage = 'Initialising...';
+        } else {
+            const progress = Math.round((processed / total) * 100);
+            const remaining = total - processed;
+            
+            // Estimate time (3 seconds per patient + overhead)
+            const secondsPerPatient = 3.5;
+            const estimatedSeconds = remaining * secondsPerPatient;
+            
+            let etaText = '';
+            if (estimatedSeconds < 60) {
+                etaText = Math.round(estimatedSeconds) + ' secs';
+            } else if (estimatedSeconds < 3600) {
+                etaText = Math.round(estimatedSeconds / 60) + ' mins';
+            } else {
+                etaText = Math.round(estimatedSeconds / 3600) + ' hrs';
+            }
+            
+            if (processed < total * 0.5) {
+                statusMessage = `Retrieving Data (ETA ${etaText})...`;
+            } else {
+                statusMessage = `Processing Data (ETA ${etaText})...`;
+            }
+        }
+        
+        // Update button to Stop
+        actionBtn.textContent = 'Stop';
+        actionBtn.style.background = '#dc3545';
+        actionBtn.disabled = false;
+        
+    } else if (statusData.status === 'completed') {
+        statusMessage = 'Completed';
+        
+        // Reset button for manual mode
+        const frequency = document.getElementById('analytics-frequency').value;
+        if (frequency === 'manual') {
+            actionBtn.textContent = 'Start';
+            actionBtn.style.background = '#28a745';
+            actionBtn.disabled = false;
+        } else {
+            // Show next scheduled run
+            if (statusData.next_run) {
+                const nextRun = new Date(statusData.next_run);
+                const formattedDate = nextRun.toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: '2-digit'
+                });
+                const formattedTime = nextRun.toLocaleTimeString('en-US', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    hour12: true
+                });
+                statusMessage = `Ready to run on: ${formattedDate} ${formattedTime}`;
+            }
+            actionBtn.disabled = true;
+        }
+        
+    } else if (statusData.status === 'cancelled' || statusData.status === 'partial') {
+        statusMessage = 'Process Aborted';
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+        actionBtn.disabled = false;
+        
+    } else if (statusData.status === 'failed') {
+        statusMessage = 'Failed';
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+        actionBtn.disabled = false;
+        
+    } else {
+        statusMessage = 'Ready to run';
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+    }
+    
+    statusText.textContent = statusMessage;
+    
+    // Update status styling
+    statusElement.className = 'analytics-status';
+    if (statusData.status === 'running') {
+        statusElement.classList.add('running');
+    } else if (statusData.status === 'completed') {
+        statusElement.classList.add('completed');
+    } else if (statusData.status === 'failed' || statusData.status === 'partial') {
+        statusElement.classList.add('failed');
+    }
+}
+
+function checkAnalyticsStatus() {
+    // Don't check if currently processing
+    if (analyticsProcessingInterval) {
+        return;
+    }
+    
+    fetch('/analytics/status/')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                updateAnalyticsStatus(data);
+            }
+        })
+        .catch(error => {
+            console.error('Error checking analytics status:', error);
+        });
+}
+
+function updateAnalyticsStatus(statusData) {
+    const statusElement = document.getElementById('analytics-status');
+    const statusText = document.getElementById('analytics-status-text');
+    const actionBtn = document.getElementById('analytics-action-btn');
+    const frequency = document.getElementById('analytics-frequency').value;
+    
+    // Don't update if we're in the middle of processing
+    if (analyticsProcessingInterval && statusData.status === 'running') {
+        return;
+    }
+    
+    let statusMessage = '';
+    
+    if (statusData.status === 'pending' || statusData.status === 'not_configured') {
+        // Check frequency to determine status message
+        if (frequency === 'manual') {
+            statusMessage = 'Ready to run';
+            actionBtn.textContent = 'Start';
+            actionBtn.style.background = '#28a745';
+            actionBtn.disabled = false;
+        } else {
+            // For scheduled runs, show next run time
+            const time = document.getElementById('analytics-time').value;
+            const day = document.getElementById('analytics-day').value;
+            
+            if (time && (frequency === 'daily' || (frequency === 'weekly' && day))) {
+                updateScheduledStatus(time, day, frequency);
+                // Don't override the scheduled status message
+                return;
+            } else {
+                statusMessage = 'Not configured';
+            }
+            actionBtn.disabled = true;
+        }
+    } else if (statusData.status === 'running') {
+        // Should be handled by processing monitor
+        startAnalyticsProcessingMonitoring();
+        return;
+    } else if (statusData.status === 'completed') {
+        if (frequency === 'manual') {
+            statusMessage = 'Completed';
+        } else if (statusData.next_run) {
+            // Show next scheduled run
+            const nextRun = new Date(statusData.next_run);
+            const formattedDate = nextRun.toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: '2-digit',
+                year: '2-digit'
+            });
+            const formattedTime = nextRun.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+            statusMessage = `Ready to run on: ${formattedDate} ${formattedTime}`;
+        } else {
+            statusMessage = 'Completed';
+        }
+        
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+        actionBtn.disabled = (frequency !== 'manual');
+        
+    } else if (statusData.status === 'failed') {
+        statusMessage = 'Failed';
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+        actionBtn.disabled = false;
+    } else if (statusData.status === 'cancelled' || statusData.status === 'partial') {
+        statusMessage = 'Process Aborted';
+        actionBtn.textContent = 'Start';
+        actionBtn.style.background = '#28a745';
+        actionBtn.disabled = false;
+    }
+    
+    // Only update if we have a message to set
+    if (statusMessage) {
+        statusText.textContent = statusMessage;
+    }
+    
+    // Update status styling
+    statusElement.className = 'analytics-status';
+    if (statusData.status === 'running') {
+        statusElement.classList.add('running');
+    } else if (statusData.status === 'completed') {
+        statusElement.classList.add('completed');
+    } else if (statusData.status === 'failed' || statusData.status === 'partial') {
+        statusElement.classList.add('failed');
+    }
+}
+
+function startAnalyticsStatusMonitoring(interval = 30000) {
+    // Clear existing interval
+    if (analyticsStatusInterval) {
+        clearInterval(analyticsStatusInterval);
+    }
+    
+    // Don't monitor during active processing
+    if (analyticsProcessingInterval) {
+        return;
+    }
+    
+    // Check status immediately
+    checkAnalyticsStatus();
+    
+    // Set up periodic checking
+    analyticsStatusInterval = setInterval(checkAnalyticsStatus, interval);
+}
+
+// Monitor connection status changes
+setInterval(checkAnalyticsConnection, 5000);
+
+// Analytics Edit/Save Logic
+document.addEventListener('DOMContentLoaded', function() {
+    const analyticsSection = document.querySelector(".settings-section.analytics-settings");
+    const editSaveSpan = analyticsSection.querySelector(".edit-save-text");
+    const analyticsForm = document.getElementById('analytics-form');
+
+    editSaveSpan.addEventListener("click", function() {
+        if (this.textContent === 'Edit') {
+            // EDIT MODE
+            this.textContent = 'Save';
+            this.classList.add('save-mode');
+            
+            // Enable all inputs in the Analytics form except Start button
+            const inputs = analyticsForm.querySelectorAll('select, input');
+            inputs.forEach(input => {
+                if (input.id !== 'analytics-action-btn') {
+                    input.disabled = false;
+                }
+            });
+            
+            // Start button stays disabled in edit mode for schedules
+            const frequency = document.getElementById('analytics-frequency').value;
+            if (frequency !== 'manual') {
+                document.getElementById('analytics-action-btn').disabled = true;
+            }
+        } else {
+            // SAVE MODE
+            // Call the existing saveAnalyticsConfig function
+            saveAnalyticsConfig();
+            
+            // Revert to Edit state
+            this.textContent = 'Edit';
+            this.classList.remove('save-mode');
+            
+            // Disable all inputs in the Analytics form
+            const inputs = analyticsForm.querySelectorAll('select, input');
+            inputs.forEach(input => {
+                input.disabled = true;
+            });
+            
+            // Enable Start button only if manual mode
+            const frequency = document.getElementById('analytics-frequency').value;
+            const preset = document.getElementById('analytics-preset').value;
+            if (frequency === 'manual' && preset) {
+                document.getElementById('analytics-action-btn').disabled = false;
+            }
+        }
+    });
+
+    // Initially disable all inputs in the Analytics form
+    const inputs = analyticsForm.querySelectorAll('select, input');
+    inputs.forEach(input => {
+        input.disabled = true;
+    });
+});
 
 </script>
 

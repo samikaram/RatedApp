@@ -1,7 +1,7 @@
 from django.db import models
-
-from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+import uuid
+from django.utils import timezone
 
 # Software Integration Choices
 SOFTWARE_CHOICES = [
@@ -36,7 +36,8 @@ class BehaviorCategory(models.Model):
     behavior_type = models.CharField(max_length=10, choices=BEHAVIOR_TYPES)
     scoring_method = models.CharField(max_length=20, choices=SCORING_METHODS)
     max_points = models.IntegerField(validators=[MinValueValidator(-100), MaxValueValidator(100)])
-    is_active = models.BooleanField(default=True)
+    is_active_for_scoring = models.BooleanField(default=True)
+    is_active_for_analytics = models.BooleanField(default=True, help_text="Active for analytics processing")
     description = models.TextField(blank=True)
 
     # Connectivity Settings
@@ -87,7 +88,6 @@ class Patient(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     # Individual patient attributes (manual input, default 0)
-    likability = models.IntegerField(default=0, validators=[MinValueValidator(-100), MaxValueValidator(100)], help_text="Patient likability score from -100 (very unlikable) to +100 (very likable)")
     likability = models.IntegerField(default=0, validators=[MinValueValidator(-100), MaxValueValidator(100)], help_text="Patient likability score from -100 (very unlikable) to +100 (very likable)")
     
     def get_letter_grade(self):
@@ -193,31 +193,43 @@ class ScoringConfiguration(models.Model):
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField(default=False, help_text="Currently active configuration")
+    is_active_for_behavior = models.BooleanField(default=False, help_text="Active preset for patient behavior scoring")
+    is_active_for_analytics = models.BooleanField(default=False, help_text="Active preset for analytics processing")
     
     class Meta:
         ordering = ['-updated_at']
     
     def __str__(self):
-        return f"{self.name} {'(Active)' if self.is_active else ''}"
+        active_status = []
+        if self.is_active_for_behavior:
+            active_status.append('Behavior')
+        if self.is_active_for_analytics:
+            active_status.append('Analytics')
+        
+        if active_status:
+            return f"{self.name} (Active for: {', '.join(active_status)})"
+        return self.name
     
     def save(self, *args, **kwargs):
-        # Ensure only one active configuration
-        if self.is_active:
-            ScoringConfiguration.objects.filter(is_active=True).update(is_active=False)
+        # Ensure only one active configuration for behavior
+        if self.is_active_for_behavior:
+            ScoringConfiguration.objects.filter(is_active_for_behavior=True).exclude(id=self.id).update(is_active_for_behavior=False)
+        # Ensure only one active configuration for analytics
+        if self.is_active_for_analytics:
+            ScoringConfiguration.objects.filter(is_active_for_analytics=True).exclude(id=self.id).update(is_active_for_analytics=False)
         super().save(*args, **kwargs)
     
     @classmethod
     def get_active_config(cls):
-        """Get the currently active scoring configuration"""
+        """Get the currently active scoring configuration for behavior"""
         try:
-            return cls.objects.get(is_active=True)
+            return cls.objects.get(is_active_for_behavior=True)
         except cls.DoesNotExist:
             # Create default configuration if none exists
             return cls.objects.create(
                 name="Default Configuration",
                 description="Standard RatedApp scoring weights",
-                is_active=True
+                is_active_for_behavior=True
             )
 
 class AgeBracket(models.Model):
@@ -252,16 +264,43 @@ class SpendBracket(models.Model):
 
 class RatedAppSettings(models.Model):
 
-    use_plugin_system = models.BooleanField(
-        default=False, 
-        help_text='Enable new plugin-based integration system'
-    )
     # Clinic Information
     clinic_name = models.CharField(
         max_length=200, 
         null=False, 
         blank=False, 
         verbose_name="Clinic Name"
+    )
+    clinic_email = models.EmailField(
+        max_length=254,
+        blank=True,
+        null=True,
+        verbose_name="Clinic Email",
+        help_text="Email address for analytics reports"
+    )
+    smtp_host = models.CharField(
+        max_length=200,
+        default='smtp.gmail.com',
+        blank=True,
+        verbose_name="SMTP Host"
+    )
+    smtp_port = models.IntegerField(
+        default=587,
+        verbose_name="SMTP Port"
+    )
+    smtp_username = models.EmailField(
+        max_length=254,
+        blank=True,
+        verbose_name="SMTP Username"
+    )
+    smtp_password = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="SMTP Password"
+    )
+    smtp_use_tls = models.BooleanField(
+        default=True,
+        verbose_name="Use TLS"
     )
     clinic_location = models.CharField(
         max_length=200,
@@ -284,7 +323,6 @@ class RatedAppSettings(models.Model):
         ],
         verbose_name="Clinic Timezone"
     )
-
 
     # Connectivity Settings
     software_integration = models.CharField(
@@ -337,3 +375,343 @@ class RatedAppSettings(models.Model):
     class Meta:
         verbose_name = "RatedApp Clinic Settings"
         verbose_name_plural = "RatedApp Clinic Settings"
+
+    # Analytics Settings (add these fields)
+    analytics_enabled = models.BooleanField(
+        default=False,
+        help_text="Whether analytics processing is enabled"
+    )
+    analytics_preset = models.ForeignKey(
+        ScoringConfiguration,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='analytics_settings',
+        help_text="Active preset for analytics processing"
+    )
+    analytics_last_job = models.ForeignKey(
+        'AnalyticsJob',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='+',
+        help_text="Reference to the current/last analytics job"
+    )
+
+class AnalyticsJob(models.Model):
+    """Manages scheduled analytics processing jobs"""
+    
+    FREQUENCY_CHOICES = [
+        ('daily', 'Daily'),
+        ('weekly', 'Weekly'),
+        ('manual', 'Manual'),
+    ]
+    
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('running', 'Analysing...'),
+        ('completed', 'Completed'),
+        ('failed', 'Failed'),
+        ('cancelled', 'Cancelled'),
+        ('partial', 'Partial Completion'),
+    ]
+    
+    DATE_RANGE_CHOICES = [
+        ('1d', '1 day'),
+        ('3', '3 months'),
+        ('6', '6 months'),
+        ('1y', '1 year'),
+        ('2y', '2 years'),
+        ('5y', '5 years'),
+        ('10y', '10 years'),
+    ]
+    
+    WEEKDAY_CHOICES = [
+        (0, 'Monday'),
+        (1, 'Tuesday'),
+        (2, 'Wednesday'),
+        (3, 'Thursday'),
+        (4, 'Friday'),
+        (5, 'Saturday'),
+        (6, 'Sunday'),
+    ]
+    
+    # Configuration
+    date_range = models.CharField(
+        max_length=10, 
+        choices=DATE_RANGE_CHOICES,
+        help_text="Date range for patient selection"
+    )
+    preset = models.ForeignKey(
+        ScoringConfiguration, 
+        on_delete=models.PROTECT,
+        related_name='analytics_jobs',
+        help_text="Scoring configuration used for analysis"
+    )
+    frequency = models.CharField(
+        max_length=10, 
+        choices=FREQUENCY_CHOICES,
+        default='manual'
+    )
+    scheduled_time = models.TimeField(
+        help_text="Time to run the job (in clinic timezone)"
+    )
+    scheduled_day = models.IntegerField(
+        choices=WEEKDAY_CHOICES,
+        null=True, 
+        blank=True,
+        help_text="Day of week for weekly jobs"
+    )
+    
+    # Status tracking
+    status = models.CharField(
+        max_length=20, 
+        choices=STATUS_CHOICES,
+        default='pending'
+    )
+
+    is_test_mode = models.BooleanField(
+        default=False,
+        help_text="Test mode - processes but doesn't update Cliniko"
+    )
+    test_results = models.JSONField(
+        default=dict,
+        blank=True,
+        help_text="Results from test mode runs"
+    )
+    last_run_started = models.DateTimeField(null=True, blank=True)
+    last_run_completed = models.DateTimeField(null=True, blank=True)
+    next_run = models.DateTimeField(null=True, blank=True)
+    
+    # Progress tracking
+    total_patients = models.IntegerField(default=0)
+    patients_processed = models.IntegerField(default=0)
+    patients_failed = models.IntegerField(default=0)
+    
+    # Processing state (for resumability)
+    processed_patient_ids = models.JSONField(
+        default=list, 
+        blank=True,
+        help_text="List of successfully processed patient IDs"
+    )
+    failed_patient_ids = models.JSONField(
+        default=list,
+        blank=True,
+        help_text="List of failed patient IDs with error messages"
+    )
+    
+    # Error tracking
+    error_log = models.TextField(
+        blank=True,
+        help_text="Detailed error messages"
+    )
+    
+    # Cancellation flag
+    cancel_requested = models.BooleanField(default=False)
+    
+    # Metadata
+    created_by = models.CharField(max_length=100, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = "Analytics Job"
+        verbose_name_plural = "Analytics Jobs"
+    
+    def __str__(self):
+        return f"Analytics Job - {self.get_status_display()} - {self.created_at}"
+    
+    def calculate_next_run(self):
+        """Calculate next run time based on frequency and schedule"""
+        from datetime import datetime, timedelta
+        import pytz
+        
+        settings = RatedAppSettings.objects.first()
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        now = datetime.now(clinic_tz)
+        
+        # Create scheduled datetime for today
+        scheduled = now.replace(
+            hour=self.scheduled_time.hour,
+            minute=self.scheduled_time.minute,
+            second=0,
+            microsecond=0
+        )
+        
+        if self.frequency == 'daily':
+            # If scheduled time has passed today, schedule for tomorrow
+            if scheduled <= now:
+                scheduled += timedelta(days=1)
+                
+        elif self.frequency == 'weekly':
+            # Find next occurrence of scheduled day
+            days_ahead = self.scheduled_day - now.weekday()
+            if days_ahead <= 0:  # Target day already happened this week
+                days_ahead += 7
+            scheduled += timedelta(days=days_ahead)
+            
+        self.next_run = scheduled
+        return scheduled
+    
+    def calculate_next_run(self):
+        """Calculate next run time based on frequency and schedule"""
+        from datetime import datetime, timedelta
+        import pytz
+        
+        settings = RatedAppSettings.objects.first()
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        now = datetime.now(clinic_tz)
+        
+        # Create scheduled datetime for today
+        scheduled = now.replace(
+            hour=self.scheduled_time.hour,
+            minute=self.scheduled_time.minute,
+            second=0,
+            microsecond=0
+        )
+        
+        if self.frequency == 'daily':
+            # If scheduled time has passed today, schedule for tomorrow
+            if scheduled <= now:
+                scheduled += timedelta(days=1)
+                
+        elif self.frequency == 'weekly':
+            # Find next occurrence of scheduled day
+            days_ahead = self.scheduled_day - now.weekday()
+            if days_ahead <= 0:  # Target day already happened this week
+                days_ahead += 7
+            scheduled += timedelta(days=days_ahead)
+            
+        self.next_run = scheduled
+        return scheduled
+    
+    def calculate_next_run(self):
+        """Calculate next run time based on frequency and schedule"""
+        from datetime import datetime, timedelta
+        import pytz
+        
+        settings = RatedAppSettings.objects.first()
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        now = datetime.now(clinic_tz)
+        
+        # Create scheduled datetime for today
+        scheduled = now.replace(
+            hour=self.scheduled_time.hour,
+            minute=self.scheduled_time.minute,
+            second=0,
+            microsecond=0
+        )
+        
+        if self.frequency == 'daily':
+            # If scheduled time has passed today, schedule for tomorrow
+            if scheduled <= now:
+                scheduled += timedelta(days=1)
+                
+        elif self.frequency == 'weekly':
+            # Find next occurrence of scheduled day
+            days_ahead = self.scheduled_day - now.weekday()
+            if days_ahead <= 0:  # Target day already happened this week
+                days_ahead += 7
+            scheduled += timedelta(days=days_ahead)
+            
+        self.next_run = scheduled
+        return scheduled
+    
+    def get_date_range_dates(self):
+        """Get actual start and end dates based on date_range setting"""
+        from datetime import datetime, timedelta
+        from dateutil.relativedelta import relativedelta
+        import pytz
+        
+        settings = RatedAppSettings.objects.first()
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        
+        end_date = datetime.now(clinic_tz)
+        
+        # Handle different date range formats
+        if self.date_range == '1d':
+            # Exactly 1 day (24 hours) back
+            start_date = end_date - timedelta(days=1)
+        elif self.date_range.endswith('m'):
+            # Months - use relativedelta for accurate month calculation
+            months = int(self.date_range[:-1])
+            start_date = end_date - relativedelta(months=months)
+        elif self.date_range.endswith('y'):
+            # Years - use relativedelta for accurate year calculation
+            years = int(self.date_range[:-1])
+            start_date = end_date - relativedelta(years=years)
+        
+        return start_date, end_date
+    
+    def mark_completed(self):
+        """Mark job as completed and calculate next run"""
+        self.status = 'completed'
+        self.last_run_completed = datetime.now()
+        
+        if self.frequency in ['daily', 'weekly']:
+            self.calculate_next_run()
+            self.status = 'pending'  # Ready for next run
+            
+        self.save()
+    
+    def mark_failed(self, error_message):
+        """Mark job as failed with error message"""
+        self.status = 'failed'
+        self.error_log = f"{self.error_log}\n{datetime.now()}: {error_message}".strip()
+        self.save()
+    
+    def mark_completed(self):
+        """Mark job as completed and calculate next run"""
+        self.status = 'completed'
+        self.last_run_completed = datetime.now()
+        
+        if self.frequency in ['daily', 'weekly']:
+            self.calculate_next_run()
+            self.status = 'pending'  # Ready for next run
+            
+        self.save()
+    
+    def mark_failed(self, error_message):
+        """Mark job as failed with error message"""
+        self.status = 'failed'
+        self.error_log = f"{self.error_log}\n{datetime.now()}: {error_message}".strip()
+        self.save()
+    
+    def mark_completed(self):
+        """Mark job as completed and calculate next run"""
+        self.status = 'completed'
+        self.last_run_completed = datetime.now()
+        
+        if self.frequency in ['daily', 'weekly']:
+            self.calculate_next_run()
+            self.status = 'pending'  # Ready for next run
+            
+        self.save()
+    
+    def mark_failed(self, error_message):
+        """Mark job as failed with error message"""
+        self.status = 'failed'
+        self.error_log = f"{self.error_log}\n{datetime.now()}: {error_message}".strip()
+        self.save()
+    
+    def should_run_now(self):
+        """Check if job should run based on schedule"""
+        from datetime import datetime
+        import pytz
+        
+        if self.status != 'pending':
+            return False
+            
+        if self.frequency == 'manual':
+            return False
+            
+        settings = RatedAppSettings.objects.first()
+        clinic_tz = pytz.timezone(settings.clinic_timezone or 'Australia/Sydney')
+        now = datetime.now(clinic_tz)
+        
+        if self.next_run and now >= self.next_run:
+            return True
+            
+        return False
+

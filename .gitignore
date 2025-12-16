@@ -1,0 +1,40 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual env
+rated-app-env/
+
+# Django local/runtime
+db.sqlite3
+*.sqlite3
+staticfiles/
+media/
+
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Backups / archives
+backups/
+*.tar.gz
+*.zip
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+rated_app/patient_rating/*log*.txt
+rated_app/patient_rating/views_*hardcoded*.py
+rated_app/patient_rating/*copy*.py
+rated_app/*log*.txt
+rated_app/patient_rating/views_cliniko_hardcoded.py
+rated_app/patient_rating/views_hybrid copy.py
