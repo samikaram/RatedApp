@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
+from .health import healthz
 
 urlpatterns = [
+    path("healthz/", healthz, name="healthz"),
     path("update-clinic-settings/", views.update_clinic_settings, name="update_clinic_settings"),
     path('validate-cliniko-api-key/', views.validate_cliniko_api_key, name='validate_cliniko_api_key'),
     path('', views.PatientSearchView.as_view(), name='patient_search'),
