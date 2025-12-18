@@ -1027,7 +1027,7 @@ function handleFormSubmit(event) {
     console.log(Array.from(formData.entries()));
     console.log("🔍 Does Apply button send action parameter?", formData.get('action'));
     
-    fetch(form.action, {
+    csrfFetch(form.action, {
         method: "POST",
         body: formData,
         headers: {
@@ -1354,7 +1354,7 @@ function deletePreset() {
         }
 
         // Step 3D: Send AJAX DELETE request to backend
-        fetch("{% url 'delete_preset' %}", {
+        csrfFetch("{% url 'delete_preset' %}", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -2163,7 +2163,7 @@ function saveUnpaidInvoicesPoints() {
             }
             
             // Call backend (basic structure)
-            fetch("{% url 'unified_dashboard' %}", {
+            csrfFetch("{% url 'unified_dashboard' %}", {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -2254,7 +2254,7 @@ function saveUnpaidInvoicesPoints() {
         updateBtn.disabled = true;
         
         // Send AJAX request to backend
-        fetch("{% url 'unified_dashboard' %}", {
+        csrfFetch("{% url 'unified_dashboard' %}", {
             method: 'POST',
             body: formData,
             headers: {
@@ -2912,7 +2912,7 @@ function toggleScoringPresets() {
         console.log("🔍 Applying preset ID:", selectedPresetId);
         
         // Use the working applyPresetById logic
-        fetch("{% url 'unified_dashboard' %}", {
+        csrfFetch("{% url 'unified_dashboard' %}", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -3053,7 +3053,7 @@ function toggleScoringPresets() {
     console.log(Array.from(formData.entries()));
     console.log("🔍 Does Apply button send action parameter?", formData.get('action'));
     
-    fetch("/patients/dashboard/", {
+    csrfFetch("/patients/dashboard/", {
         method: "POST",
         body: formData,
         headers: {
@@ -3117,7 +3117,7 @@ function toggleScoringPresets() {
 function clearAndInsertBrackets(bracketType, presetValue) {
     return new Promise((resolve, reject) => {
         // Step 1: Clear existing brackets
-        fetch("/patients/dashboard/", {
+        csrfFetch("/patients/dashboard/", {
             method: "POST",
             headers: {
                 "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
@@ -3137,7 +3137,7 @@ function clearAndInsertBrackets(bracketType, presetValue) {
             const bracketData = getBracketDataForPreset(bracketType, presetValue);
             
             // Step 3: Bulk insert new brackets
-            return fetch("/patients/dashboard/", {
+            return csrfFetch("/patients/dashboard/", {
                 method: "POST",
                 headers: {
                     "X-CSRFToken": document.querySelector("[name=csrfmiddlewaretoken]").value,
@@ -3233,7 +3233,7 @@ function applyPresetById(presetId, presetName) {
     }
     
     // Send AJAX request to apply the preset without form submission
-    fetch("{% url 'unified_dashboard' %}", {
+    csrfFetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -3625,7 +3625,7 @@ function searchPatients() {
     searchBtn.disabled = true;
     
     // AJAX search request
-    fetch("{% url 'unified_dashboard' %}", {
+    csrfFetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -3746,7 +3746,7 @@ function saveLikability() {
         return;
     }
     
-    fetch("{% url 'unified_dashboard' %}", {
+    csrfFetch("{% url 'unified_dashboard' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -4921,7 +4921,7 @@ function getCookie(name) {
 
 // Unified Save Mechanism
 function saveSettings(section, data) {
-    return fetch("{% url 'update_clinic_settings' %}", {
+    return csrfFetch("{% url 'update_clinic_settings' %}", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -5094,7 +5094,7 @@ function hideAPIValidationSpinner() {
 // Update saveSettings to use API validation
 function saveSettings(section, data) {
     // Existing save logic for other sections
-    return fetch('/update-clinic-settings/', {
+    return csrfFetch('/update-clinic-settings/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -5418,7 +5418,7 @@ function saveAnalyticsConfig() {
     }
     
     // Save configuration
-    fetch('/analytics/config/', {
+    csrfFetch('/analytics/config/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -5493,7 +5493,7 @@ function startAnalytics() {
     actionBtn.disabled = true;
     
     // Start processing
-    fetch('/analytics/start/', {
+    csrfFetch('/analytics/start/', {
         method: 'POST',
         headers: {
             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
@@ -5536,7 +5536,7 @@ function cancelAnalytics() {
     }
     
     // Cancel processing
-    fetch('/analytics/cancel/', {
+    csrfFetch('/analytics/cancel/', {
         method: 'POST',
         headers: {
             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
