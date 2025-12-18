@@ -1,6 +1,7 @@
 import json
 import logging
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST, require_http_methods
 from django.views import View
@@ -377,6 +378,7 @@ def calculate_referrer_score(patient_id, points_per_referral, max_points):
     return final_score
 
 
+@login_required
 def unified_dashboard(request):
     print("=== UNIFIED DASHBOARD REQUEST DEBUG ===")
     print(f"Method: {request.method}")
