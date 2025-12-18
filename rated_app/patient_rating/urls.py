@@ -17,9 +17,6 @@ urlpatterns = [
     path("validate-cliniko-api-key/", login_required(views.validate_cliniko_api_key), name="validate_cliniko_api_key"),
 
     path("", login_required(home), name="home"),
-    path("search/", login_required(views.PatientSearchView.as_view()), name="patient_search"),
-    path("patients/<int:patient_id>/analyze/", login_required(views.PatientAnalysisView.as_view()), name="patient_analysis"),
-
     path("dashboard/", login_required(views.unified_dashboard), name="unified_dashboard"),
     path("patients/update-likability/", login_required(views.UpdateLikabilityView.as_view()), name="update_likability"),
 
