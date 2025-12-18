@@ -1,8 +1,12 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
+from django.shortcuts import redirect
 from django.urls import path
 from . import views
 from .health import healthz
+
+def home(request):
+    return redirect("unified_dashboard")
 
 urlpatterns = [
     path("healthz/", healthz, name="healthz"),
@@ -12,7 +16,7 @@ urlpatterns = [
     path("update-clinic-settings/", login_required(views.update_clinic_settings), name="update_clinic_settings"),
     path("validate-cliniko-api-key/", login_required(views.validate_cliniko_api_key), name="validate_cliniko_api_key"),
 
-    path("", login_required(views.PatientSearchView.as_view()), name="patient_search"),
+    path("", login_required(home), name="home"),
     path("search/", login_required(views.PatientSearchView.as_view()), name="patient_search"),
     path("patients/<int:patient_id>/analyze/", login_required(views.PatientAnalysisView.as_view()), name="patient_analysis"),
 
